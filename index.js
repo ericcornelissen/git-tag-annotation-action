@@ -7,11 +7,12 @@ try {
     tag = `refs/tags/${core.getInput('tag')}`;
   }
 
-  exec(`git for-each-ref --format='%(contents)' ${tag}`, (err, stdout, stderr) => {
+  exec(`git for-each-ref --format='%(contents)' ${tag}`, (err, stdout) => {
     if (err) {
       throw err;
     }
-    core.setOutput("git-tag-annotation", stdout);
+
+    core.setOutput('git-tag-annotation', stdout);
   });
 } catch (error) {
   core.setFailed(error.message);
