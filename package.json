@@ -6,6 +6,9 @@
   "homepage": "https://github.com/ericcornelissen/git-tag-annotation-action#readme",
   "license": "MIT",
   "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js -m -o lib"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ericcornelissen/git-tag-annotation-action.git"
@@ -27,5 +30,11 @@
   ],
   "dependencies": {
     "@actions/core": "^1.2.6"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.24.1"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }
