@@ -2,7 +2,7 @@
   "name": "git-tag-annotation-action",
   "version": "1.0.0",
   "private": true,
-  "description": "Github Action for obtaining the git annotation of a tag",
+  "description": "Github Action for obtaining the annotation of a git tag",
   "homepage": "https://github.com/ericcornelissen/git-tag-annotation-action#readme",
   "license": "MIT",
   "main": "index.js",

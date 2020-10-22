@@ -1,5 +1,5 @@
 name: 'Git Tag Annotation'
-description: 'Get the git annotation associated with a git tag'
+description: 'Get the annotation associated with a git tag'
 author: 'Eric Cornelissen'
 
 inputs:
@@ -8,7 +8,7 @@ inputs:
     required: false
 
 outputs:
-  git-message:
+  git-tag-annotation:
     description: 'The git tag annotation'
 
 runs:

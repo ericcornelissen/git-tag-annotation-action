@@ -1,6 +1,6 @@
 # Git Tag Annotation Action
 
-A GitHub Action to get the annotation associated with the current tag.
+A GitHub Action to get the annotation associated with the current git tag.
 
 _Based on [kceb/git-message-action]._
 
@@ -71,5 +71,17 @@ jobs:
         run: echo ${{ steps.tag_data.outputs.git-tag-annotation }}
 ```
 
+## Known Issues
+
+This Action is currently incompatible with [actions/checkout@v2] because it does
+not preserve tag annotations correctly. We recommend using [actions/checkout@v1]
+instead if possible. Otherwise, you can run `git fetch --tags --force` manually
+after the [actions/checkout@v2] step.
+
+For more information regarding this problem see [actions/checkout#290].
+
+[actions/checkout@v1]: https://github.com/actions/checkout/tree/v1
+[actions/checkout@v2]: https://github.com/actions/checkout/tree/v2
+[actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [kceb/git-message-action]: https://github.com/kceb/git-message-action
 [the GitHub Actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
