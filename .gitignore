@@ -5,6 +5,9 @@
 # dependencies directory
 node_modules/
 
-# TypeScript generated files
+# redundant NCC generated files
 lib/**/*
 !lib/index.js
+
+# Jest generate files
+coverage/

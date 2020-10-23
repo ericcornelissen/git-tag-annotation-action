@@ -1,0 +1,23 @@
+name: Verify code
+
+on:
+- push
+- pull_request
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Initialize repository
+      run: npm ci
+    - name: Build lib/index.js
+      run: npm run build
+    - name: Run tests
+      run: npm run test
