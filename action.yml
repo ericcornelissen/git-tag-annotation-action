@@ -16,5 +16,5 @@ runs:
   main: 'lib/index.js'
 
 branding:
-  icon: 'git-commit'
+  icon: 'tag'
   color: 'gray-dark'

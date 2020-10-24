@@ -9,6 +9,11 @@ Versioning].
 
 - _No changes yet_
 
+## [1.0.1] - 2020-10-24
+
+- Update Action icon.
+- Fix shell injection vulnerability.
+
 ## [1.0.0] - 2020-10-22
 
 - Run the Action to get the git tag annotation of the current tag.

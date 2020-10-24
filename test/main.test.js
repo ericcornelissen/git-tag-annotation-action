@@ -23,7 +23,7 @@ it.each([
   main();
 
   expect(child_process.exec).toHaveBeenCalledWith(
-    `git for-each-ref --format='%(contents)' refs/tags/${tag}`,
+    `git for-each-ref --format='%(contents)' 'refs/tags/${tag}'`,
     expect.any(Function),
   );
 });
@@ -46,7 +46,7 @@ it.each([
 
   expect(core.getInput).toHaveBeenCalledTimes(2);
   expect(child_process.exec).toHaveBeenCalledWith(
-    `git for-each-ref --format='%(contents)' refs/tags/${tag}`,
+    `git for-each-ref --format='%(contents)' 'refs/tags/${tag}'`,
     expect.any(Function),
   );
 });
@@ -88,4 +88,15 @@ it('sets an error if exec fails', () => {
 
   expect(core.setOutput).not.toHaveBeenCalled();
   expect(core.setFailed).toHaveBeenCalledTimes(1);
+});
+
+it('escapes malicious values from the input', () => {
+  core.getInput.mockReturnValue(`'; $(cat /etc/shadow)`);
+
+  main();
+
+  expect(child_process.exec).toHaveBeenCalledWith(
+    "git for-each-ref --format='%(contents)' 'refs/tags/'\\''; $(cat /etc/shadow)'",
+    expect.any(Function),
+  );
 });
