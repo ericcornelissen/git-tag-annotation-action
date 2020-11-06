@@ -1,10 +1,6 @@
 const core = require('@actions/core');
 const { exec } = require('child_process');
-
-// Based on https://stackoverflow.com/a/22827128
-function escapeShellArg(arg) {
-  return arg.replace(/'/g, `'\\''`);
-}
+const shescape = require('shescape');
 
 function main() {
   try {
@@ -14,7 +10,7 @@ function main() {
     }
 
     exec(
-      `git for-each-ref --format='%(contents)' '${escapeShellArg(tag)}'`,
+      `git for-each-ref --format='%(contents)' '${shescape(tag)}'`,
       (err, stdout) => {
         if (err) {
           core.setFailed(err);
