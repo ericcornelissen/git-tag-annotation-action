@@ -31,7 +31,7 @@
   ],
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "shescape": "^0.1.0"
+    "shescape": "^0.2.1"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",
