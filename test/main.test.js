@@ -1,10 +1,12 @@
 const core = require('@actions/core');
 const child_process = require('child_process');
+const shescape = require('shescape');
 
 const main = require('../src/main.js');
 
 jest.mock('@actions/core');
 jest.mock('child_process');
+jest.mock('shescape');
 
 beforeEach(() => {
   core.getInput.mockClear();
@@ -12,6 +14,8 @@ beforeEach(() => {
   core.setOutput.mockClear();
 
   child_process.exec.mockClear();
+
+  shescape.mockClear();
 });
 
 it.each([
@@ -95,8 +99,5 @@ it('escapes malicious values from the input', () => {
 
   main();
 
-  expect(child_process.exec).toHaveBeenCalledWith(
-    "git for-each-ref --format='%(contents)' 'refs/tags/'\\''; $(cat /etc/shadow)'",
-    expect.any(Function),
-  );
+  expect(shescape).toHaveBeenCalledTimes(1);
 });
