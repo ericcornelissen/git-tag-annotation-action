@@ -95,9 +95,11 @@ it('sets an error if exec fails', () => {
 });
 
 it('escapes malicious values from the input', () => {
-  core.getInput.mockReturnValue(`'; $(cat /etc/shadow)`);
+  const tag = `'; $(cat /etc/shadow)`;
+  core.getInput.mockReturnValue(tag);
 
   main();
 
   expect(shescape).toHaveBeenCalledTimes(1);
+  expect(shescape).toHaveBeenCalledWith(`refs/tags/${tag}`);
 });
