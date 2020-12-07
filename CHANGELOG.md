@@ -9,6 +9,10 @@ Versioning].
 
 - _No changes yet_
 
+## [1.1.0] - 2020-12-07
+
+- Add support for running the Action on Windows.
+
 ## [1.0.1] - 2020-10-24
 
 - Update Action icon.

@@ -10,7 +10,7 @@ function main() {
     }
 
     exec(
-      `git for-each-ref --format='%(contents)' '${shescape(tag)}'`,
+      `git for-each-ref --format='%(contents)' ${shescape.quote(tag)}`,
       (err, stdout) => {
         if (err) {
           core.setFailed(err);

@@ -1,6 +1,6 @@
 {
   "name": "git-tag-annotation-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Github Action for obtaining the annotation of a git tag",
   "homepage": "https://github.com/ericcornelissen/git-tag-annotation-action#readme",
@@ -31,7 +31,7 @@
   ],
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "shescape": "^0.2.1"
+    "shescape": "^0.3.1"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",

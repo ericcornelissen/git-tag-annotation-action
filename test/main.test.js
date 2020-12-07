@@ -15,7 +15,7 @@ beforeEach(() => {
 
   child_process.exec.mockClear();
 
-  shescape.mockClear();
+  shescape.quote.mockClear();
 });
 
 it.each([
@@ -100,6 +100,6 @@ it('escapes malicious values from the input', () => {
 
   main();
 
-  expect(shescape).toHaveBeenCalledTimes(1);
-  expect(shescape).toHaveBeenCalledWith(`refs/tags/${tag}`);
+  expect(shescape.quote).toHaveBeenCalledTimes(1);
+  expect(shescape.quote).toHaveBeenCalledWith(`refs/tags/${tag}`);
 });
