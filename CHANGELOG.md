@@ -9,6 +9,10 @@ Versioning].
 
 - _No changes yet_
 
+## [1.1.1] - 2020-12-22
+
+- Upgrade from deprecated _Shescape_ version.
+
 ## [1.1.0] - 2020-12-07
 
 - Add support for running the Action on Windows.
