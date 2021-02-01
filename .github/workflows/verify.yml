@@ -5,8 +5,23 @@ on:
 - pull_request
 
 jobs:
-  build-and-test:
-    name: Build & Test
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Initialize repository
+      run: npm ci
+    - name: Build lib/index.js
+      run: npm run build
+  test-unit:
+    name: Unit tests
+    needs: build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -20,7 +35,42 @@ jobs:
         node-version: 12.x
     - name: Initialize repository
       run: npm ci
-    - name: Build lib/index.js
-      run: npm run build
     - name: Run tests
       run: npm run test
+  test-integration:
+    name: Integration tests
+    needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Initialize repository
+      run: npm ci
+    - name: Build lib/index.js
+      run: npm run build
+    - name: Move git-tag-annotation-action
+      shell: bash
+      run: |
+        mkdir ./../action
+        mv ./lib ./action.yml ./../action
+    - name: Run git-tag-annotation-action
+      id: action_test
+      uses: ./../action
+      with:
+        tag: v1.0.0
+    - name: Echo git-tag-annotation-action output
+      run: echo "${{ steps.action_test.outputs.git-tag-annotation }}"
+    - name: Check git-tag-annotation-action output
+      shell: bash
+      run: |
+        if ! [[ "${{ steps.action_test.outputs.git-tag-annotation }}" ]]; then
+            exit 1
+        fi
+
