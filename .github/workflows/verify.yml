@@ -70,7 +70,7 @@ jobs:
     - name: Check git-tag-annotation-action output
       shell: bash
       run: |
-        if ! [[ "${{ steps.action_test.outputs.git-tag-annotation }}" ]]; then
-            exit 1
+        if ! [[ "${{ steps.action_test.outputs.git-tag-annotations }}" ]]; then
+          exit 1
         fi
 
