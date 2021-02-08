@@ -1,4 +1,6 @@
 # Git Tag Annotation Action
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action?ref=badge_shield)
+
 
 A GitHub Action to get the annotation associated with the current git tag.
 
@@ -85,3 +87,7 @@ For more information regarding this problem see [actions/checkout#290].
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [kceb/git-message-action]: https://github.com/kceb/git-message-action
 [the GitHub Actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action?ref=badge_large)
