@@ -1,6 +1,6 @@
 'use strict';
 
-const shescape = jest.createMockFromModule('shescape');
+const shescape = { };
 
 shescape.quote = jest.fn().mockName('quote').mockImplementation(x => `'${x}'`);
 
