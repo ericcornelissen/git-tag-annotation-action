@@ -5,8 +5,10 @@ const shescape = require('shescape');
 function main() {
   try {
     let tag = process.env.GITHUB_REF;
-    if (core.getInput('tag')) {
-      tag = `refs/tags/${core.getInput('tag')}`;
+
+    const input = core.getInput('tag');
+    if (input) {
+      tag = `refs/tags/${input}`;
     }
 
     exec(

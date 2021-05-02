@@ -19,8 +19,8 @@ beforeEach(() => {
 });
 
 it.each([
-  "v1.2.3",
-  "v0.3.14",
+  'v1.2.3',
+  'v0.3.14',
 ])('uses the tag from the environment (%s)', (tag) => {
   process.env.GITHUB_REF = `refs/tags/${tag}`;
 
@@ -38,17 +38,18 @@ it('tries to get a tag from the input', () => {
   main();
 
   expect(core.getInput).toHaveBeenCalledTimes(1);
+  expect(core.getInput).toHaveBeenCalledWith('tag');
 });
 
 it.each([
-  "v3.2.1",
-  "v0.2.718",
+  'v3.2.1',
+  'v0.2.718',
 ])('uses the tag from the input (%s)', (tag) => {
   core.getInput.mockReturnValue(tag);
 
   main();
 
-  expect(core.getInput).toHaveBeenCalledTimes(2);
+  expect(core.getInput).toHaveBeenCalledTimes(1);
   expect(child_process.exec).toHaveBeenCalledWith(
     `git for-each-ref --format='%(contents)' 'refs/tags/${tag}'`,
     expect.any(Function),
@@ -56,7 +57,7 @@ it.each([
 });
 
 it('outputs the annotation', (done) => {
-  const annotation = "Hello world!";
+  const annotation = 'Hello world!';
   child_process.exec.mockImplementation((_, fn) => {
     fn(null, annotation);
 
@@ -73,7 +74,7 @@ it('outputs the annotation', (done) => {
 
 it('sets an error if the annotation could not be found', (done) => {
   child_process.exec.mockImplementation((_, fn) => {
-    fn("Something went wrong!", null);
+    fn('Something went wrong!', null);
 
     expect(core.setOutput).not.toHaveBeenCalled();
     expect(core.setFailed).toHaveBeenCalledTimes(1);
@@ -85,7 +86,7 @@ it('sets an error if the annotation could not be found', (done) => {
 
 it('sets an error if exec fails', () => {
   child_process.exec.mockImplementation(() => {
-    throw new Error({ message: "Something went wrong" })
+    throw new Error({ message: 'Something went wrong' })
   });
 
   main();
