@@ -9,6 +9,6 @@ node_modules/
 lib/**/*
 !lib/index.js
 
-# Jest/Stryker generated files
-.stryker-tmp/
-reports/
+# test generated files
+.temp/
+_reports/
