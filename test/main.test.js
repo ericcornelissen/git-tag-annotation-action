@@ -8,7 +8,10 @@ jest.mock('@actions/core');
 jest.mock('child_process');
 jest.mock('shescape');
 
-describe.each(['linux', 'win32'])('os: %s', (platform) => {
+const linux = 'linux';
+const win32 = 'win32';
+
+describe.each([linux, win32])('os: %s', (platform) => {
   beforeEach(() => {
     core.getInput.mockClear();
     core.setFailed.mockClear();
@@ -53,6 +56,23 @@ describe.each(['linux', 'win32'])('os: %s', (platform) => {
     expect(core.getInput).toHaveBeenCalledTimes(1);
     expect(child_process.exec).toHaveBeenCalledWith(
       expect.stringContaining(`'refs/tags/${tag}'`),
+      expect.any(Function),
+    );
+  });
+
+  it('uses the correct format', () => {
+    let expectedFormat;
+    if (platform === win32) {
+      expectedFormat = '%(contents)';
+    } else {
+      expectedFormat = "'%(contents)'";
+    }
+
+    main(platform);
+
+    expect(core.getInput).toHaveBeenCalledTimes(1);
+    expect(child_process.exec).toHaveBeenCalledWith(
+      expect.stringContaining(`--format=${expectedFormat}`),
       expect.any(Function),
     );
   });
