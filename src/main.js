@@ -2,7 +2,22 @@ const core = require('@actions/core');
 const { exec } = require('child_process');
 const shescape = require('shescape');
 
-function main() {
+function isWindows(platform) {
+  return platform === 'win32';
+}
+
+function getOutputFormatWindows() {
+  // The format is without quotes on Windows because they will be included in
+  // the output of child_process.
+  // See: https://github.com/ericcornelissen/git-tag-annotation-action/issues/23
+  return '%(contents)';
+}
+
+function getOutputFormatUnix() {
+  return "'%(contents)'";
+}
+
+function main(platform) {
   try {
     let tag = process.env.GITHUB_REF;
 
@@ -11,8 +26,15 @@ function main() {
       tag = `refs/tags/${input}`;
     }
 
+    let format;
+    if (isWindows(platform)) {
+      format = getOutputFormatWindows();
+    } else {
+      format = getOutputFormatUnix();
+    }
+
     exec(
-      `git for-each-ref --format='%(contents)' ${shescape.quote(tag)}`,
+      `git for-each-ref --format=${format} ${shescape.quote(tag)}`,
       (err, stdout) => {
         if (err) {
           core.setFailed(err);
