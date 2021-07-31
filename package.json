@@ -8,8 +8,8 @@
   "main": "index.js",
   "scripts": {
     "build": "ncc build index.js -m -o lib",
-    "clean": "rm -rf .stryker-tmp/ reports/",
-    "test": "jest --coverage --coverageDirectory reports/coverage",
+    "clean": "rm -rf .temp/ _reports/",
+    "test": "jest --coverage --coverageDirectory _reports/coverage",
     "test:mutation": "stryker run"
   },
   "repository": {
@@ -36,8 +36,7 @@
     "shescape": "^1.2.1"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "^4.6.0",
-    "@stryker-mutator/jest-runner": "^4.6.0",
+    "@stryker-mutator/core": "^5.2.2",
     "@vercel/ncc": "^0.28.6",
     "jest": "^27.0.6"
   },

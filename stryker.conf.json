@@ -1,16 +1,21 @@
 {
   "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
-  "packageManager": "npm",
-  "testRunner": "jest",
+
   "coverageAnalysis": "perTest",
-  "files": [
-    "**/*.js",
-    "!node_modules/**/*.js",
-    "!lib/*.js"
+  "inPlace": false,
+  "mutate": [
+    "src/**/*.js"
   ],
+
   "reporters": [
     "clear-text",
     "html",
     "progress"
-  ]
+  ],
+  "htmlReporter": {
+    "baseDir": "_reports/mutation"
+  },
+
+  "tempDirName": ".temp",
+  "cleanTempDir": false
 }
