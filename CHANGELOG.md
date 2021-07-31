@@ -7,7 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Fix unwanted quotes in action output on Windows.
 
 ## [1.1.1] - 2020-12-22
 
