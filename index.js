@@ -1,3 +1,6 @@
+const os = require('os');
+
 const main = require('./src/main.js');
 
-main();
+const platform = os.platform();
+main(platform);
