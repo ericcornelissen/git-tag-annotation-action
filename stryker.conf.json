@@ -6,6 +6,11 @@
   "mutate": [
     "src/**/*.js"
   ],
+  "commandRunner": {
+    "command": "npm run test -- --runInBand --bail"
+  },
+
+  "timeoutMS": 25000,
 
   "reporters": [
     "clear-text",

@@ -7,9 +7,10 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "coverage": "npm run test -- --coverage --coverageDirectory _reports/coverage",
     "build": "ncc build index.js -m -o lib",
     "clean": "rm -rf .temp/ _reports/",
-    "test": "jest --coverage --coverageDirectory _reports/coverage",
+    "test": "jest",
     "test:mutation": "stryker run"
   },
   "repository": {
