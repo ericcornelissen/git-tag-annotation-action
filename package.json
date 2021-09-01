@@ -33,7 +33,7 @@
     "actions"
   ],
   "dependencies": {
-    "@actions/core": "^1.4.0",
+    "@actions/core": "^1.5.0",
     "shescape": "^1.2.1"
   },
   "devDependencies": {
