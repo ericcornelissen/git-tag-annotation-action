@@ -7,7 +7,7 @@
     "src/**/*.js"
   ],
   "commandRunner": {
-    "command": "npm run test -- --runInBand --bail"
+    "command": "npm run test -- --runInBand"
   },
 
   "timeoutMS": 25000,
@@ -21,6 +21,6 @@
     "baseDir": "_reports/mutation"
   },
 
-  "tempDirName": ".temp",
+  "tempDirName": ".temp/stryker",
   "cleanTempDir": false
 }
