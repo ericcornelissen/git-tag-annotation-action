@@ -37,7 +37,7 @@
     "shescape": "^1.2.1"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "^5.2.3",
+    "@stryker-mutator/core": "^5.4.0",
     "@vercel/ncc": "^0.29.0",
     "jest": "^27.1.0"
   },
