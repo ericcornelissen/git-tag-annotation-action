@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@stryker-mutator/core": "^5.4.0",
-    "@vercel/ncc": "^0.29.0",
+    "@vercel/ncc": "^0.30.0",
     "jest": "^27.1.0"
   },
   "engines": {
