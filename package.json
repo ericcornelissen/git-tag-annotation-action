@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "coverage": "npm run test -- --coverage --coverageDirectory _reports/coverage",
-    "build": "ncc build index.js -m -o lib",
+    "build": "rollup -c",
     "clean": "rm -rf .temp/ _reports/",
     "test": "jest",
     "test:mutation": "stryker run"
@@ -37,9 +37,12 @@
     "shescape": "^1.2.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@stryker-mutator/core": "^5.4.0",
-    "@vercel/ncc": "^0.30.0",
-    "jest": "^27.1.0"
+    "jest": "^27.1.0",
+    "rollup": "^2.56.3",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "engines": {
     "node": ">=12.0.0"

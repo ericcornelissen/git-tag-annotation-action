@@ -25,14 +25,14 @@ fixing one of the [open bug reports] and opening a Pull Request for it.
 
 ## Development details
 
-This project uses [NCC] to compile the source code into a standalone JavaScript
-file. This way we don't have to include the `node_modules` directory in the git
-history. You can use the `npm run build` command to update this standalone file.
+This project uses [rollup.js] to compile the source code into a standalone
+JavaScript file. You can use the `npm run build` command to update this file.
 
-You DO NOT have to include this file when submitting a Pull Request. The file
-will be automatically updated if that is required.
+You DO NOT have to include the update to this file when submitting a Pull
+Request. The file will be automatically updated on the `main` branch if that is
+required.
 
-[NCC]: https://github.com/vercel/ncc#readme
 [open bug reports]: https://github.com/ericcornelissen/git-tag-annotation-action/labels/bug
 [open an issue with a bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [open an issue with a feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
+[rollup.js]: https://rollupjs.org/guide/en/
