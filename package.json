@@ -11,7 +11,7 @@
     "build": "rollup -c",
     "clean": "rm -rf .temp/ _reports/",
     "test": "jest",
-    "test:mutation": "stryker run"
+    "test:mutation": "stryker run stryker.config.json"
   },
   "repository": {
     "type": "git",
