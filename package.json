@@ -5,6 +5,7 @@
   "description": "Github Action for obtaining the annotation of a git tag",
   "homepage": "https://github.com/ericcornelissen/git-tag-annotation-action#readme",
   "license": "MIT",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "coverage": "npm run test -- --coverage --coverageDirectory _reports/coverage",
