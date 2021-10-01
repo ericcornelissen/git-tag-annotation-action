@@ -1,6 +1,8 @@
 name: Verify code
 on: [push,pull_request]
 
+permissions: read-all
+
 jobs:
   build:
     name: Build

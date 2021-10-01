@@ -3,9 +3,12 @@ on:
   push:
     branches: [main]
 
+permissions: read-all
+
 jobs:
   build-and-update:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
