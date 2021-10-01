@@ -2,13 +2,12 @@
 .idea
 .vscode
 
-# dependencies directory
-node_modules/
-
-# redundant NCC generated files
+# whitelist action executables
 lib/**/*
 !lib/index.js
 
-# test generated files
+# generated or installed
 .temp/
 _reports/
+node_modules/
+*.log

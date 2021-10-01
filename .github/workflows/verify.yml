@@ -1,6 +1,8 @@
 name: Verify code
 on: [push,pull_request]
 
+permissions: read-all
+
 jobs:
   build:
     name: Build
@@ -8,7 +10,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Use Node.js 12.x
+    - name: Install Node.js
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
@@ -27,7 +29,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Use Node.js 12.x
+    - name: Install Node.js
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
@@ -36,8 +38,8 @@ jobs:
       run: npm ci
     - name: Run tests
       run: npm run coverage
-  test-integration:
-    name: Integration tests
+  test-e2e:
+    name: End-to-end tests
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:
@@ -46,7 +48,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v1
-    - name: Use Node.js 12.x
+    - name: Install Node.js
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
@@ -55,14 +57,9 @@ jobs:
       run: npm ci
     - name: Build lib/index.js
       run: npm run build
-    - name: Move git-tag-annotation-action
-      shell: bash
-      run: |
-        mkdir ./../action
-        mv ./lib ./action.yml ./../action
     - name: Run git-tag-annotation-action
       id: action_test
-      uses: ./../action
+      uses: ./
       with:
         tag: v1.0.0
     - name: Echo git-tag-annotation-action output
@@ -73,3 +70,19 @@ jobs:
         if ! [[ "${{ steps.action_test.outputs.git-tag-annotation }}" ]]; then
           exit 1
         fi
+  test-mutation:
+    name: Mutation tests
+    needs: test-unit
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 12.x
+        cache: npm
+    - name: Initialize repository
+      run: npm ci
+    - name: Run mutation tests
+      run: npm run test:mutation
