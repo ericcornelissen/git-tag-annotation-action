@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "20.0.0",
-    "@rollup/plugin-node-resolve": "13.0.4",
+    "@rollup/plugin-node-resolve": "13.0.5",
     "@stryker-mutator/core": "5.4.1",
     "jest": "27.2.4",
     "rollup": "2.58.0",
