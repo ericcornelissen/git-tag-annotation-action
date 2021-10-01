@@ -20,6 +20,11 @@
   "htmlReporter": {
     "baseDir": "_reports/mutation"
   },
+  "thresholds": {
+    "high": 100,
+    "low": 100,
+    "break": 100
+  },
 
   "tempDirName": ".temp/stryker",
   "cleanTempDir": false

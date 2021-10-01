@@ -73,3 +73,19 @@ jobs:
         if ! [[ "${{ steps.action_test.outputs.git-tag-annotation }}" ]]; then
           exit 1
         fi
+  test-mutation:
+    name: Mutation tests
+    needs: test-unit
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 12.x
+        cache: npm
+    - name: Initialize repository
+      run: npm ci
+    - name: Run tests
+      run: npm run test:mutation
