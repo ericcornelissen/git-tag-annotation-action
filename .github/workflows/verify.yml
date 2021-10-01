@@ -38,8 +38,8 @@ jobs:
       run: npm ci
     - name: Run tests
       run: npm run coverage
-  test-integration:
-    name: Integration tests
+  test-e2e:
+    name: End-to-end tests
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:
@@ -57,14 +57,9 @@ jobs:
       run: npm ci
     - name: Build lib/index.js
       run: npm run build
-    - name: Move git-tag-annotation-action
-      shell: bash
-      run: |
-        mkdir ./../action
-        mv ./lib ./action.yml ./../action
     - name: Run git-tag-annotation-action
       id: action_test
-      uses: ./../action
+      uses: ./
       with:
         tag: v1.0.0
     - name: Echo git-tag-annotation-action output
