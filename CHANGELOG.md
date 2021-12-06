@@ -7,11 +7,20 @@ Versioning].
 
 ## [Unreleased]
 
+- Update dependencies (_actions/core_, _shescape_).
+
+## [1.1.3] - 2021-07-31
+
 - Fix unwanted quotes in action output on Windows.
+- Update dependencies (_actions/core_, _shescape_).
+
+## [1.1.2] - 2021-03-19
+
+- Update vulnerable  _shescape_ version.
 
 ## [1.1.1] - 2020-12-22
 
-- Upgrade from deprecated _Shescape_ version.
+- Upgrade from deprecated _shescape_ version.
 
 ## [1.1.0] - 2020-12-07
 
