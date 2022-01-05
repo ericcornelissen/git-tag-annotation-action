@@ -63,7 +63,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Create Release
         id: tag_data
         uses: ericcornelissen/git-tag-annotation-action@v1
@@ -73,10 +75,11 @@ jobs:
 
 ## Known Issues
 
-This Action is currently incompatible with [actions/checkout@v2] because it does
-not preserve tag annotations correctly. We recommend using [actions/checkout@v1]
-instead if possible. Otherwise, you can run `git fetch --tags --force` manually
-after the [actions/checkout@v2] step.
+There have been issues when using this Action with [actions/checkout@v2]. If
+you're experiencing issues, run `git fetch --tags --force` manually after the
+[actions/checkout@v2] step. If that doesn't work or isn't desired, you can (**at
+your own risk**) use [actions/checkout@v1] instead. It is recommended to check
+that [actions/checkout@v1] is still supported when writing your workflow.
 
 For more information regarding this problem see [actions/checkout#290].
 
