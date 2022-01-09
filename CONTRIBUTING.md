@@ -15,7 +15,7 @@ to contribute anything, please use the following this workflow
 
 The simplicity of this Action is by design. It is unlikely new features will be
 added to the Action, but you are free to [open an issue with a feature request].
-Please avoid implementing a new feature before submitting an issue or it first!
+Please avoid implementing a new feature before submitting an issue for it first!
 
 ## Bugs
 
