@@ -26,17 +26,17 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2.4.0
-    - name: Install Node.js
-      uses: actions/setup-node@v2.5.1
-      with:
-        cache: npm
-        node-version-file: .nvmrc
-    - name: Initialize repository
-      run: npm ci
-    - name: Build lib/index.js
-      run: npm run build
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
+      - name: Install Node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - name: Initialize repository
+        run: npm ci
+      - name: Build lib/index.js
+        run: npm run build
   test-unit:
     name: Unit tests
     needs: build
@@ -45,37 +45,37 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2.4.0
-    - name: Install Node.js
-      uses: actions/setup-node@v2.5.1
-      with:
-        cache: npm
-        node-version-file: .nvmrc
-    - name: Initialize repository
-      run: npm ci
-    - name: Run tests
-      run: npm run test
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
+      - name: Install Node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - name: Initialize repository
+        run: npm ci
+      - name: Run tests
+        run: npm run test
   test-coverage:
     name: Coverage
     needs: test-unit
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2.4.0
-    - name: Install Node.js
-      uses: actions/setup-node@v2.5.1
-      with:
-        cache: npm
-        node-version-file: .nvmrc
-    - name: Initialize repository
-      run: npm ci
-    - name: Run tests
-      run: npm run coverage
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2.1.0
-      with:
-        file: ./_reports/coverage/lcov.info
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
+      - name: Install Node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - name: Initialize repository
+        run: npm ci
+      - name: Run tests
+        run: npm run coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          file: ./_reports/coverage/lcov.info
   test-e2e:
     name: End-to-end tests
     needs: build
@@ -84,47 +84,47 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2.4.0
-      with:
-        fetch-depth: 0
-    - name: Install Node.js
-      uses: actions/setup-node@v2.5.1
-      with:
-        cache: npm
-        node-version: 12.x # This should match the version in `./action.yml`
-    - name: Initialize repository
-      run: npm ci
-    - name: Build lib/index.js
-      run: npm run build
-    - name: Run git-tag-annotation-action
-      id: action_test
-      uses: ./
-      with:
-        tag: v1.0.0
-    - name: Echo git-tag-annotation-action output
-      run: echo "${{ steps.action_test.outputs.git-tag-annotation }}"
-    - name: Check git-tag-annotation-action output
-      shell: bash
-      run: |
-        if ! [[ "${{ steps.action_test.outputs.git-tag-annotation }}" ]]; then
-          exit 1
-        fi
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+      - name: Install Node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          cache: npm
+          node-version: 12.x # This should match the version in `./action.yml`
+      - name: Initialize repository
+        run: npm ci
+      - name: Build lib/index.js
+        run: npm run build
+      - name: Run git-tag-annotation-action
+        id: action_test
+        uses: ./
+        with:
+          tag: v1.0.0
+      - name: Echo git-tag-annotation-action output
+        run: echo "${{ steps.action_test.outputs.git-tag-annotation }}"
+      - name: Check git-tag-annotation-action output
+        shell: bash
+        run: |
+          if ! [[ "${{ steps.action_test.outputs.git-tag-annotation }}" ]]; then
+            exit 1
+          fi
   test-mutation:
     name: Mutation tests
     needs: test-unit
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2.4.0
-    - name: Install Node.js
-      uses: actions/setup-node@v2.5.1
-      with:
-        cache: npm
-        node-version-file: .nvmrc
-    - name: Initialize repository
-      run: npm ci
-    - name: Run mutation tests
-      env:
-        STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
-      run: npm run test:mutation
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
+      - name: Install Node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - name: Initialize repository
+        run: npm ci
+      - name: Run mutation tests
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
+        run: npm run test:mutation
