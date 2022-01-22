@@ -1,0 +1,16 @@
+coverage:
+  precision: 2
+  round: down
+  range: 80...100
+
+comment:
+  layout: diff, flags, files
+  behavior: default  # update, if exists. Otherwise post new.
+  require_changes: true  # only post the comment if coverage changes
+  require_base: no
+  require_head: yes
+
+ignore:
+  - "lib/**"
+  - "test/**/*"
+  - "index.js"
