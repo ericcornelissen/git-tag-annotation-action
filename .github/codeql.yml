@@ -1,0 +1,8 @@
+name: Git Tag Annotation Action
+
+queries:
+  - uses: security-extended
+
+paths:
+  - index.js
+  - src/
