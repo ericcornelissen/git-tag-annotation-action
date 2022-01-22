@@ -11,8 +11,8 @@
     "build": "rollup -c",
     "clean": "rm -rf .temp/ _reports/",
     "coverage": "npm run test -- --coverage --coverageDirectory _reports/coverage",
-    "format": "prettier --write ./**/*.{js,json,md,yml} --ignore-path .gitignore",
-    "lint": "prettier --check ./**/*.{js,json,md,yml} --ignore-path .gitignore",
+    "format": "prettier --write ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
+    "lint": "prettier --check ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "test": "jest",
     "test:mutation": "stryker run stryker.config.json"
   },

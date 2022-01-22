@@ -21,7 +21,7 @@ Versioning].
 
 ## [1.1.2] - 2021-03-19
 
-- Update vulnerable  _shescape_ version.
+- Update vulnerable _shescape_ version.
 
 ## [1.1.1] - 2020-12-22
 

@@ -3,21 +3,14 @@
 
   "coverageAnalysis": "perTest",
   "inPlace": false,
-  "mutate": [
-    "src/**/*.js"
-  ],
+  "mutate": ["src/**/*.js"],
   "commandRunner": {
     "command": "npm run test -- --runInBand"
   },
 
   "timeoutMS": 25000,
 
-  "reporters": [
-    "clear-text",
-    "dashboard",
-    "html",
-    "progress"
-  ],
+  "reporters": ["clear-text", "dashboard", "html", "progress"],
   "htmlReporter": {
     "baseDir": "_reports/mutation"
   },
