@@ -15,8 +15,8 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 12.x
         cache: npm
+        node-version-file: .nvmrc
     - name: Initialize repository
       run: npm ci
     - name: Build lib/index.js
