@@ -1,0 +1,35 @@
+name: Lint
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/lint.yml"
+      - "**.js"
+      - "**.md"
+      - "**.yml"
+      - "package-lock.json"
+  push:
+    paths:
+      - ".github/workflows/lint.yml"
+      - "**.js"
+      - "**.md"
+      - "**.yml"
+      - "package-lock.json"
+
+permissions: read-all
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2.4.0
+    - name: Install Node.js
+      uses: actions/setup-node@v2.5.1
+      with:
+        cache: npm
+        node-version-file: .nvmrc
+    - name: Initialize repository
+      run: npm ci
+    - name: Lint
+      run: npm run lint
