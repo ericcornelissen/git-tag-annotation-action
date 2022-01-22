@@ -1,5 +1,23 @@
 name: Verify code
-on: [push,pull_request]
+on:
+  pull_request:
+    paths:
+      - "**.js"
+      - ".github/workflows/verify.yml"
+      - "!lib/index.js"
+      - ".nvmrc"
+      - "package-lock.json"
+      - "rollup.config.js"
+      - "stryker.config.json"
+  push:
+    paths:
+      - "**.js"
+      - ".github/workflows/verify.yml"
+      - "!lib/index.js"
+      - ".nvmrc"
+      - "package-lock.json"
+      - "rollup.config.js"
+      - "stryker.config.json"
 
 permissions: read-all
 
@@ -9,12 +27,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
     - name: Install Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v2.5.1
       with:
-        node-version: 12.x
         cache: npm
+        node-version-file: .nvmrc
     - name: Initialize repository
       run: npm ci
     - name: Build lib/index.js
@@ -28,16 +46,36 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
     - name: Install Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v2.5.1
       with:
-        node-version: 12.x
         cache: npm
+        node-version-file: .nvmrc
+    - name: Initialize repository
+      run: npm ci
+    - name: Run tests
+      run: npm run test
+  test-coverage:
+    name: Coverage
+    needs: test-unit
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2.4.0
+    - name: Install Node.js
+      uses: actions/setup-node@v2.5.1
+      with:
+        cache: npm
+        node-version-file: .nvmrc
     - name: Initialize repository
       run: npm ci
     - name: Run tests
       run: npm run coverage
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2.1.0
+      with:
+        file: ./_reports/coverage/lcov.info
   test-e2e:
     name: End-to-end tests
     needs: build
@@ -47,14 +85,14 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
       with:
         fetch-depth: 0
     - name: Install Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v2.5.1
       with:
-        node-version: 12.x
         cache: npm
+        node-version: 12.x # This should match the version in `./action.yml`
     - name: Initialize repository
       run: npm ci
     - name: Build lib/index.js
@@ -78,13 +116,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
     - name: Install Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v2.5.1
       with:
-        node-version: 12.x
         cache: npm
+        node-version-file: .nvmrc
     - name: Initialize repository
       run: npm ci
     - name: Run mutation tests
+      env:
+        STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
       run: npm run test:mutation
