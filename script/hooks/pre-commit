@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Pre
+STASH_COUNT=$(git rev-list --walk-reflogs --count refs/stash)
+git stash push --include-untracked --keep-index --quiet
+
+# Checks
+npm run format
+git update-index --again
+
+# Post
+if [ "$STASH_COUNT" -lt "$(git rev-list --walk-reflogs --count refs/stash)" ]
+then
+  git stash pop --quiet
+fi

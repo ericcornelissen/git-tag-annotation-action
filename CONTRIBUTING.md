@@ -23,6 +23,53 @@ We take bugs seriously. Please report a bug as soon as you discover one. To do
 this [open an issue with a bug report]. You are also free to contribute by
 fixing one of the [open bug reports] and opening a Pull Request for it.
 
+## Project Setup
+
+To be able to contribute you need at least the following:
+
+- _Git_;
+- _NodeJS_ v14.16 or higher and _NPM_ v6 or lower;
+- (Recommended) a code editor with _[EditorConfig]_ support;
+
+### Using Docker
+
+To use a Docker container for development you can follow the steps below. If
+you're already familiar with Docker (or another container management platform)
+you can use your preferred workflow, just ensure your meet the requirements
+listed above.
+
+```sh
+# Make sure you're in the directory where you cloned git-tag-annotation-action.
+$ pwd
+/path/to/git-tag-annotation-action
+
+# Start a container. This command will mount your current working directory to
+# the working directory in the container so that you can use your own editor.
+$ docker run -it \
+    --entrypoint "sh" \
+    --workdir "/git-tag-annotation-action" \
+    --mount "type=bind,source=$(pwd),target=/git-tag-annotation-action" \
+    --name "git-tag-annotation-action" \
+    "node:$(cat .nvmrc)-alpine"
+
+# (Optional) Setup git if you want to run git commands inside the container.
+git-tag-annotation-action$ apk add git
+git-tag-annotation-action$ git config --global user.email "you@example.com"
+git-tag-annotation-action$ git config --global user.name "Your Name"
+
+# Run any command you want to run.
+git-tag-annotation-action$ npm install
+git-tag-annotation-action$ npm test
+
+# After exiting the container it won't be removed and you can reuse it later.
+git-tag-annotation-action$ exit
+$ docker start -i git-tag-annotation-action
+
+# Don't forget to delete the container when you no longer need it.
+git-tag-annotation-action$ exit
+$ docker container rm git-tag-annotation-action
+```
+
 ## Development details
 
 This project uses [rollup.js] to compile the source code into a standalone
