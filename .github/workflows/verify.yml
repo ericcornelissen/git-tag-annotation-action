@@ -1,5 +1,21 @@
 name: Verify code
-on: [push,pull_request]
+on:
+  pull_request:
+    paths:
+      - "**.js"
+      - "!lib/index.js"
+      - ".nvmrc"
+      - "package-lock.json"
+      - "rollup.config.js"
+      - "stryker.config.json"
+  push:
+    paths:
+      - "**.js"
+      - "!lib/index.js"
+      - ".nvmrc"
+      - "package-lock.json"
+      - "rollup.config.js"
+      - "stryker.config.json"
 
 permissions: read-all
 
