@@ -2,11 +2,13 @@ name: Code Analysis
 on:
   push:
     paths:
+      - ".github/workflows/code-analysis.yml"
       - ".github/codeql.yml"
       - "src/**.js"
       - "index.js"
   pull_request:
     paths:
+      - ".github/workflows/code-analysis.yml"
       - ".github/codeql.yml"
       - "src/**.js"
       - "index.js"
