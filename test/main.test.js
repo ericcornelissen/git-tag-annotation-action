@@ -30,7 +30,7 @@ const testGetInput = test.macro({
   exec(t, platform) {
     main({ ...t.context, platform });
 
-    t.true(t.context.core.getInput.calledOnce);
+    t.is(t.context.core.getInput.callCount, 1);
     t.true(t.context.core.getInput.calledWith("tag"));
   },
   title(_, platform) {
@@ -42,7 +42,7 @@ const testGitCommand = test.macro({
   exec(t, platform) {
     main({ ...t.context, platform });
 
-    t.true(t.context.childProcess.exec.calledOnce);
+    t.is(t.context.childProcess.exec.callCount, 1);
     t.true(
       t.context.childProcess.exec.calledWith(
         sinon.match(/^git for-each-ref .+$/),
@@ -122,11 +122,11 @@ const testOutputExecSuccess = test.macro({
   exec(t, platform, annotation) {
     main({ ...t.context, platform });
 
-    t.true(t.context.childProcess.exec.calledOnce);
+    t.is(t.context.childProcess.exec.callCount, 1);
     t.context.childProcess.exec.lastCall.callback(null, annotation);
 
     t.false(t.context.core.setFailed.called);
-    t.true(t.context.core.setOutput.calledOnce);
+    t.is(t.context.core.setOutput.callCount, 1);
     t.true(
       t.context.core.setOutput.calledWith("git-tag-annotation", annotation)
     );
@@ -140,11 +140,11 @@ const testOutputExecFailure = test.macro({
   exec(t, platform, err) {
     main({ ...t.context, platform });
 
-    t.true(t.context.childProcess.exec.calledOnce);
+    t.is(t.context.childProcess.exec.callCount, 1);
     t.context.childProcess.exec.lastCall.callback(err, null);
 
     t.false(t.context.core.setOutput.called);
-    t.true(t.context.core.setFailed.calledOnce);
+    t.is(t.context.core.setFailed.callCount, 1);
     t.true(t.context.core.setFailed.calledWith(err));
   },
   title(_, platform, err) {
@@ -159,7 +159,7 @@ const testOutputFailure = test.macro({
     main({ ...t.context, platform });
 
     t.false(t.context.core.setOutput.called);
-    t.true(t.context.core.setFailed.calledOnce);
+    t.is(t.context.core.setFailed.callCount, 1);
     t.true(t.context.core.setFailed.calledWith(err));
   },
   title(_, platform, err) {
