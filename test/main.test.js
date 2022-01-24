@@ -33,14 +33,14 @@ for (const platform of [linux, win32]) {
   Main(`gets input at key "tag" on ${platform}`, (context) => {
     main({ ...context, platform });
 
-    assert.ok(context.core.getInput.calledOnce);
+    assert.is(context.core.getInput.callCount, 1);
     assert.ok(context.core.getInput.calledWith("tag"));
   });
 
   Main(`runs the correct git command on ${platform}`, (context) => {
     main({ ...context, platform });
 
-    assert.ok(context.childProcess.exec.calledOnce);
+    assert.is(context.childProcess.exec.callCount, 1);
     assert.ok(
       context.childProcess.exec.calledWith(
         sinon.match(/^git for-each-ref .+$/),
@@ -105,11 +105,11 @@ for (const platform of [linux, win32]) {
     Main(`sets the annotation ("${annotation}") on ${platform}`, (context) => {
       main({ ...context, platform });
 
-      assert.ok(context.childProcess.exec.calledOnce);
+      assert.is(context.childProcess.exec.callCount, 1);
       context.childProcess.exec.lastCall.callback(null, annotation);
 
       assert.not(context.core.setFailed.called);
-      assert.ok(context.core.setOutput.calledOnce);
+      assert.is(context.core.setOutput.callCount, 1);
       assert.ok(
         context.core.setOutput.calledWith("git-tag-annotation", annotation)
       );
@@ -120,11 +120,11 @@ for (const platform of [linux, win32]) {
     Main(`handles a git error ("${err}") on ${platform}`, (context) => {
       main({ ...context, platform });
 
-      assert.ok(context.childProcess.exec.calledOnce);
+      assert.is(context.childProcess.exec.callCount, 1);
       context.childProcess.exec.lastCall.callback(err, null);
 
       assert.not(context.core.setOutput.called);
-      assert.ok(context.core.setFailed.calledOnce);
+      assert.is(context.core.setFailed.callCount, 1);
       assert.ok(context.core.setFailed.calledWith(err));
     });
 
@@ -134,7 +134,7 @@ for (const platform of [linux, win32]) {
       main({ ...context, platform });
 
       assert.not(context.core.setOutput.called);
-      assert.ok(context.core.setFailed.calledOnce);
+      assert.is(context.core.setFailed.callCount, 1);
       assert.ok(context.core.setFailed.calledWith(err));
     });
   }
