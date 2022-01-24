@@ -34,7 +34,7 @@ const testGetInput = test.macro({
     t.true(t.context.core.getInput.calledWith("tag"));
   },
   title(_, platform) {
-    return `get input at key "tag" on ${platform}`;
+    return `gets input at key "tag" on ${platform}`;
   },
 });
 
@@ -51,7 +51,7 @@ const testGitCommand = test.macro({
     );
   },
   title(_, platform) {
-    return `git command that is executed on ${platform}`;
+    return `runs the correct git command on ${platform}`;
   },
 });
 
@@ -75,7 +75,7 @@ const testGitCommandEnv = test.macro({
     );
   },
   title(_, platform, tag) {
-    return `uses the tag from the environment on ${platform}, tag=${tag}`;
+    return `uses the environment tag on ${platform}, tag=${tag}`;
   },
 });
 
@@ -98,7 +98,7 @@ const testGitCommandInput = test.macro({
     );
   },
   title(_, platform, tag) {
-    return `uses the tag from the input ${platform}, tag=${tag}`;
+    return `uses the input tag on ${platform}, tag=${tag}`;
   },
 });
 
@@ -132,7 +132,7 @@ const testOutputExecSuccess = test.macro({
     );
   },
   title(_, platform, annotation) {
-    return `command success ${platform}, annotation="${annotation}"`;
+    return `sets the annotation ("${annotation}") on ${platform}`;
   },
 });
 
@@ -148,7 +148,7 @@ const testOutputExecFailure = test.macro({
     t.true(t.context.core.setFailed.calledWith(err));
   },
   title(_, platform, err) {
-    return `command error on ${platform}, err="${err}"`;
+    return `handles a git error ("${err}") on ${platform}`;
   },
 });
 
@@ -163,7 +163,7 @@ const testOutputFailure = test.macro({
     t.true(t.context.core.setFailed.calledWith(err));
   },
   title(_, platform, err) {
-    return `execution error on ${platform}, err="${err}"`;
+    return `handles an execution error ("${err}") on ${platform}`;
   },
 });
 
