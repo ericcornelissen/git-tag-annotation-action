@@ -8,6 +8,7 @@ lib/**/*
 
 # generated or installed
 .temp/
+.nyc_output/
 _reports/
 node_modules/
 *.log
