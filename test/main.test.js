@@ -1,5 +1,5 @@
 const sinon = require("sinon");
-const { test, beforeEach } = require('tap');
+const { test, beforeEach } = require("tap");
 
 const main = require("../src/main.js");
 
@@ -30,7 +30,7 @@ for (const platform of [linux, win32]) {
   test(`gets input at key "tag" on ${platform}`, (t) => {
     main({ ...t.context, platform });
 
-    t.ok(t.context.core.getInput.calledOnce);
+    t.equal(t.context.core.getInput.callCount, 1);
     t.ok(t.context.core.getInput.calledWith("tag"));
 
     t.end();
@@ -39,7 +39,7 @@ for (const platform of [linux, win32]) {
   test(`runs the correct git command on ${platform}`, (t) => {
     main({ ...t.context, platform });
 
-    t.ok(t.context.childProcess.exec.calledOnce);
+    t.equal(t.context.childProcess.exec.callCount, 1);
     t.ok(
       t.context.childProcess.exec.calledWith(
         sinon.match(/^git for-each-ref .+$/),
@@ -112,11 +112,11 @@ for (const platform of [linux, win32]) {
     test(`sets the annotation ("${annotation}") on ${platform}`, (t) => {
       main({ ...t.context, platform });
 
-      t.ok(t.context.childProcess.exec.calledOnce);
+      t.equal(t.context.childProcess.exec.callCount, 1);
       t.context.childProcess.exec.lastCall.callback(null, annotation);
 
       t.notOk(t.context.core.setFailed.called);
-      t.ok(t.context.core.setOutput.calledOnce);
+      t.equal(t.context.core.setOutput.callCount, 1);
       t.ok(
         t.context.core.setOutput.calledWith("git-tag-annotation", annotation)
       );
@@ -129,11 +129,11 @@ for (const platform of [linux, win32]) {
     test(`handles a git error ("${err}") on ${platform}`, (t) => {
       main({ ...t.context, platform });
 
-      t.ok(t.context.childProcess.exec.calledOnce);
+      t.equal(t.context.childProcess.exec.callCount, 1);
       t.context.childProcess.exec.lastCall.callback(err, null);
 
       t.notOk(t.context.core.setOutput.called);
-      t.ok(t.context.core.setFailed.calledOnce);
+      t.equal(t.context.core.setFailed.callCount, 1);
       t.ok(t.context.core.setFailed.calledWith(err));
 
       t.end();
@@ -145,7 +145,7 @@ for (const platform of [linux, win32]) {
       main({ ...t.context, platform });
 
       t.notOk(t.context.core.setOutput.called);
-      t.ok(t.context.core.setFailed.calledOnce);
+      t.equal(t.context.core.setFailed.callCount, 1);
       t.ok(t.context.core.setFailed.calledWith(err));
 
       t.end();
