@@ -4,7 +4,10 @@
 
 # Pre
 STASH_COUNT_BEFORE=$(get_stash_count)
-git stash push --include-untracked --keep-index --quiet
+if [ ! -f "$MERGE_HEAD" ]
+then
+  git stash push --include-untracked --keep-index --quiet
+fi
 
 # Checks
 npm run lint
