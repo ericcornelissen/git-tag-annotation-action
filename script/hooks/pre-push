@@ -5,7 +5,7 @@
 # Pre
 STASH_COUNT_BEFORE=$(get_stash_count)
 if [ ! -f "$MERGE_HEAD" ]; then
-  git stash push --include-untracked --keep-index --quiet
+  git stash push --include-untracked --quiet
 fi
 
 # Checks
