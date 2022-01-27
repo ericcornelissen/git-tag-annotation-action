@@ -12,7 +12,7 @@ for (const platform of [linux, win32]) {
 
     main({ ...context, platform });
 
-    t.true(context.core.getInput.calledOnce);
+    t.is(context.core.getInput.callCount, 1);
     t.true(context.core.getInput.calledWith("tag"));
 
     t.end();
@@ -23,7 +23,7 @@ for (const platform of [linux, win32]) {
 
     main({ ...context, platform });
 
-    t.true(context.childProcess.exec.calledOnce);
+    t.is(context.childProcess.exec.callCount, 1);
     t.true(
       context.childProcess.exec.calledWith(
         sinon.match(/^git for-each-ref .+$/),
@@ -100,11 +100,11 @@ for (const platform of [linux, win32]) {
 
       main({ ...context, platform });
 
-      t.true(context.childProcess.exec.calledOnce);
+      t.is(context.childProcess.exec.callCount, 1);
       context.childProcess.exec.lastCall.callback(null, annotation);
 
       t.false(context.core.setFailed.called);
-      t.true(context.core.setOutput.calledOnce);
+      t.is(context.core.setOutput.callCount, 1);
       t.true(
         context.core.setOutput.calledWith("git-tag-annotation", annotation)
       );
