@@ -4,7 +4,7 @@
   "inPlace": false,
   "mutate": ["src/**/*.js"],
   "commandRunner": {
-    "command": "npm run test -- --runInBand"
+    "command": "npm run test -- --no-worker-threads"
   },
   "timeoutMS": 25000,
   "reporters": ["clear-text", "dashboard", "html", "progress"],
