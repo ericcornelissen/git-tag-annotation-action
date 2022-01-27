@@ -14,7 +14,7 @@
     "format": "prettier --write ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "lint": "prettier --check ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "prepare": "is-ci || husky install script/hooks",
-    "test": "tape test/**/*.js",
+    "test": "tape test/**/*.js | tap-min",
     "test:mutation": "stryker run stryker.config.json"
   },
   "repository": {
@@ -51,6 +51,7 @@
     "rollup": "2.66.1",
     "rollup-plugin-terser": "7.0.2",
     "sinon": "12.0.1",
+    "tap-min": "2.0.0",
     "tape": "5.4.1"
   },
   "engines": {
