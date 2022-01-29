@@ -39,7 +39,7 @@ jobs:
         run: npm run build
   test-unit:
     name: Unit tests
-    needs: build
+    needs: [build]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -58,7 +58,7 @@ jobs:
         run: npm run test
   test-coverage:
     name: Coverage
-    needs: test-unit
+    needs: [test-unit]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -78,7 +78,7 @@ jobs:
           file: ./_reports/coverage/lcov.info
   test-e2e:
     name: End-to-end tests
-    needs: build
+    needs: [test-unit]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -112,7 +112,7 @@ jobs:
           fi
   test-mutation:
     name: Mutation tests
-    needs: test-unit
+    needs: [test-unit]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
