@@ -1,125 +1,143 @@
-const core = require("@actions/core");
-const child_process = require("child_process");
-const shescape = require("shescape");
+const sinon = require("sinon");
+const { suite } = require("uvu");
+const assert = require("uvu/assert");
 
 const main = require("../src/main.js");
-
-jest.mock("@actions/core");
-jest.mock("child_process");
-jest.mock("shescape");
 
 const linux = "linux";
 const win32 = "win32";
 
-describe.each([linux, win32])("os: %s", (platform) => {
-  beforeEach(() => {
-    core.getInput.mockClear();
-    core.setFailed.mockClear();
-    core.setOutput.mockClear();
+const Main = suite("Main");
 
-    child_process.exec.mockClear();
+Main.before.each((context) => {
+  context.childProcess = {
+    exec: sinon.stub(),
+  };
 
-    shescape.quote.mockClear();
-  });
+  context.core = {
+    getInput: sinon.stub(),
+    setFailed: sinon.stub(),
+    setOutput: sinon.stub(),
+  };
 
-  it.each(["v1.2.3", "v0.3.14"])(
-    "uses the tag from the environment (%s)",
-    (tag) => {
-      process.env.GITHUB_REF = `refs/tags/${tag}`;
+  context.env = {
+    GITHUB_REF: "v1.0.0",
+  };
 
-      main(platform);
-
-      expect(child_process.exec).toHaveBeenCalledWith(
-        expect.stringContaining(`'refs/tags/${tag}'`),
-        expect.any(Function)
-      );
-    }
-  );
-
-  it("tries to get a tag from the input", () => {
-    core.getInput.mockReturnValueOnce(undefined);
-
-    main(platform);
-
-    expect(core.getInput).toHaveBeenCalledTimes(1);
-    expect(core.getInput).toHaveBeenCalledWith("tag");
-  });
-
-  it.each(["v3.2.1", "v0.2.718"])("uses the tag from the input (%s)", (tag) => {
-    core.getInput.mockReturnValueOnce(tag);
-
-    main(platform);
-
-    expect(core.getInput).toHaveBeenCalledTimes(1);
-    expect(child_process.exec).toHaveBeenCalledWith(
-      expect.stringContaining(`'refs/tags/${tag}'`),
-      expect.any(Function)
-    );
-  });
-
-  it("uses the correct format", () => {
-    let expectedFormat;
-    if (platform === win32) {
-      expectedFormat = "%(contents)";
-    } else {
-      expectedFormat = "'%(contents)'";
-    }
-
-    main(platform);
-
-    expect(core.getInput).toHaveBeenCalledTimes(1);
-    expect(child_process.exec).toHaveBeenCalledWith(
-      expect.stringContaining(`--format=${expectedFormat}`),
-      expect.any(Function)
-    );
-  });
-
-  it("outputs the annotation", (done) => {
-    const annotation = "Hello world!";
-    child_process.exec.mockImplementationOnce((_, fn) => {
-      fn(null, annotation);
-
-      expect(core.setOutput).toHaveBeenCalledTimes(1);
-      expect(core.setOutput).toHaveBeenCalledWith(
-        "git-tag-annotation",
-        annotation
-      );
-      done();
-    });
-
-    main(platform);
-  });
-
-  it("sets an error if the annotation could not be found", (done) => {
-    child_process.exec.mockImplementationOnce((_, fn) => {
-      fn("Something went wrong!", null);
-
-      expect(core.setOutput).not.toHaveBeenCalled();
-      expect(core.setFailed).toHaveBeenCalledTimes(1);
-      done();
-    });
-
-    main(platform);
-  });
-
-  it("sets an error if exec fails", () => {
-    child_process.exec.mockImplementationOnce(() => {
-      throw new Error({ message: "Something went wrong" });
-    });
-
-    main(platform);
-
-    expect(core.setOutput).not.toHaveBeenCalled();
-    expect(core.setFailed).toHaveBeenCalledTimes(1);
-  });
-
-  it("escapes malicious values from the input", () => {
-    const tag = `'; $(cat /etc/shadow)`;
-    core.getInput.mockReturnValueOnce(tag);
-
-    main(platform);
-
-    expect(shescape.quote).toHaveBeenCalledTimes(1);
-    expect(shescape.quote).toHaveBeenCalledWith(`refs/tags/${tag}`);
-  });
+  context.shescape = {
+    quote: sinon.stub(),
+  };
 });
+
+for (const platform of [linux, win32]) {
+  Main(`gets input at key "tag" on ${platform}`, (context) => {
+    main({ ...context, platform });
+
+    assert.is(context.core.getInput.callCount, 1);
+    assert.ok(context.core.getInput.calledWith("tag"));
+  });
+
+  Main(`runs the correct git command on ${platform}`, (context) => {
+    main({ ...context, platform });
+
+    assert.is(context.childProcess.exec.callCount, 1);
+    assert.ok(
+      context.childProcess.exec.calledWith(
+        sinon.match(/^git for-each-ref .+$/),
+        sinon.match.func
+      )
+    );
+  });
+
+  Main(`uses the correct for-each-ref format on ${platform}`, (context) => {
+    const expected = platform === win32 ? "%(contents)" : "'%(contents)'";
+
+    main({ ...context, platform });
+
+    assert.ok(
+      context.childProcess.exec.calledWith(
+        sinon.match(`--format=${expected}`),
+        sinon.match.func
+      )
+    );
+  });
+
+  for (const tag of ["v3.1.4", "v0.2.718", "v0.0.1"]) {
+    Main(`uses the input tag on ${platform}, tag=${tag}`, (context) => {
+      const ref = `refs/tags/${tag}`;
+      const escapedRef = `'${ref}'`;
+
+      context.core.getInput.returns(undefined);
+      context.env.GITHUB_REF = ref;
+      context.shescape.quote.returns(escapedRef);
+
+      main({ ...context, platform });
+
+      assert.ok(context.shescape.quote.calledWith(ref));
+      assert.ok(
+        context.childProcess.exec.calledWith(
+          sinon.match(escapedRef),
+          sinon.match.func
+        )
+      );
+    });
+
+    Main(`uses the env tag on ${platform}, tag=${tag}`, (context) => {
+      const ref = `refs/tags/${tag}`;
+      const escapedRef = `'${ref}'`;
+
+      context.core.getInput.returns(tag);
+      context.shescape.quote.returns(escapedRef);
+
+      main({ ...context, platform });
+
+      assert.ok(context.shescape.quote.calledWith(ref));
+      assert.ok(
+        context.childProcess.exec.calledWith(
+          sinon.match(escapedRef),
+          sinon.match.func
+        )
+      );
+    });
+  }
+
+  for (const annotation of ["Hello world!", "foobar"]) {
+    Main(`sets the annotation ("${annotation}") on ${platform}`, (context) => {
+      main({ ...context, platform });
+
+      assert.is(context.childProcess.exec.callCount, 1);
+      context.childProcess.exec.lastCall.callback(null, annotation);
+
+      assert.not(context.core.setFailed.called);
+      assert.is(context.core.setOutput.callCount, 1);
+      assert.ok(
+        context.core.setOutput.calledWith("git-tag-annotation", annotation)
+      );
+    });
+  }
+
+  for (const err of ["Something went wrong", "Oops"]) {
+    Main(`handles a git error ("${err}") on ${platform}`, (context) => {
+      main({ ...context, platform });
+
+      assert.is(context.childProcess.exec.callCount, 1);
+      context.childProcess.exec.lastCall.callback(err, null);
+
+      assert.not(context.core.setOutput.called);
+      assert.is(context.core.setFailed.callCount, 1);
+      assert.ok(context.core.setFailed.calledWith(err));
+    });
+
+    Main(`handles an execution error ("${err}") on ${platform}`, (context) => {
+      context.childProcess.exec.throws(new Error(err));
+
+      main({ ...context, platform });
+
+      assert.not(context.core.setOutput.called);
+      assert.is(context.core.setFailed.callCount, 1);
+      assert.ok(context.core.setFailed.calledWith(err));
+    });
+  }
+}
+
+Main.run();

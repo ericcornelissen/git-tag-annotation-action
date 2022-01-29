@@ -1,7 +1,3 @@
-const core = require("@actions/core");
-const { exec } = require("child_process");
-const shescape = require("shescape");
-
 function isWindows(platform) {
   return platform === "win32";
 }
@@ -17,9 +13,9 @@ function getOutputFormatUnix() {
   return "'%(contents)'";
 }
 
-function main(platform) {
+function main({ childProcess, core, env, platform, shescape }) {
   try {
-    let tag = process.env.GITHUB_REF;
+    let tag = env.GITHUB_REF;
 
     const input = core.getInput("tag");
     if (input) {
@@ -33,7 +29,7 @@ function main(platform) {
       format = getOutputFormatUnix();
     }
 
-    exec(
+    childProcess.exec(
       `git for-each-ref --format=${format} ${shescape.quote(tag)}`,
       (err, stdout) => {
         if (err) {
