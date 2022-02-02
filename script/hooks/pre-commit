@@ -2,6 +2,9 @@
 . "$(dirname "$0")/_/husky.sh"
 . "$(dirname "$0")/common.sh"
 
+# Prevent committing changes to the machine generated contents of lib/
+git restore --staged lib/
+
 # Pre
 STASH_COUNT_BEFORE=$(get_stash_count)
 if [ ! -f "$MERGE_HEAD" ]; then
