@@ -34,7 +34,13 @@ To update the version number in `package-lock.json` it is recommended to run
 
 ## Updating the Changelog
 
-To update the changelog add the following text after the `## [Unreleased]` line
+To update the changelog run (after updating the package manifest):
+
+```sh
+node script/bump-changelog.js
+```
+
+If that fails, manually add the following text after the `## [Unreleased]` line
 (using `v1.6.1` as an example):
 
 ```md
