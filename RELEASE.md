@@ -21,8 +21,14 @@ example):
 
 ## Updating the Version Number
 
-To update the version number in `package.json`, change the value of the version
-field to the new version (using `v1.6.1` as an example):
+To update the version number run (using `v1.6.1` as an example):
+
+```sh
+npm version v1.6.1 --no-git-tag-version
+```
+
+If that fails change the value of the version field in `package.json` to the
+new version:
 
 ```diff
 -  "version": "1.6.0",
@@ -30,7 +36,8 @@ field to the new version (using `v1.6.1` as an example):
 ```
 
 To update the version number in `package-lock.json` it is recommended to run
-`npm install` (after updating `package.json`) this will sync the version number.
+`npm install` (after updating `package.json`) which will sync the version
+number.
 
 ## Updating the Changelog
 
