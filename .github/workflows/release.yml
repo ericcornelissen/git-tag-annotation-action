@@ -32,6 +32,8 @@ jobs:
         run: npm version ${{ github.event.inputs.update_type }} --no-git-tag-version
       - name: Update CHANGELOG
         run: node script/bump-changelog.js
+      - name: Update build files
+        run: npm run build
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.12.0
         with:
