@@ -3,6 +3,13 @@
 . "$(dirname "$0")/common.sh"
 
 # Pre
+LIB_STAGED_COUNT=$(git diff --name-only --staged lib/ | wc -l)
+if [ "$LIB_STAGED_COUNT" -ne "0" ]; then
+  echo "[INFO] All changes to the lib/ directory have been unstaged"
+  echo "[INFO] Changes in the lib/ directory should not be committed"
+  git restore --staged lib/
+fi
+
 STASH_COUNT_BEFORE=$(get_stash_count)
 if [ ! -f "$MERGE_HEAD" ]; then
   git stash push --include-untracked --keep-index --quiet
