@@ -6,21 +6,23 @@ follow the guidelines found in this file.
 ## Automated Releases (Preferred)
 
 The [`release.yml`](./.github/workflows/release.yml) [GitHub Actions] workflow
-should be used to created releases. This workflow can be [triggered manually] to
-initiate a new release by means of a Pull Request.
+should be used to create releases. This workflow:
 
-The release process is as follows (using `v1.6.1` as an example):
+1. Can be [triggered manually] to initiate a new release by means of a Pull
+   Request.
+1. Is triggered on the `main` branch and will create a [git tag] for the version
+   in the manifest **if** it doesn't exist yet. This will also keep the `v1` tag
+   up-to-date.
+
+The release process is as follows:
 
 1. Initiate a new release by triggering the `release.yml` workflow manually. Use
    an update type in accordance with [Semantic Versioning].
-1. Review the created Pull Request and merge if everything looks OK.
-1. Pull the `main` branch.
-1. Create a tag for the new version using `git tag v1.6.1`.
-1. Push the tag using `git push origin v1.6.1`.
-1. Update the tag pointing to the latest v1 release using `git tag -f v1`.
-1. Push the tag using `git push origin v1 --force`.
-1. Create a new [GitHub Release]. If the version should be published to the
-   [GitHub Marketplace] ensure that checkbox is checked.
+1. Review the created Pull Request and merge if everything looks OK. After
+   merging a [git tag] for the new version will be created automatically.
+1. Create a new [GitHub Release] for the (automatically) created tag. If the
+   version should be published to the [GitHub Marketplace] ensure that checkbox
+   is checked.
 
 ## Manual Releases (Discouraged)
 
