@@ -26,8 +26,9 @@ The release process is as follows:
 
 ## Manual Releases (Discouraged)
 
-If it's not possible to use automated releases you can follow these steps to
-release a new version (using `v1.6.1` as an example):
+If it's not possible to use automated releases, or if something goes wrong with
+the automatic release process, you can follow these steps to release a new
+version (using `v1.6.1` as an example):
 
 1. Make sure that your local copy of the repository is up-to-date:
 
