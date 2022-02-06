@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - "**.js"
+      - "**.json"
       - "**.md"
       - "**.yml"
       - ".github/workflows/lint.yml"
@@ -10,6 +11,7 @@ on:
   push:
     paths:
       - "**.js"
+      - "**.json"
       - "**.md"
       - "**.yml"
       - ".github/workflows/lint.yml"
