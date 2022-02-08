@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/verify.yml"
+      - ".github/codecov.yml"
       - "src/**.js"
       - "test/**.js"
       - ".nvmrc"
@@ -14,6 +15,7 @@ on:
   push:
     paths:
       - ".github/workflows/verify.yml"
+      - ".github/codecov.yml"
       - "src/**.js"
       - "test/**.js"
       - ".nvmrc"
