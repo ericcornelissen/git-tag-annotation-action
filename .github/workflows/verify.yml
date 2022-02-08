@@ -2,19 +2,25 @@ name: Verify code
 on:
   pull_request:
     paths:
-      - "**.js"
       - ".github/workflows/verify.yml"
-      - "!lib/index.js"
+      - ".github/codecov.yml"
+      - "src/**.js"
+      - "test/**.js"
       - ".nvmrc"
+      - "action.yml"
+      - "index.js"
       - "package-lock.json"
       - "rollup.config.js"
       - "stryker.config.json"
   push:
     paths:
-      - "**.js"
       - ".github/workflows/verify.yml"
-      - "!lib/index.js"
+      - ".github/codecov.yml"
+      - "src/**.js"
+      - "test/**.js"
       - ".nvmrc"
+      - "index.js"
+      - "action.yml"
       - "package-lock.json"
       - "rollup.config.js"
       - "stryker.config.json"

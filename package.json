@@ -11,8 +11,9 @@
     "build": "rollup -c",
     "clean": "node script/clean.js",
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
-    "format": "prettier --write ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
-    "lint": "prettier --check ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
+    "format": "npm run _prettier -- --write",
+    "lint": "npm run _prettier -- --check",
+    "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "prepare": "is-ci || husky install script/hooks",
     "test": "uvu test",
     "test:mutation": "stryker run stryker.config.json"
