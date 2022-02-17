@@ -34,7 +34,7 @@ for (const platform of [linux, win32]) {
     main({ ...context, platform });
 
     assert.is(context.core.getInput.callCount, 1);
-    assert.ok(context.core.getInput.calledWith("tag"));
+    assert.ok(context.core.getInput.calledWithExactly("tag"));
   });
 
   Main(`runs the correct git command on ${platform}`, (context) => {
@@ -42,7 +42,7 @@ for (const platform of [linux, win32]) {
 
     assert.is(context.childProcess.exec.callCount, 1);
     assert.ok(
-      context.childProcess.exec.calledWith(
+      context.childProcess.exec.calledWithExactly(
         sinon.match(/^git for-each-ref .+$/),
         sinon.match.func
       )
@@ -55,7 +55,7 @@ for (const platform of [linux, win32]) {
     main({ ...context, platform });
 
     assert.ok(
-      context.childProcess.exec.calledWith(
+      context.childProcess.exec.calledWithExactly(
         sinon.match(`--format=${expected}`),
         sinon.match.func
       )
@@ -73,9 +73,9 @@ for (const platform of [linux, win32]) {
 
       main({ ...context, platform });
 
-      assert.ok(context.shescape.quote.calledWith(ref));
+      assert.ok(context.shescape.quote.calledWithExactly(ref));
       assert.ok(
-        context.childProcess.exec.calledWith(
+        context.childProcess.exec.calledWithExactly(
           sinon.match(escapedRef),
           sinon.match.func
         )
@@ -91,9 +91,9 @@ for (const platform of [linux, win32]) {
 
       main({ ...context, platform });
 
-      assert.ok(context.shescape.quote.calledWith(ref));
+      assert.ok(context.shescape.quote.calledWithExactly(ref));
       assert.ok(
-        context.childProcess.exec.calledWith(
+        context.childProcess.exec.calledWithExactly(
           sinon.match(escapedRef),
           sinon.match.func
         )
@@ -111,7 +111,10 @@ for (const platform of [linux, win32]) {
       assert.not(context.core.setFailed.called);
       assert.is(context.core.setOutput.callCount, 1);
       assert.ok(
-        context.core.setOutput.calledWith("git-tag-annotation", annotation)
+        context.core.setOutput.calledWithExactly(
+          "git-tag-annotation",
+          annotation
+        )
       );
     });
   }
@@ -125,7 +128,7 @@ for (const platform of [linux, win32]) {
 
       assert.not(context.core.setOutput.called);
       assert.is(context.core.setFailed.callCount, 1);
-      assert.ok(context.core.setFailed.calledWith(err));
+      assert.ok(context.core.setFailed.calledWithExactly(err));
     });
 
     Main(`handles an execution error ("${err}") on ${platform}`, (context) => {
@@ -135,7 +138,7 @@ for (const platform of [linux, win32]) {
 
       assert.not(context.core.setOutput.called);
       assert.is(context.core.setFailed.callCount, 1);
-      assert.ok(context.core.setFailed.calledWith(err));
+      assert.ok(context.core.setFailed.calledWithExactly(err));
     });
   }
 }
