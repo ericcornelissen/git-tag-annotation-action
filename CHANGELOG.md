@@ -7,7 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Update dependencies (_shescape_).
 
 ## [1.1.4] - 2022-01-09
 
