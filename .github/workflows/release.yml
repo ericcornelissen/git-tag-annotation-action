@@ -26,7 +26,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2.4.0
       - name: Install Node.js
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3
         with:
           cache: npm
           node-version-file: .nvmrc
@@ -58,7 +58,7 @@ jobs:
         with:
           fetch-depth: 0 # To obtain all tags
       - name: Install Node.js
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3
         with:
           cache: npm
           node-version-file: .nvmrc
