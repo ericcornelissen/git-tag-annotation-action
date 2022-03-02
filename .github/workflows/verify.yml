@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
       - name: Install Node.js
         uses: actions/setup-node@v3.0.0
         with:
@@ -52,7 +52,7 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
       - name: Install Node.js
         uses: actions/setup-node@v3.0.0
         with:
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
       - name: Install Node.js
         uses: actions/setup-node@v3.0.0
         with:
@@ -91,7 +91,7 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
         with:
           fetch-depth: 0
       - name: Install Node.js
@@ -122,7 +122,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.0
       - name: Install Node.js
         uses: actions/setup-node@v3.0.0
         with:
