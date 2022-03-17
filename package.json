@@ -48,7 +48,7 @@
     "c8": "7.11.0",
     "husky": "7.0.4",
     "is-ci": "3.0.1",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "rollup": "2.70.1",
     "rollup-plugin-terser": "7.0.2",
     "sinon": "13.0.1",
