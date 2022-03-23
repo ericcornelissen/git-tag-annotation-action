@@ -71,7 +71,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Create Release
+      - name: Get tag annotation
         id: tag_data
         uses: ericcornelissen/git-tag-annotation-action@v1
       - name: The output
