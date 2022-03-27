@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Get tag annotation
@@ -80,8 +80,9 @@ jobs:
 
 ## Known Issues
 
-There have been issues when using this Action with [actions/checkout@v2]. If
-you're experiencing issues, run `git fetch --tags --force` manually after the
+There have been issues when using this Action with [actions/checkout@v3] and
+[actions/checkout@v2]. If you're experiencing issues, run
+`git fetch --tags --force` manually after the [actions/checkout@v3]/
 [actions/checkout@v2] step. If that doesn't work or isn't desired, you can (**at
 your own risk**) use [actions/checkout@v1] instead. It is recommended to check
 that [actions/checkout@v1] is still supported when writing your workflow.
@@ -90,6 +91,7 @@ For more information regarding this problem see [actions/checkout#290].
 
 [actions/checkout@v1]: https://github.com/actions/checkout/tree/v1
 [actions/checkout@v2]: https://github.com/actions/checkout/tree/v2
+[actions/checkout@v3]: https://github.com/actions/checkout/tree/v3
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [kceb/git-message-action]: https://github.com/kceb/git-message-action
 [the github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
