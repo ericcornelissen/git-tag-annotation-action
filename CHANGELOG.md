@@ -11,6 +11,7 @@ Versioning].
 
 ## [2.0.0] - 2022-03-27
 
+- Update dependencies (_shescape_).
 - Update Node.js runtime to v16.
 
 ## [1.1.5] - 2022-02-26
