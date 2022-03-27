@@ -98,7 +98,7 @@ jobs:
         uses: actions/setup-node@v3.0.0
         with:
           cache: npm
-          node-version: 12.x # This should match the version in `./action.yml`
+          node-version: 16.x # This should match the version in `./action.yml`
       - name: Initialize repository
         run: npm ci
       - name: Build lib/index.js

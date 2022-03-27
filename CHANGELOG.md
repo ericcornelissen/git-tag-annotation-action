@@ -7,7 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Update Node.js runtime to v16.
 
 ## [1.1.5] - 2022-02-26
 
