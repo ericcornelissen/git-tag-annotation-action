@@ -16,8 +16,9 @@ should be used to create releases. This workflow:
 
 The release process is as follows:
 
-1. Initiate a new release by triggering the `release.yml` workflow manually. Use
-   an update type in accordance with [Semantic Versioning].
+1. Initiate a new release by triggering the `release.yml` workflow manually.
+   Select `main-v1` from the branch dropdown and use an update type in
+   accordance with [Semantic Versioning].
 1. Review the created Pull Request and merge if everything looks OK. After
    merging a [git tag] for the new version will be created automatically.
 1. Create a new [GitHub Release] for the (automatically) created tag. If the
