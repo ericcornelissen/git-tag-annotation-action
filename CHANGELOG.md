@@ -8,6 +8,7 @@ Versioning].
 ## [Unreleased]
 
 - Update Node.js runtime to v16.
+- Update recommended _actions/checkout_ version in documentation to v3.
 
 ## [1.1.5] - 2022-02-26
 
@@ -16,7 +17,7 @@ Versioning].
 ## [1.1.4] - 2022-01-09
 
 - Update dependencies (_actions/core_, _shescape_).
-- Update recommended _actions/checkout_ version in documentation.
+- Update recommended _actions/checkout_ version in documentation to v2.
 
 ## [1.1.3] - 2021-07-31
 
