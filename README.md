@@ -96,8 +96,8 @@ For more information regarding this problem see [actions/checkout#290].
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml
 [ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml/badge.svg
 [coverage-url]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action
-[coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main/graph/badge.svg
-[mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main
-[mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action%2Fmain
+[coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main-v1/graph/badge.svg
+[mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main-v1
+[mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action%2Fmain-v1
 [quality-url]: https://codeclimate.com/github/ericcornelissen/git-tag-annotation-action/maintainability
 [quality-image]: https://api.codeclimate.com/v1/badges/53d2c44543bf636105f3/maintainability

@@ -6,10 +6,14 @@ please make sure you read the relevant section in this document. If you decide
 to contribute anything, please use the following this workflow
 
 - Fork this repository
-- Create a new branch from the latest `main`
+- Create a new branch from the latest `main-v1`
 - Make your changes on the new branch
 - Commit to the new branch and push the commits
 - Make a Pull Request
+
+> :information_source: This document covers contributing to v1 of the Action. If
+> you want to make a contribution to the latest version of the Action check out
+> the [Contributing Guidelines on `main`].
 
 ## New Features
 
@@ -75,10 +79,13 @@ $ docker container rm git-tag-annotation-action
 This project uses [rollup.js] to compile the source code into a standalone
 JavaScript file. You can use the `npm run build` command to update this file.
 
-You DO NOT have to include the update to this file when submitting a Pull
-Request. The file will be automatically updated on the `main` branch if that is
-required.
+You SHOULD NOT include the update to this file when submitting a Pull Request.
+The file will be automatically updated prior to a release.
 
+Note that the end-to-end tests for this project run `npm run build` before
+testing begins. So, code changes will always be tested.
+
+[contributing guidelines on `main`]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main/CONTRIBUTING.md
 [open bug reports]: https://github.com/ericcornelissen/git-tag-annotation-action/labels/bug
 [open an issue with a bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [open an issue with a feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement

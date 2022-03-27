@@ -10,14 +10,15 @@ should be used to create releases. This workflow:
 
 1. Can be [triggered manually] to initiate a new release by means of a Pull
    Request.
-1. Is triggered on the `main` branch and will create a [git tag] for the version
-   in the manifest **if** it doesn't exist yet. This will also keep the `v1` tag
-   up-to-date.
+1. Is triggered on the `main-v1` branch and will create a [git tag] for the
+   version in the manifest **if** it doesn't exist yet. This will also keep the
+   `v1` tag up-to-date.
 
 The release process is as follows:
 
-1. Initiate a new release by triggering the `release.yml` workflow manually. Use
-   an update type in accordance with [Semantic Versioning].
+1. Initiate a new release by triggering the `release.yml` workflow manually.
+   Select `main-v1` from the branch dropdown and use an update type in
+   accordance with [Semantic Versioning].
 1. Review the created Pull Request and merge if everything looks OK. After
    merging a [git tag] for the new version will be created automatically.
 1. Create a new [GitHub Release] for the (automatically) created tag. If the
@@ -34,8 +35,8 @@ version (using `v1.6.1` as an example):
 
    ```sh
    # Sync
-   git switch main
-   git pull origin main
+   git switch main-v1
+   git pull origin main-v1
 
    # Or clone
    git clone git@github.com:ericcornelissen/git-tag-annotation-action.git
@@ -86,7 +87,7 @@ version (using `v1.6.1` as an example):
    The date should follow the year-month-day format where single-digit months
    and days should be prefixed with a `0` (e.g. `2022-01-01`).
 
-1. Commit the changes to `main` using:
+1. Commit the changes to `main-v1` using:
 
    ```sh
    git add lib/ CHANGELOG.md package.json package-lock.json
@@ -104,7 +105,7 @@ version (using `v1.6.1` as an example):
 1. Push the commit and tags:
 
    ```sh
-   git push origin main v1.6.1
+   git push origin main-v1 v1.6.1
    git push origin v1 --force
    ```
 

@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - main-v1
   workflow_dispatch:
     inputs:
       update_type:
