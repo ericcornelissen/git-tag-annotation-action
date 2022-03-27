@@ -5,9 +5,10 @@
 The table below tells you which version of the Git Tag Annotation Action are
 currently being supported with security updates.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
+| Version | Supported          | Until      |
+| ------: | :----------------- | :--------- |
+|   2.x.x | :white_check_mark: | -          |
+|   1.x.x | :white_check_mark: | 2022-07-29 |
 
 ## Reporting a Vulnerability
 

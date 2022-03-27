@@ -11,7 +11,7 @@ should be used to create releases. This workflow:
 1. Can be [triggered manually] to initiate a new release by means of a Pull
    Request.
 1. Is triggered on the `main` branch and will create a [git tag] for the version
-   in the manifest **if** it doesn't exist yet. This will also keep the `v1` tag
+   in the manifest **if** it doesn't exist yet. This will also keep the `v2` tag
    up-to-date.
 
 The release process is as follows:
@@ -28,7 +28,7 @@ The release process is as follows:
 
 If it's not possible to use automated releases, or if something goes wrong with
 the automatic release process, you can follow these steps to release a new
-version (using `v1.6.1` as an example):
+version (using `v2.7.1` as an example):
 
 1. Make sure that your local copy of the repository is up-to-date:
 
@@ -53,15 +53,15 @@ version (using `v1.6.1` as an example):
 1. Update the version number in the package manifest and lockfile:
 
    ```sh
-   npm version v1.6.1 --no-git-tag-version
+   npm version v2.7.1 --no-git-tag-version
    ```
 
    If that fails change the value of the version field in `package.json` to the
    new version:
 
    ```diff
-   -  "version": "1.6.0",
-   +  "version": "1.6.1",
+   -  "version": "2.7.0",
+   +  "version": "2.7.1",
    ```
 
    and to update the version number in `package-lock.json` it is recommended to
@@ -80,7 +80,7 @@ version (using `v1.6.1` as an example):
    ```md
    - _No changes yet_
 
-   ## [1.6.1] - YYYY-MM-DD
+   ## [2.7.1] - YYYY-MM-DD
    ```
 
    The date should follow the year-month-day format where single-digit months
@@ -93,19 +93,19 @@ version (using `v1.6.1` as an example):
    git commit -m "Version bump"
    ```
 
-1. Create a tag for the new version and update the tag pointing to the latest v1
+1. Create a tag for the new version and update the tag pointing to the latest v2
    release using
 
    ```sh
-   git tag v1.6.1
-   git tag -f v1
+   git tag v2.7.1
+   git tag -f v2
    ```
 
 1. Push the commit and tags:
 
    ```sh
-   git push origin main v1.6.1
-   git push origin v1 --force
+   git push origin main v2.7.1
+   git push origin v2 --force
    ```
 
 1. Create a new [GitHub Release]. If the version should be published to the

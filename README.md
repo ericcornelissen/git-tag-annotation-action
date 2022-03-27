@@ -24,7 +24,7 @@ on:
 Then, you can obtain the annotation for the current tag using:
 
 ```yaml
-- uses: ericcornelissen/git-tag-annotation-action@v1
+- uses: ericcornelissen/git-tag-annotation-action@v2
   id: tag_data
 ```
 
@@ -32,7 +32,7 @@ Or you can get the annotation of a specific tag by specifying it using the `tag`
 input:
 
 ```yaml
-- uses: ericcornelissen/git-tag-annotation-action@v1
+- uses: ericcornelissen/git-tag-annotation-action@v2
   id: tag_data
   with:
     tag: "v1.2.3"
@@ -73,7 +73,7 @@ jobs:
           fetch-depth: 0
       - name: Get tag annotation
         id: tag_data
-        uses: ericcornelissen/git-tag-annotation-action@v1
+        uses: ericcornelissen/git-tag-annotation-action@v2
       - name: The output
         run: echo ${{ steps.tag_data.outputs.git-tag-annotation }}
 ```
