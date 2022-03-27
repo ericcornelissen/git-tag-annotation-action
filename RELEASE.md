@@ -60,7 +60,7 @@ version (using `v2.7.1` as an example):
    new version:
 
    ```diff
-   -  "version": "1.6.0",
+   -  "version": "2.7.0",
    +  "version": "2.7.1",
    ```
 
