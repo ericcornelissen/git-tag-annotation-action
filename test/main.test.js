@@ -18,6 +18,7 @@ Main.before.each((context) => {
     getInput: sinon.stub(),
     setFailed: sinon.stub(),
     setOutput: sinon.stub(),
+    warning: sinon.stub(),
   };
 
   context.env = {
@@ -141,6 +142,24 @@ for (const platform of [linux, win32]) {
       assert.ok(context.core.setFailed.calledWithExactly(err));
     });
   }
+
+  Main(`prints a deprecation warning on ${platform}`, (context) => {
+    main({ ...context, platform });
+
+    assert.ok(
+      context.core.warning.calledWithExactly(
+        sinon.match(
+          "General support for git-tag-annotation-action@v1 ends 2022-04-30"
+        )
+      )
+    );
+    assert.ok(
+      context.core.warning.calledWithExactly(
+        sinon.match("Security support ends 2022-07-29")
+      )
+    );
+    assert.ok(context.core.warning.calledWithExactly(sinon.match("v2")));
+  });
 }
 
 Main.run();
