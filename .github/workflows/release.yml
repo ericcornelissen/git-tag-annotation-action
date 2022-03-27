@@ -41,7 +41,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4.0.0
         with:
-          title: New ${{ github.event.inputs.update_type }} release
+          title: New ${{ github.event.inputs.update_type }} release for v2
           body: _This Pull Request was created automatically_
           branch: release-${{ github.event.inputs.update_type }}
           branch-suffix: random
