@@ -142,6 +142,18 @@ for (const platform of [linux, win32]) {
       assert.ok(context.core.setFailed.calledWithExactly(err));
     });
   }
+
+  Main(`prints a deprecation warning on ${platform}`, (context) => {
+    main({ ...context, platform });
+
+    assert.ok(
+      context.core.warning.calledWithExactly(
+        sinon.match(
+          `Full support for git-tag-annotation-action@v1 ends 2022-04-30`
+        )
+      )
+    );
+  });
 }
 
 Main.run();
