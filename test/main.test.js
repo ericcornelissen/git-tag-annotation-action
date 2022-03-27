@@ -149,13 +149,13 @@ for (const platform of [linux, win32]) {
     assert.ok(
       context.core.warning.calledWithExactly(
         sinon.match(
-          "General support for git-tag-annotation-action@v1 ends 2022-04-30."
+          "General support for git-tag-annotation-action@v1 ends 2022-04-30"
         )
       )
     );
     assert.ok(
       context.core.warning.calledWithExactly(
-        sinon.match("Security support ends 2022-07-29.")
+        sinon.match("Security support ends 2022-07-29")
       )
     );
     assert.ok(context.core.warning.calledWithExactly(sinon.match("v2")));
