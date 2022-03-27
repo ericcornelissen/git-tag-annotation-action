@@ -28,7 +28,7 @@ fixing one of the [open bug reports] and opening a Pull Request for it.
 To be able to contribute you need at least the following:
 
 - _Git_;
-- _NodeJS_ v14.16 or higher and _NPM_ v6 or lower;
+- _NodeJS_ v16.0 or higher and _NPM_ v7 or higher;
 - (Recommended) a code editor with _[EditorConfig]_ support;
 
 ### Using Docker
