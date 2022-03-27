@@ -18,6 +18,7 @@ Main.before.each((context) => {
     getInput: sinon.stub(),
     setFailed: sinon.stub(),
     setOutput: sinon.stub(),
+    warning: sinon.stub(),
   };
 
   context.env = {
