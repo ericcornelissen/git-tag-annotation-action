@@ -81,6 +81,6 @@ jobs:
           git tag ${{ steps.version.outputs.version }}
           git push origin ${{ steps.version.outputs.version }}
 
-          # Update what the latest v1 tag points to
-          git tag --force v1
-          git push origin --force v1
+          # Update what the latest v2 tag points to
+          git tag --force v2
+          git push origin --force v2
