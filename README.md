@@ -93,8 +93,8 @@ For more information regarding this problem see [actions/checkout#290].
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [kceb/git-message-action]: https://github.com/kceb/git-message-action
 [the github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
-[ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml
-[ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml/badge.svg
+[ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml?query=branch%3Amain-v1
+[ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml/badge.svg?branch=main-v1
 [coverage-url]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action
 [coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main-v1/graph/badge.svg
 [mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main-v1
