@@ -95,7 +95,7 @@ For more information regarding this problem see [actions/checkout#290].
 [the github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml?query=branch%3Amain-v1
 [ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml/badge.svg?branch=main-v1
-[coverage-url]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action
+[coverage-url]: https://app.codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main-v1
 [coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main-v1/graph/badge.svg
 [mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main-v1
 [mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action%2Fmain-v1
