@@ -55,6 +55,7 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - uses: step-security/harden-runner@v1.4.1
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           egress-policy: audit
       - name: Checkout repository
@@ -100,6 +101,7 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
       - uses: step-security/harden-runner@v1.4.1
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           egress-policy: audit
       - name: Checkout repository
