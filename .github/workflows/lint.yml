@@ -24,6 +24,9 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
+      - uses: step-security/harden-runner@v1.4.1
+        with:
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js

@@ -32,6 +32,9 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - uses: step-security/harden-runner@v1.4.1
+        with:
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
@@ -51,6 +54,9 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
+      - uses: step-security/harden-runner@v1.4.1
+        with:
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
@@ -67,6 +73,9 @@ jobs:
     needs: [test-unit]
     runs-on: ubuntu-latest
     steps:
+      - uses: step-security/harden-runner@v1.4.1
+        with:
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
@@ -90,6 +99,9 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
+      - uses: step-security/harden-runner@v1.4.1
+        with:
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
         with:
@@ -121,6 +133,9 @@ jobs:
     needs: [test-unit]
     runs-on: ubuntu-latest
     steps:
+      - uses: step-security/harden-runner@v1.4.1
+        with:
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
