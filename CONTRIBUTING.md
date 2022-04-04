@@ -31,14 +31,17 @@ fixing one of the [open bug reports] and opening a Pull Request for it.
 To be able to contribute you need at least the following:
 
 - _Git_;
-- _NodeJS_ v16.0 or higher and _NPM_ v7 or higher;
+- _NodeJS_ v16 or higher and _NPM_ v7 or higher;
 - (Recommended) a code editor with _[EditorConfig]_ support;
+
+We use [Husky] to automatically install git hooks. Please enable it when
+contributing to this project.
 
 ### Using Docker
 
 To use a Docker container for development you can follow the steps below. If
 you're already familiar with Docker (or another container management platform)
-you can use your preferred workflow, just ensure your meet the requirements
+you can use your preferred workflow, just ensure you meet the requirements
 listed above.
 
 ```sh
@@ -73,18 +76,23 @@ git-tag-annotation-action$ exit
 $ docker container rm git-tag-annotation-action
 ```
 
-## Development details
+## Development Details
 
 This project uses [rollup.js] to compile the source code into a standalone
-JavaScript file. You can use the `npm run build` command to update this file.
+JavaScript file. This file can be found in the `lib/` directory. This file is
+updated using the `npm run build` command, you can run this to see if your
+changes are valid.
 
-You SHOULD NOT include the update to this file when submitting a Pull Request.
-The file will be automatically updated prior to a release.
+You should not include changes to this file when committing. If you try to
+commit it, the pre-commit hook will automatically unstage the changes. The file
+will be automatically updated prior to a release.
 
 Note that the end-to-end tests for this project run `npm run build` before
-testing begins. So, code changes will always be tested.
+testing begins. So, code changes will always be properly tested.
 
 [contributing guidelines for v1]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main-v1/CONTRIBUTING.md
+[editorconfig]: https://editorconfig.org/
+[husky]: https://typicode.github.io/husky/#/
 [open bug reports]: https://github.com/ericcornelissen/git-tag-annotation-action/labels/bug
 [open an issue with a bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [open an issue with a feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
