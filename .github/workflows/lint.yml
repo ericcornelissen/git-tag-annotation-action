@@ -24,6 +24,15 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@v1.4.1
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            artifactcache.actions.githubusercontent.com:443
+            github.com:443
+            n06iacprodeus1file4.blob.core.windows.net:443
+            registry.npmjs.org:443
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
