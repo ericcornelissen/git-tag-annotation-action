@@ -25,7 +25,7 @@ Then, you can obtain the annotation for the current tag using:
 
 ```yaml
 - uses: ericcornelissen/git-tag-annotation-action@v2
-  id: tag_data
+  id: tag-data
 ```
 
 Or you can get the annotation of a specific tag by specifying it using the `tag`
@@ -33,7 +33,7 @@ input:
 
 ```yaml
 - uses: ericcornelissen/git-tag-annotation-action@v2
-  id: tag_data
+  id: tag-data
   with:
     tag: "v1.2.3"
 ```
@@ -41,11 +41,11 @@ input:
 ## Outputs
 
 The Action will output the git tag annotation to `git-tag-annotation` which you
-can use in subsequent steps by writing something like (note that "tag_data" here
+can use in subsequent steps by writing something like (note that "tag-data" here
 refers to the `id` of this Action's step):
 
 ```yaml
-annotation: ${{ steps.tag_data.outputs.git-tag-annotation }}
+annotation: ${{ steps.tag-data.outputs.git-tag-annotation }}
 ```
 
 For more info on how to use outputs see [the GitHub Actions output docs].
@@ -72,10 +72,10 @@ jobs:
         with:
           fetch-depth: 0
       - name: Get tag annotation
-        id: tag_data
+        id: tag-data
         uses: ericcornelissen/git-tag-annotation-action@v2
       - name: The output
-        run: echo ${{ steps.tag_data.outputs.git-tag-annotation }}
+        run: echo ${{ steps.tag-data.outputs.git-tag-annotation }}
 ```
 
 ## Known Issues
