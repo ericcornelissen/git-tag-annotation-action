@@ -44,7 +44,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.1.1
         with:
           cache: npm
           node-version-file: .nvmrc
@@ -73,7 +73,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.1.1
         with:
           cache: npm
           node-version-file: .nvmrc
@@ -101,7 +101,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.1.1
         with:
           cache: npm
           node-version-file: .nvmrc
@@ -136,7 +136,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install Node.js
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.1.1
         with:
           cache: npm
           node-version: 16.x # This should match the version in `./action.yml`
@@ -175,7 +175,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.0.0
       - name: Install Node.js
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.1.1
         with:
           cache: npm
           node-version-file: .nvmrc
