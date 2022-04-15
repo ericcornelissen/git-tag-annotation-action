@@ -28,7 +28,7 @@ jobs:
         with:
           egress-policy: audit
       - name: Check out code
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.0.1
       - name: Install Node.js
         uses: actions/setup-node@v3.1.1
         with:
@@ -62,7 +62,7 @@ jobs:
         with:
           egress-policy: audit
       - name: Checkout code
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.0.1
         with:
           fetch-depth: 0 # To obtain all tags
       - name: Install Node.js
