@@ -29,7 +29,7 @@ jobs:
             github.com:443
             pkg-containers.githubusercontent.com:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.0.1
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2.1.8
         with:
