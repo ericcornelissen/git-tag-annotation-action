@@ -28,6 +28,7 @@ jobs:
             ghcr.io:443
             github.com:443
             pkg-containers.githubusercontent.com:443
+            uploads.github.com:443
       - name: Checkout repository
         uses: actions/checkout@v3.0.1
       - name: Initialize CodeQL
