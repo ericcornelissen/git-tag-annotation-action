@@ -9,5 +9,6 @@ module.exports = {
     file: "lib/index.js",
     format: "cjs",
   },
+  external: ["node:child_process", "node:os", "node:process"],
   plugins: [commonjs(), nodeResolve(), terser()],
 };
