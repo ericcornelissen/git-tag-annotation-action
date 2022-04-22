@@ -42,7 +42,7 @@ jobs:
             n06iacprodeus1file4.blob.core.windows.net:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.1
+        uses: actions/checkout@v3.0.2
       - name: Install Node.js
         uses: actions/setup-node@v3.1.1
         with:
@@ -71,7 +71,7 @@ jobs:
             n06iacprodeus1file4.blob.core.windows.net:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.1
+        uses: actions/checkout@v3.0.2
       - name: Install Node.js
         uses: actions/setup-node@v3.1.1
         with:
@@ -99,7 +99,7 @@ jobs:
             storage.googleapis.com:443
             uploader.codecov.io:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.1
+        uses: actions/checkout@v3.0.2
       - name: Install Node.js
         uses: actions/setup-node@v3.1.1
         with:
@@ -132,7 +132,7 @@ jobs:
             n06iacprodeus1file4.blob.core.windows.net:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.1
+        uses: actions/checkout@v3.0.2
         with:
           fetch-depth: 0
       - name: Install Node.js
@@ -173,7 +173,7 @@ jobs:
             n06iacprodeus1file4.blob.core.windows.net:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.1
+        uses: actions/checkout@v3.0.2
       - name: Install Node.js
         uses: actions/setup-node@v3.1.1
         with:
