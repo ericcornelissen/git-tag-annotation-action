@@ -24,7 +24,7 @@ jobs:
       pull-requests: write # To open a Pull Request
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@v1.4.1
+        uses: step-security/harden-runner@v1.4.2
         with:
           egress-policy: audit
       - name: Check out code
@@ -58,7 +58,7 @@ jobs:
       contents: write # To push a tag
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@v1.4.1
+        uses: step-security/harden-runner@v1.4.2
         with:
           egress-policy: audit
       - name: Checkout code
