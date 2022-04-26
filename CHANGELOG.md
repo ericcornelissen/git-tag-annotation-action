@@ -7,7 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Update dependencies (_actions/core_).
 
 ## [1.1.6] - 2022-03-27
 
