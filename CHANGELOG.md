@@ -7,7 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Update dependencies (_actions/core_).
 
 ## [2.0.0] - 2022-03-27
 
