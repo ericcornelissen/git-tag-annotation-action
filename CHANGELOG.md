@@ -7,6 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
+- Update deprecation warning for end-of-life (EOL) of v1 of this Action.
 - Update dependencies (_actions/core_).
 
 ## [1.1.6] - 2022-03-27
