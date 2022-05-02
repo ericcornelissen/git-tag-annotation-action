@@ -83,6 +83,7 @@ Note that the end-to-end tests for this project run `npm run build` before
 testing begins. So, code changes will always be tested.
 
 [contributing guidelines on `main`]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main/CONTRIBUTING.md
+[editorconfig]: https://editorconfig.org/
 [open bug reports]: https://github.com/ericcornelissen/git-tag-annotation-action/labels/bug
 [open an issue with a bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [open an issue with a feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
