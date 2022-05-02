@@ -13,7 +13,7 @@ Versioning].
 ## [1.1.6] - 2022-03-27
 
 - Add deprecation warning for end-of-life (EOL) of v1 of this Action.
-- Update dependencies (shescape).
+- Update dependencies (_shescape_).
 - Update the step name for this Action in the documentation.
 
 ## [1.1.5] - 2022-02-26
