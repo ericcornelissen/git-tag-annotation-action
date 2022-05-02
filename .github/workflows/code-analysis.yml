@@ -20,7 +20,7 @@ jobs:
       security-events: write
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@v1.4.2
+        uses: step-security/harden-runner@v1.4.3
         with:
           egress-policy: block
           allowed-endpoints: >
