@@ -17,15 +17,12 @@ to contribute anything, please use the following this workflow
 
 ## New Features
 
-The simplicity of this Action is by design. It is unlikely new features will be
-added to the Action, but you are free to [open an issue with a feature request].
-Please avoid implementing a new feature before submitting an issue for it first!
+Version 1 of the Git Tag Annotation Action will not receive any new features.
 
 ## Bugs
 
-We take bugs seriously. Please report a bug as soon as you discover one. To do
-this [open an issue with a bug report]. You are also free to contribute by
-fixing one of the [open bug reports] and opening a Pull Request for it.
+Version 1 of the Git Tag Annotation Action will not receive any bug fixes,
+unless the bug has an impact on the security of the Action.
 
 ## Project Setup
 
@@ -86,6 +83,7 @@ Note that the end-to-end tests for this project run `npm run build` before
 testing begins. So, code changes will always be tested.
 
 [contributing guidelines on `main`]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main/CONTRIBUTING.md
+[editorconfig]: https://editorconfig.org/
 [open bug reports]: https://github.com/ericcornelissen/git-tag-annotation-action/labels/bug
 [open an issue with a bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [open an issue with a feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
