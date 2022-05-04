@@ -21,9 +21,6 @@ The release process is as follows:
    accordance with [Semantic Versioning].
 1. Review the created Pull Request and merge if everything looks OK. After
    merging a [git tag] for the new version will be created automatically.
-1. Create a new [GitHub Release] for the (automatically) created tag. If the
-   version should be published to the [GitHub Marketplace] ensure that checkbox
-   is checked.
 
 ## Manual Releases (Discouraged)
 
