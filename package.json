@@ -46,7 +46,7 @@
     "@rollup/plugin-node-resolve": "13.3.0",
     "@stryker-mutator/core": "6.0.1",
     "c8": "7.11.2",
-    "husky": "7.0.4",
+    "husky": "8.0.1",
     "is-ci": "3.0.1",
     "prettier": "2.6.2",
     "rollup": "2.72.1",
