@@ -45,7 +45,7 @@
     "@rollup/plugin-commonjs": "22.0.0",
     "@rollup/plugin-node-resolve": "13.3.0",
     "@stryker-mutator/core": "6.0.1",
-    "c8": "7.11.2",
+    "c8": "7.11.3",
     "husky": "8.0.1",
     "is-ci": "3.0.1",
     "prettier": "2.6.2",
