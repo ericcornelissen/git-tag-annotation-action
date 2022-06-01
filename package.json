@@ -49,7 +49,7 @@
     "husky": "8.0.1",
     "is-ci": "3.0.1",
     "prettier": "2.6.2",
-    "rollup": "2.75.3",
+    "rollup": "2.75.4",
     "rollup-plugin-terser": "7.0.2",
     "sinon": "14.0.0",
     "uvu": "0.5.3"
