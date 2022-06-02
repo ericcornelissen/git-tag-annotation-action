@@ -135,11 +135,15 @@ jobs:
         uses: actions/checkout@v3.0.2
         with:
           fetch-depth: 0
+      - name: Get runtime Node.js version
+        id: test
+        run: |
+          node ./script/runtime-node-version.js
       - name: Install Node.js
         uses: actions/setup-node@v3.2.0
         with:
           cache: npm
-          node-version: 16.x # This should match the version in `./action.yml`
+          node-version: ${{ steps.manifest.outputs.node-runtime }}
       - name: Initialize repository
         run: npm ci
       - name: Build lib/index.js
