@@ -31,7 +31,7 @@ fixing one of the [open bug reports] and opening a Pull Request for it.
 To be able to contribute you need at least the following:
 
 - _Git_;
-- _NodeJS_ v16 or higher and _NPM_ v7 or higher;
+- _Node.js_ v18 or higher and _npm_ v8 or higher;
 - (Recommended) a code editor with _[EditorConfig]_ support;
 
 We use [Husky] to automatically install git hooks. Please enable it when
