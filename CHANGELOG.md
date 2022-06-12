@@ -7,7 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
-- Update dependencies (_actions/core_).
+- Update dependencies (_actions/core_, _shescape_).
 
 ## [2.0.0] - 2022-03-27
 
