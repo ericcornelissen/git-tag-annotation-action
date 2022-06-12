@@ -1,7 +1,8 @@
-const core = require("@actions/core");
 const childProcess = require("node:child_process");
 const os = require("node:os");
 const { env } = require("node:process");
+
+const core = require("@actions/core");
 const shescape = require("shescape");
 
 const main = require("./src/main.js");
