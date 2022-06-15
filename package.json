@@ -16,7 +16,8 @@
     "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "prepare": "is-ci || husky install script/hooks",
     "test": "uvu test",
-    "test:mutation": "stryker run stryker.config.json"
+    "test:mutation": "stryker run stryker.config.json",
+    "vet": "depcheck && unimported"
   },
   "repository": {
     "type": "git",
@@ -46,12 +47,14 @@
     "@rollup/plugin-node-resolve": "13.3.0",
     "@stryker-mutator/core": "6.0.1",
     "c8": "7.11.3",
+    "depcheck": "1.4.3",
     "husky": "8.0.1",
     "is-ci": "3.0.1",
     "prettier": "2.7.0",
     "rollup": "2.75.3",
     "rollup-plugin-terser": "7.0.2",
     "sinon": "14.0.0",
+    "unimported": "1.20.2",
     "uvu": "0.5.3"
   },
   "engines": {
