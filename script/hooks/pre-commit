@@ -16,6 +16,7 @@ if [ ! -f "$MERGE_HEAD" ]; then
 fi
 
 # Checks
+npm run vet
 npm run format
 git update-index --again
 
