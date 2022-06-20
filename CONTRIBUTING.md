@@ -11,8 +11,8 @@ to contribute anything, please use the following this workflow
 - Commit to the new branch and push the commits
 - Make a Pull Request
 
-> :information_source: If you want to make a contribution to v1 of the Action,
-> please refer to the [Contributing Guidelines for v1].
+> **Note** If you want to make a contribution to v1 of the Action, please refer
+> to the [Contributing Guidelines for v1].
 
 ## New Features
 
