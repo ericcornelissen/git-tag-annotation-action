@@ -88,9 +88,9 @@ contributing to this project.
 
 The source code of the project is formatted using [Prettier]. Run the command
 `npm run format` to format the source code, or `npm run lint` to check if your
-changes comply with the expected format. The pre-commit hook will format all
-staged changes. The pre-push hook will prevent pushing code that is not
-formatted correctly.
+changes follow the expected format. The pre-commit hook will format all staged
+changes. The pre-push hook will prevent pushing code that is not formatted
+correctly.
 
 #### Building
 
@@ -127,10 +127,10 @@ report can be found in `_reports/mutation`.
 
 The end-to-end tests for this project only run in the Continuous Integration as
 part of the "Verify code" workflow. These tests aim to verify that the Action
-can run and outputs the expected value.
+can run and outputs the expected values.
 
 > **Note** The end-to-end tests for this project run `npm run build` before
-> testing begins. So, code changes will always be properly tested.
+> testing begins. So it is not necessary to commit the output of this command.
 
 [contributing guidelines for v1]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main-v1/CONTRIBUTING.md
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
