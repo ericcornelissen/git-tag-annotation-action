@@ -80,7 +80,8 @@ To be able to contribute you need at least the following:
 - (Recommended) a code editor with _[EditorConfig]_ support;
 
 We use [Husky] to automatically install git hooks. Please enable it when
-contributing to this project.
+contributing to this project. If you have npm installation scripts disabled, run
+`npm run prepare` after installing dependencies.
 
 ### Development Details
 
