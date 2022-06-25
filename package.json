@@ -16,6 +16,7 @@
     "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "prepare": "is-ci || husky install script/hooks",
     "test": "uvu test",
+    "test:e2e": "act --job test-e2e",
     "test:mutation": "stryker run stryker.config.json",
     "vet": "depcheck && unimported"
   },
