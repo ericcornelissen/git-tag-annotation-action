@@ -78,6 +78,7 @@ To be able to contribute you need at least the following:
 - _Git_;
 - _Node.js_ v18 or higher and _npm_ v8 or higher;
 - (Recommended) a code editor with _[EditorConfig]_ support;
+- (Optional) [`nektos/act`];
 
 We use [Husky] to automatically install git hooks. Please enable it when
 contributing to this project. If you have npm installation scripts disabled, run
@@ -133,11 +134,27 @@ can run and outputs the expected values.
 > **Note** The end-to-end tests for this project run `npm run build` before
 > testing begins. So it is not necessary to commit the output of this command.
 
+#### Running End-to-end Tests Locally
+
+You can use [`nektos/act`] to run the end-to-end tests locally. If you have the
+`act` program available on your PATH you can use `npm run test:e2e` to run the
+end-to-end tests locally.
+
+There are some limitations to using [`nektos/act`]:
+
+- It depends on [Docker] to run workflows.
+- Your system may not support all operating systems the tests should run on.
+  Hence, the end-to-end tests may succeed locally but fail on GitHub because you
+  couldn't run them for all operating systems.
+- All jobs that the end-to-end test job `needs` have to be executed as well.
+
 [contributing guidelines for v1]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main-v1/CONTRIBUTING.md
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
+[docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
 [husky]: https://typicode.github.io/husky/
 [mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing
+[`nektos/act`]: https://github.com/nektos/act
 [open bug reports]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=label%3Abug+is%3Aissue+is%3Aopen
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
