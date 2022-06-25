@@ -144,8 +144,8 @@ There are some limitations to using [`nektos/act`]:
 
 - It depends on [Docker] to run workflows.
 - Your system may not support all operating systems the tests should run on.
-  Hence, the end-to-end tests may succeed locally but, fail on GitHub because
-  you couldn't run them for all operating systems.
+  Hence, the end-to-end tests may succeed locally but fail on GitHub because you
+  couldn't run them for all operating systems.
 - All jobs that the end-to-end test job `needs` have to be executed as well.
 
 [contributing guidelines for v1]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main-v1/CONTRIBUTING.md
