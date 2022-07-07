@@ -41,7 +41,7 @@
   ],
   "dependencies": {
     "@actions/core": "1.9.0",
-    "shescape": "1.5.6"
+    "shescape": "1.5.7"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "22.0.1",
