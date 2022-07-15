@@ -87,6 +87,7 @@ jobs:
     name: Coverage
     needs: [test-unit]
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@v1.4.4
@@ -114,6 +115,7 @@ jobs:
         run: npm run coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3.1.0
+        if: ${{ always() }}
         with:
           file: ./_reports/coverage/lcov.info
   test-e2e:
