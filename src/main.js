@@ -10,7 +10,7 @@ function getOutputFormatWindows() {
 }
 
 function getOutputFormatUnix() {
-  return "'%(contents)'";
+  return "'%(contents)";
 }
 
 function main({ childProcess, core, env, platform, shescape }) {
