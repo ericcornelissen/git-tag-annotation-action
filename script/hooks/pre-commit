@@ -20,6 +20,10 @@ npm run vet
 npm run format
 git update-index --again
 
+if command -v gitleaks > /dev/null; then
+  gitleaks protect
+fi
+
 # Post
 STASH_COUNT_AFTER=$(get_stash_count)
 if [ "$STASH_COUNT_BEFORE" -lt "$STASH_COUNT_AFTER" ]; then
