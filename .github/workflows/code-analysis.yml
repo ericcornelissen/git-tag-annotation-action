@@ -38,3 +38,21 @@ jobs:
           languages: javascript
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2.1.16
+  gitleaks:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@v1.4.4
+        with:
+          egress-policy: audit
+      - name: Checkout repository
+        uses: actions/checkout@v3.0.2
+        with:
+          fetch-depth: 0
+      - name: Perform GitLeaks Analysis
+        uses: gitleaks/gitleaks-action@v2.0.5
+        env:
+          GITLEAKS_ENABLE_COMMENTS: false
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: false
+          GITLEAKS_ENABLE_SUMMARY: true
