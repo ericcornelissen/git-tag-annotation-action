@@ -7,6 +7,10 @@ Versioning].
 
 ## [Unreleased]
 
+- _No changes yet_
+
+## [2.0.1] - 2022-07-17
+
 - Update dependency _actions/core_. ([#170], [#181], [#189], [#192], [#216])
 - Update dependency _shescape_. ([#208], [#230], [#233], [#241])
 
