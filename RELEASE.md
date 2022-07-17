@@ -30,21 +30,23 @@ If it's not possible to use automated releases, or if something goes wrong with
 the automatic release process, you can follow these steps to release a new
 version (using `v2.7.1` as an example):
 
-1. Make sure that your local copy of the repository is up-to-date:
+1. Make sure that your local copy of the repository is up-to-date, sync:
 
    ```sh
-   # Sync
    git switch main
    git pull origin main
+   ```
 
-   # Or clone
+   Or clone:
+
+   ```sh
    git clone git@github.com:ericcornelissen/git-tag-annotation-action.git
    ```
 
 1. Verify that the repository is in a state that can be released:
 
    ```sh
-   npm install
+   npm clean-install
    npm run lint
    npm run test
    npm run build
@@ -98,7 +100,7 @@ version (using `v2.7.1` as an example):
 
    ```sh
    git tag v2.7.1
-   git tag -f v2
+   git tag v2 --force
    ```
 
 1. Push the commit and tags:
