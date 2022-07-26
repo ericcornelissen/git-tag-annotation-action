@@ -13,6 +13,10 @@ npm run vet
 npm run lint
 npm run test
 
+if command -v gitleaks > /dev/null; then
+  gitleaks protect
+fi
+
 # Post
 STASH_COUNT_AFTER=$(get_stash_count)
 if [ "$STASH_COUNT_BEFORE" -lt "$STASH_COUNT_AFTER" ]; then
