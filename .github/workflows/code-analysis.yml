@@ -51,6 +51,7 @@ jobs:
             artifactcache.actions.githubusercontent.com:443
             ghcr.io:443
             github.com:443
+            objects.githubusercontent.com:443
             pkg-containers.githubusercontent.com:443
             n06iacprodeus1file4.blob.core.windows.net:443
       - name: Checkout repository
