@@ -7,8 +7,12 @@ Versioning].
 
 ## [Unreleased]
 
+- _No changes yet_
+
+## [2.0.1] - 2022-07-17
+
 - Update dependency _actions/core_. ([#170], [#181], [#189], [#192], [#216])
-- Update dependency _shescape_. ([#208])
+- Update dependency _shescape_. ([#208], [#230], [#233], [#241])
 
 ## [2.0.0] - 2022-03-27
 
@@ -91,3 +95,6 @@ Versioning].
 [#192]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/192
 [#208]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/208
 [#216]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/216
+[#230]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/230
+[#233]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/233
+[#241]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/241
