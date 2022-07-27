@@ -41,6 +41,7 @@ jobs:
   gitleaks:
     name: Gitleaks
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'schedule' }}
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@v1.4.4
