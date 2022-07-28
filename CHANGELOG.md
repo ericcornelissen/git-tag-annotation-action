@@ -9,6 +9,10 @@ Versioning].
 
 - _No changes yet_
 
+## [1.1.9] - 2022-07-29
+
+- Update deprecation warning for end-of-life (EOL) of v1 of this Action.
+
 ## [1.1.8] - 2022-07-17
 
 - Update dependencies (_shescape_).
