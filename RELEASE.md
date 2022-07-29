@@ -20,9 +20,6 @@ The release process is as follows:
    an update type in accordance with [Semantic Versioning].
 1. Review the created Pull Request and merge if everything looks OK. After
    merging a [git tag] for the new version will be created automatically.
-1. Create a new [GitHub Release] for the (automatically) created tag. If the
-   version should be published to the [GitHub Marketplace] ensure that checkbox
-   is checked.
 
 ## Manual Releases (Discouraged)
 
@@ -88,11 +85,11 @@ version (using `v2.7.1` as an example):
    The date should follow the year-month-day format where single-digit months
    and days should be prefixed with a `0` (e.g. `2022-01-01`).
 
-1. Commit the changes to `main` using:
+1. Commit the changes to `main-v1` using:
 
    ```sh
    git add lib/ CHANGELOG.md package.json package-lock.json
-   git commit -m "Version bump"
+   git commit -m "Version bump" --no-verify
    ```
 
 1. Create a tag for the new version and update the tag pointing to the latest v2

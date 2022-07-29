@@ -95,11 +95,11 @@ For more information regarding this problem see [actions/checkout#290].
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [kceb/git-message-action]: https://github.com/kceb/git-message-action
 [the github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
-[ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml
-[ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml/badge.svg
-[coverage-url]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action
-[coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main/graph/badge.svg
-[mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main
-[mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action%2Fmain
+[ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml?query=branch%3Amain-v1
+[ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml/badge.svg?branch=main-v1
+[coverage-url]: https://app.codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main-v1
+[coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main-v1/graph/badge.svg
+[mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main-v1
+[mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action%2Fmain-v1
 [quality-url]: https://codeclimate.com/github/ericcornelissen/git-tag-annotation-action/maintainability
 [quality-image]: https://api.codeclimate.com/v1/badges/53d2c44543bf636105f3/maintainability

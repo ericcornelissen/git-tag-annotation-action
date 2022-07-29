@@ -5,9 +5,6 @@ corrections to the source code, documentation, and other aspects of the project.
 Before contributing, please make sure you read the relevant section in this
 document.
 
-> **Note** If you want to make a contribution to v1 of the Action, please refer
-> to the [Contributing Guidelines for v1].
-
 ---
 
 ## Reporting Issues
@@ -148,7 +145,6 @@ There are some limitations to using [`nektos/act`]:
   couldn't run them for all operating systems.
 - All jobs that the end-to-end test job `needs` have to be executed as well.
 
-[contributing guidelines for v1]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main-v1/CONTRIBUTING.md
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
 [docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
