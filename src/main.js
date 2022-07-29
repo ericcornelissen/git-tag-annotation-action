@@ -14,11 +14,6 @@ function getOutputFormatUnix() {
 }
 
 function main({ childProcess, core, env, platform, shescape }) {
-  core.warning(
-    "Support for git-tag-annotation-action@v1 ended 2022-07-29. " +
-      "Please upgrade to git-tag-annotation-action@v2 as soon as possible."
-  );
-
   try {
     let tag = env.GITHUB_REF;
 
