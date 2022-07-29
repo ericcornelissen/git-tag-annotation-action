@@ -19,6 +19,19 @@ Versioning].
 - Update Node.js runtime to v16. ([#137])
 - Update recommended _actions/checkout_ version in documentation to v3. ([#142])
 
+## [1.1.9] - 2022-07-29
+
+- Update deprecation warning for end-of-life (EOL) of v1 of the Action. ([#254])
+
+## [1.1.8] - 2022-07-17
+
+- Update dependencies _shescape_. ([#240])
+
+## [1.1.7] - 2022-05-02
+
+- Update deprecation warning for end-of-life (EOL) of v1 of the Action. ([#175])
+- Update dependencies _actions/core_. ([#171])
+
 ## [1.1.6] - 2022-03-27
 
 - Add deprecation warning for end-of-life (EOL) of v1 of this Action. ([#140])
@@ -90,6 +103,8 @@ Versioning].
 [#140]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/140
 [#142]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/142
 [#170]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/170
+[#171]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/171
+[#175]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/175
 [#181]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/181
 [#189]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/189
 [#192]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/192
@@ -97,4 +112,6 @@ Versioning].
 [#216]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/216
 [#230]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/230
 [#233]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/233
+[#240]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/240
 [#241]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/241
+[#254]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/254
