@@ -15,8 +15,7 @@ function getOutputFormatUnix() {
 
 function main({ childProcess, core, env, platform, shescape }) {
   core.warning(
-    "General support for git-tag-annotation-action@v1 has ended, " +
-      "Security support ends 2022-07-29. " +
+    "Support for git-tag-annotation-action@v1 ended 2022-07-29. " +
       "Please upgrade to git-tag-annotation-action@v2 as soon as possible."
   );
 
