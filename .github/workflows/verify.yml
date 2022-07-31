@@ -37,10 +37,12 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
             n06iacprodeus1file4.blob.core.windows.net:443
+            objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
         uses: actions/checkout@v3.0.2
@@ -67,10 +69,12 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
             n06iacprodeus1file4.blob.core.windows.net:443
+            objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
         uses: actions/checkout@v3.0.2
@@ -94,11 +98,13 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             codecov.io:443
             github.com:443
             nodejs.org:443
             n06iacprodeus1file4.blob.core.windows.net:443
+            objects.githubusercontent.com:443
             registry.npmjs.org:443
             storage.googleapis.com:443
             uploader.codecov.io:443
@@ -132,10 +138,12 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
             n06iacprodeus1file4.blob.core.windows.net:443
+            objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
         uses: actions/checkout@v3.0.2
@@ -173,11 +181,13 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             dashboard.stryker-mutator.io:443
             github.com:443
             nodejs.org:443
             n06iacprodeus1file4.blob.core.windows.net:443
+            objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
         uses: actions/checkout@v3.0.2
