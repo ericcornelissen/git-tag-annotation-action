@@ -5,7 +5,7 @@
   "description": "Github Action for obtaining the annotation of a git tag",
   "homepage": "https://github.com/ericcornelissen/git-tag-annotation-action#readme",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",

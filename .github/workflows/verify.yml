@@ -52,7 +52,7 @@ jobs:
           node-version-file: .nvmrc
       - name: Initialize repository
         run: npm ci
-      - name: Build lib/index.js
+      - name: Build standalone JavaScript file
         run: npm run build
   test-unit:
     name: Unit tests
@@ -152,7 +152,7 @@ jobs:
           node-version-file: .nvmrc
       - name: Initialize repository
         run: npm ci
-      - name: Build lib/index.js
+      - name: Build standalone JavaScript file
         run: npm run build
       - name: Run git-tag-annotation-action
         id: action-test

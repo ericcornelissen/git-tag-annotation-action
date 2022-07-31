@@ -2,10 +2,6 @@
 .idea
 .vscode
 
-# whitelist action executables
-lib/**/*
-!lib/index.js
-
 # generated or installed
 .temp/
 _reports/
