@@ -37,6 +37,7 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
@@ -67,6 +68,7 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
@@ -94,6 +96,7 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             codecov.io:443
             github.com:443
@@ -132,6 +135,7 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
@@ -173,6 +177,7 @@ jobs:
         with:
           egress-policy: block
           allowed-endpoints: >
+            api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             dashboard.stryker-mutator.io:443
             github.com:443
