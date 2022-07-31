@@ -1,3 +1,5 @@
+const commonjs = require("@rollup/plugin-commonjs");
+const { nodeResolve } = require("@rollup/plugin-node-resolve");
 const { terser } = require("rollup-plugin-terser");
 
 module.exports = {
@@ -7,5 +9,5 @@ module.exports = {
     format: "cjs",
   },
   external: ["node:child_process", "node:os", "node:process"],
-  plugins: [terser()],
+  plugins: [commonjs(), nodeResolve(), terser()],
 };
