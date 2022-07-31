@@ -1,11 +1,11 @@
-const childProcess = require("node:child_process");
-const os = require("node:os");
-const { env } = require("node:process");
+import * as childProcess from "node:child_process";
+import * as os from "node:os";
+import { env } from "node:process";
 
-const core = require("@actions/core");
-const shescape = require("shescape");
+import * as core from "@actions/core";
+import * as shescape from "shescape";
 
-const main = require("./src/main.js");
+import main from "./src/main.js";
 
 const platform = os.platform();
 

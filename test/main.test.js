@@ -1,8 +1,8 @@
-const sinon = require("sinon");
-const { suite } = require("uvu");
-const assert = require("uvu/assert");
+import sinon from "sinon";
+import { suite } from "uvu";
+import * as assert from "uvu/assert";
 
-const main = require("../src/main.js");
+import main from "../src/main.js";
 
 const linux = "linux";
 const win32 = "win32";

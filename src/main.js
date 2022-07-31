@@ -44,4 +44,4 @@ function main({ childProcess, core, env, platform, shescape }) {
   }
 }
 
-module.exports = main;
+export default main;
