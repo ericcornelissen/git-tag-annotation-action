@@ -6,10 +6,12 @@ inputs:
   tag:
     description: "tag of interest (defaults to the GITHUB_REF environment variable)"
     required: false
+    type: string
 
 outputs:
   git-tag-annotation:
     description: "The git tag annotation"
+    type: string
 
 runs:
   using: "node16"
