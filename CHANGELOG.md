@@ -7,7 +7,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Add support for GitHub Actions Kotlin DSL. ([#262])
 
 ## [2.0.1] - 2022-07-17
 
@@ -115,3 +115,4 @@ Versioning].
 [#240]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/240
 [#241]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/241
 [#254]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/254
+[#262]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/262
