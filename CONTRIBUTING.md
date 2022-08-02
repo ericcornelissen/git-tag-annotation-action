@@ -118,6 +118,10 @@ testing framework is [uvu]. To run the unit tests you can use the `npm run test`
 command. Use `npm run coverage` to run tests and generate a coverage report. The
 coverage report can be found in `_reports/coverage/lcov-report`.
 
+Unit tests may be written as a [Property Tests]. The [fast-check] framework is
+used to write property tests. When writing a unit test, it is encouraged to
+write it as a property test, though this is not required.
+
 The effectiveness of unit tests is measured using [Mutation Testing]. You can
 run the mutation tests using the `npm run test:mutation` command. The mutation
 report can be found in `_reports/mutation`.
@@ -148,6 +152,7 @@ There are some limitations to using [`nektos/act`]:
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
 [docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
+[fast-check]: https://github.com/dubzzz/fast-check#readme
 [husky]: https://typicode.github.io/husky/
 [mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing
 [`nektos/act`]: https://github.com/nektos/act
@@ -157,6 +162,7 @@ There are some limitations to using [`nektos/act`]:
 [open an issue with a bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [open an issue with a feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [prettier]: https://prettier.io/
+[property tests]: https://en.wikipedia.org/wiki/Property_testing
 [rollup.js]: https://rollupjs.org/guide/en/
 [security policy]: ./SECURITY.md
 [uvu]: https://www.npmjs.com/package/uvu
