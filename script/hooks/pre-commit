@@ -10,8 +10,7 @@ if [ "$LIB_STAGED_COUNT" -ne "0" ]; then
   git restore --staged lib/
 fi
 
-STASH_COUNT_BEFORE=$(get_stash_count)
-if [ ! -f "$MERGE_HEAD" ]; then
+if [ ! $(IS_MERGING) ]; then
   git stash push --include-untracked --keep-index --quiet
 fi
 
@@ -25,7 +24,6 @@ if command -v gitleaks > /dev/null; then
 fi
 
 # Post
-STASH_COUNT_AFTER=$(get_stash_count)
-if [ "$STASH_COUNT_BEFORE" -lt "$STASH_COUNT_AFTER" ]; then
+if [ $(DID_STASH) ]; then
   git stash pop --quiet
 fi

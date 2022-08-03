@@ -1,3 +1,4 @@
+import fc from "fast-check";
 import sinon from "sinon";
 import { suite } from "uvu";
 import * as assert from "uvu/assert";
@@ -62,85 +63,107 @@ for (const platform of [linux, win32]) {
     );
   });
 
-  for (const tag of ["v3.1.4", "v0.2.718", "v0.0.1"]) {
-    Main(`uses the input tag on ${platform}, tag=${tag}`, (context) => {
-      const ref = `refs/tags/${tag}`;
-      const escapedRef = `'${ref}'`;
+  Main(`uses the input tag on ${platform}`, (context) => {
+    fc.assert(
+      fc.property(fc.string({ minLength: 1 }), (tag) => {
+        const ref = `refs/tags/${tag}`;
+        const escapedRef = `'${ref}'`;
 
-      context.core.getInput.returns(undefined);
-      context.env.GITHUB_REF = ref;
-      context.shescape.quote.returns(escapedRef);
+        context.core.getInput.returns(undefined);
+        context.env.GITHUB_REF = ref;
+        context.shescape.quote.returns(escapedRef);
 
-      main({ ...context, platform });
+        main({ ...context, platform });
 
-      assert.ok(context.shescape.quote.calledWithExactly(ref));
-      assert.ok(
-        context.childProcess.exec.calledWithExactly(
-          sinon.match(escapedRef),
-          sinon.match.func
-        )
-      );
-    });
+        assert.ok(context.shescape.quote.calledWithExactly(ref));
+        assert.ok(
+          context.childProcess.exec.calledWithExactly(
+            sinon.match(escapedRef),
+            sinon.match.func
+          )
+        );
+      })
+    );
+  });
 
-    Main(`uses the env tag on ${platform}, tag=${tag}`, (context) => {
-      const ref = `refs/tags/${tag}`;
-      const escapedRef = `'${ref}'`;
+  Main(`uses the env tag on ${platform}`, (context) => {
+    fc.assert(
+      fc.property(fc.string({ minLength: 1 }), (tag) => {
+        const ref = `refs/tags/${tag}`;
+        const escapedRef = `'${ref}'`;
 
-      context.core.getInput.returns(tag);
-      context.shescape.quote.returns(escapedRef);
+        context.core.getInput.returns(tag);
+        context.shescape.quote.returns(escapedRef);
 
-      main({ ...context, platform });
+        main({ ...context, platform });
 
-      assert.ok(context.shescape.quote.calledWithExactly(ref));
-      assert.ok(
-        context.childProcess.exec.calledWithExactly(
-          sinon.match(escapedRef),
-          sinon.match.func
-        )
-      );
-    });
-  }
+        assert.ok(context.shescape.quote.calledWithExactly(ref));
+        assert.ok(
+          context.childProcess.exec.calledWithExactly(
+            sinon.match(escapedRef),
+            sinon.match.func
+          )
+        );
+      })
+    );
+  });
 
-  for (const annotation of ["Hello world!", "foobar"]) {
-    Main(`sets the annotation ("${annotation}") on ${platform}`, (context) => {
-      main({ ...context, platform });
+  Main(`sets the annotation on ${platform}`, (context) => {
+    fc.assert(
+      fc.property(fc.string({ minLength: 1 }), (annotation) => {
+        context.childProcess.exec.resetHistory();
+        context.core.setOutput.resetHistory();
 
-      assert.is(context.childProcess.exec.callCount, 1);
-      context.childProcess.exec.lastCall.callback(null, annotation);
+        main({ ...context, platform });
 
-      assert.not(context.core.setFailed.called);
-      assert.is(context.core.setOutput.callCount, 1);
-      assert.ok(
-        context.core.setOutput.calledWithExactly(
-          "git-tag-annotation",
-          annotation
-        )
-      );
-    });
-  }
+        assert.is(context.childProcess.exec.callCount, 1);
+        context.childProcess.exec.lastCall.callback(null, annotation);
 
-  for (const err of ["Something went wrong", "Oops"]) {
-    Main(`handles a git error ("${err}") on ${platform}`, (context) => {
-      main({ ...context, platform });
+        assert.not(context.core.setFailed.called);
+        assert.is(context.core.setOutput.callCount, 1);
+        assert.ok(
+          context.core.setOutput.calledWithExactly(
+            "git-tag-annotation",
+            annotation
+          )
+        );
+      })
+    );
+  });
 
-      assert.is(context.childProcess.exec.callCount, 1);
-      context.childProcess.exec.lastCall.callback(err, null);
+  Main(`handles a git error on ${platform}`, (context) => {
+    fc.assert(
+      fc.property(fc.string({ minLength: 1 }), (err) => {
+        context.childProcess.exec.resetHistory();
+        context.core.setFailed.resetHistory();
 
-      assert.not(context.core.setOutput.called);
-      assert.is(context.core.setFailed.callCount, 1);
-      assert.ok(context.core.setFailed.calledWithExactly(err));
-    });
+        main({ ...context, platform });
 
-    Main(`handles an execution error ("${err}") on ${platform}`, (context) => {
-      context.childProcess.exec.throws(new Error(err));
+        assert.is(context.childProcess.exec.callCount, 1);
+        context.childProcess.exec.lastCall.callback(err, null);
 
-      main({ ...context, platform });
+        assert.not(context.core.setOutput.called);
+        assert.is(context.core.setFailed.callCount, 1);
+        assert.ok(context.core.setFailed.calledWithExactly(err));
+      })
+    );
+  });
 
-      assert.not(context.core.setOutput.called);
-      assert.is(context.core.setFailed.callCount, 1);
-      assert.ok(context.core.setFailed.calledWithExactly(err));
-    });
-  }
+  Main(`handles an execution error on ${platform}`, (context) => {
+    fc.assert(
+      fc.property(fc.string({ minLength: 1 }), (err) => {
+        context.core.setFailed.resetHistory();
+
+        context.childProcess.exec.throws(new Error(err));
+
+        main({ ...context, platform });
+
+        assert.not(context.core.setOutput.called);
+        assert.is(context.core.setFailed.callCount, 1);
+        assert.ok(context.core.setFailed.calledWithExactly(err));
+      })
+    );
+  });
 }
 
 Main.run();
