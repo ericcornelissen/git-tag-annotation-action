@@ -1,0 +1,10 @@
+# This file provides types for "GitHub Actions Kotlin DSL".
+# See https://github.com/krzema12/github-actions-kotlin-dsl
+
+inputs:
+  tag:
+    type: string
+
+outputs:
+  git-tag-annotation:
+    type: string
