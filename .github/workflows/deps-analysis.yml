@@ -23,7 +23,7 @@ jobs:
       - name: Dependency Review
         uses: actions/dependency-review-action@v2.0.4
   npm-audit:
-    name: Audit npm
+    name: npm audit
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
