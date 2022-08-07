@@ -19,7 +19,7 @@ The release process is as follows:
 1. Initiate a new release by triggering the `release.yml` workflow manually. Use
    an update type in accordance with [Semantic Versioning].
 1. Review the created Pull Request and merge if everything looks OK. After
-   merging a [git tag] for the new version will be created automatically.
+   merging, a [git tag] for the new version will be created automatically.
 1. Create a new [GitHub Release] for the (automatically) created tag. If the
    version should be published to the [GitHub Marketplace] ensure that checkbox
    is checked.
@@ -94,6 +94,9 @@ version (using `v2.7.1` as an example):
    git add lib/ CHANGELOG.md package.json package-lock.json
    git commit -m "Version bump" --no-verify
    ```
+
+   The `--no-verify` option is required as otherwise the changes to `lib/` will
+   be unstaged.
 
 1. Create a tag for the new version:
 
