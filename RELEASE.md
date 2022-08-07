@@ -11,8 +11,8 @@ should be used to create releases. This workflow:
 1. Can be [triggered manually] to initiate a new release by means of a Pull
    Request.
 1. Is triggered on the `main` branch and will create a [git tag] for the version
-   in the manifest **if** it doesn't exist yet. This will also keep the `v2` tag
-   up-to-date.
+   in the manifest **if** it doesn't exist yet. This will also keep the `v2`
+   branch up-to-date.
 
 The release process is as follows:
 
@@ -95,19 +95,24 @@ version (using `v2.7.1` as an example):
    git commit -m "Version bump" --no-verify
    ```
 
-1. Create a tag for the new version and update the tag pointing to the latest v2
-   release using
+1. Create a tag for the new version:
 
    ```sh
    git tag v2.7.1
-   git tag v2 --force
+   ```
+
+   and update the `v2` branch to point to the same commit as the new tag:
+
+   ```sh
+   git switch v2
+   git merge main
+   git switch main
    ```
 
 1. Push the commit and tags:
 
    ```sh
-   git push origin main v2.7.1
-   git push origin v2 --force
+   git push origin main v2 v2.7.1
    ```
 
 1. Create a new [GitHub Release]. If the version should be published to the
