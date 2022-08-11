@@ -40,7 +40,7 @@
     "actions"
   ],
   "dependencies": {
-    "@actions/core": "1.9.0",
+    "@actions/core": "1.9.1",
     "shescape": "1.5.9"
   },
   "devDependencies": {
