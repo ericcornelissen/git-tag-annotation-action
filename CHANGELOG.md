@@ -7,6 +7,10 @@ Versioning].
 
 ## [Unreleased]
 
+- _No changes yet_
+
+## [2.0.2] - 2022-08-14
+
 - Add support for GitHub Actions Kotlin DSL. ([#262])
 - Update dependency _actions/core_. ([#271])
 - Update dependency _shescape_. ([#253])
