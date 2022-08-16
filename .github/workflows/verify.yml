@@ -217,4 +217,4 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3.0.2
       - name: Validate Action Types
-        uses: krzema12/github-actions-typing@v0.5.0
+        uses: krzema12/github-actions-typing@v0.5.1
