@@ -19,11 +19,11 @@ approach when it comes to engaging with (security) reports.
 
 To report a security issue in a supported version of the Git Tag Annotation
 Action, send an email to [security@ericcornelissen.dev] and include the words
-_"SECURITY"_ and _"git-tag-annotation-action_ in the subject line. Please do not
-open a regular issue or Pull Request in the public repository.
+_"SECURITY"_ and _"git-tag-annotation-action"_ in the subject line. Please do
+not open a regular issue or Pull Request in the public repository.
 
 If you found a security bug in an unsupported version of the Git Tag Annotation
-Action, please report this publicly. For example as a regular issue in the
+Action, please report this publicly. For example, as a regular issue in the
 public repository.
 
 ## Advisories
