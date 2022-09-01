@@ -26,6 +26,12 @@ If you found a security bug in an unsupported version of the Git Tag Annotation
 Action, please report this publicly. For example as a regular issue in the
 public repository.
 
+## Advisories
+
+| ID               | Date       | Affected versions | Patched versions |
+| :--------------- | :--------- | :---------------- | :--------------- |
+| `CVE-2020-15272` | 2020-06-25 | `<=1.0.0`         | `1.0.1`          |
+
 ## Acknowledgments
 
 We would like to publicly thank the following reporters:
