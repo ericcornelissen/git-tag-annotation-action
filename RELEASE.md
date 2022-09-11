@@ -49,6 +49,12 @@ version (using `v2.7.1` as an example):
    npm clean-install
    npm run lint
    npm run test
+   npm run vet
+   ```
+
+1. Update the contents of the `lib/` directory using:
+
+   ```sh
    npm run build
    ```
 
@@ -88,15 +94,27 @@ version (using `v2.7.1` as an example):
    The date should follow the year-month-day format where single-digit months
    and days should be prefixed with a `0` (e.g. `2022-01-01`).
 
-1. Commit the changes to `main` using:
+1. Commit the changes to a new release branch and push using:
 
    ```sh
+   git checkout -b release-$(sha1sum package-lock.json | awk '{print $1}')
    git add lib/ CHANGELOG.md package.json package-lock.json
    git commit -m "Version bump" --no-verify
+   git push origin release-$(sha1sum package-lock.json | awk '{print $1}')
    ```
 
    The `--no-verify` option is required as otherwise the changes to `lib/` will
    be unstaged.
+
+1. Create a Pull Request to merge the release branch into `main`. Merge the Pull
+   Request if the changes look OK and all CI checks are passing.
+
+1. After the Pull Request is merged, sync the `main` branch:
+
+   ```sh
+   git checkout main
+   git pull origin main
+   ```
 
 1. Create a tag for the new version:
 
@@ -115,7 +133,7 @@ version (using `v2.7.1` as an example):
 1. Push the commit and tags:
 
    ```sh
-   git push origin main v2 v2.7.1
+   git push origin v2 v2.7.1
    ```
 
 1. Create a new [GitHub Release]. If the version should be published to the
