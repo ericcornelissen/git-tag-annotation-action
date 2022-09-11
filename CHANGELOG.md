@@ -9,6 +9,10 @@ Versioning].
 
 - _No changes yet_
 
+## [2.0.3] - 2022-09-11
+
+- Update dependency _shescape_. ([#282])
+
 ## [2.0.2] - 2022-08-14
 
 - Add support for GitHub Actions Kotlin DSL. ([#262])
@@ -124,3 +128,4 @@ Versioning].
 [#254]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/254
 [#262]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/262
 [#271]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/271
+[#282]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/282
