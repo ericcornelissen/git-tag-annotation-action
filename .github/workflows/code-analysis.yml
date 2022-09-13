@@ -41,7 +41,6 @@ jobs:
   gitleaks:
     name: Gitleaks
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'schedule' }}
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@v1.4.5
@@ -60,7 +59,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Perform GitLeaks Analysis
-        uses: gitleaks/gitleaks-action@v2.1.4
+        uses: gitleaks/gitleaks-action@v2.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_ENABLE_COMMENTS: false
