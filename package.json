@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "22.0.2",
-    "@rollup/plugin-node-resolve": "14.0.1",
+    "@rollup/plugin-node-resolve": "14.1.0",
     "@stryker-mutator/core": "6.2.2",
     "c8": "7.12.0",
     "depcheck": "1.4.3",
