@@ -15,22 +15,22 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@v1.4.5
+        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
         with:
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
             github.com:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - name: Dependency Review
-        uses: actions/dependency-review-action@v2.1.0
+        uses: actions/dependency-review-action@23d1ffffb6fa5401173051ec21eba8c35242733f
   npm-audit:
     name: npm audit
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@v1.4.5
+        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -43,9 +43,9 @@ jobs:
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - name: Install Node.js
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
         with:
           cache: npm
           node-version-file: .nvmrc
@@ -64,7 +64,7 @@ jobs:
           - v2
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@v1.4.5
+        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -77,11 +77,11 @@ jobs:
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@v3.0.2
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
         with:
           ref: ${{ matrix.ref }}
       - name: Install Node.js
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
         with:
           cache: npm
           node-version-file: .nvmrc
