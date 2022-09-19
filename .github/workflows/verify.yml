@@ -165,8 +165,6 @@ jobs:
         uses: ./
         with:
           tag: v1.0.0
-      - name: Echo git-tag-annotation-action output
-        run: echo "${{ steps.action-test.outputs.git-tag-annotation }}"
       - name: Check git-tag-annotation-action output
         shell: bash
         run: |
