@@ -170,7 +170,11 @@ jobs:
       - name: Check git-tag-annotation-action output
         shell: bash
         run: |
-          if ! [[ "${{ steps.action-test.outputs.git-tag-annotation }}" ]]; then
+          ACTUAL="${{ steps.action-test.outputs.git-tag-annotation }}"
+          EXPECTED='- Run the Action to get the git tag annotation of the current tag.
+          - Run the Action to get the git tag annotation of a specified tag.'
+
+          if [ "$ACTUAL" != "$EXPECTED" ]; then
             exit 1
           fi
   test-mutation:
