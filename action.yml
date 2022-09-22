@@ -1,20 +1,20 @@
-name: "Git Tag Annotation"
-description: "Get the annotation associated with a git tag"
-author: "Eric Cornelissen"
+name: Git Tag Annotation
+description: Get the annotation associated with a git tag
+author: Eric Cornelissen
 
 inputs:
   tag:
-    description: "tag of interest (defaults to the GITHUB_REF environment variable)"
+    description: tag of interest (defaults to the GITHUB_REF environment variable)
     required: false
 
 outputs:
   git-tag-annotation:
-    description: "The git tag annotation"
+    description: The git tag annotation
 
 runs:
-  using: "node16"
-  main: "lib/index.cjs"
+  using: node16
+  main: lib/index.cjs
 
 branding:
-  icon: "tag"
-  color: "gray-dark"
+  icon: tag
+  color: gray-dark
