@@ -13,6 +13,7 @@
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
     "format": "npm run _prettier -- --write",
     "lint": "npm run _prettier -- --check",
+    "lint:md": "markdownlint --dot --ignore-path .gitignore .",
     "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "prepare": "is-ci || husky install script/hooks",
     "test": "uvu test",
