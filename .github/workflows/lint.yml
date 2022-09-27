@@ -45,8 +45,10 @@ jobs:
           node-version-file: .nvmrc
       - name: Initialize repository
         run: npm ci
-      - name: Lint
+      - name: Lint formatting
         run: npm run lint
+      - name: Lint MarkDown
+        run: npm run lint:md
   vet:
     name: Vet
     runs-on: ubuntu-latest
