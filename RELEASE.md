@@ -1,28 +1,16 @@
 # Release Guidelines
 
-If you need to release a new version of git-tag-annotation-action you should
-follow the guidelines found in this file.
+If you need to release a new version of _Git Tag Annotation Action_ follow the
+guidelines found in this document.
 
 ## Automated Releases (Preferred)
 
-The [`release.yml`](./.github/workflows/release.yml) [GitHub Actions] workflow
-should be used to create releases. This workflow:
+To release a new version follow these steps:
 
-1. Can be [triggered manually] to initiate a new release by means of a Pull
-   Request.
-1. Is triggered on the `main` branch and will create a [git tag] for the version
-   in the manifest **if** it doesn't exist yet. This will also keep the `v2`
-   branch up-to-date.
-
-The release process is as follows:
-
-1. Initiate a new release by triggering the `release.yml` workflow manually. Use
-   an update type in accordance with [Semantic Versioning].
-1. Review the created Pull Request and merge if everything looks OK. After
-   merging, a [git tag] for the new version will be created automatically.
-1. Create a new [GitHub Release] for the (automatically) created tag. If the
-   version should be published to the [GitHub Marketplace] ensure that checkbox
-   is checked.
+1. [Manually trigger] the [release workflow] from the `main` branch; Use an
+   update type in accordance with [semantic versioning]. This will create a Pull
+   Request that start the release process.
+1. Follow the instructions in the description of the created Pull Request.
 
 ## Manual Releases (Discouraged)
 
@@ -107,9 +95,9 @@ version (using `v2.7.1` as an example):
    be unstaged.
 
 1. Create a Pull Request to merge the release branch into `main`. Merge the Pull
-   Request if the changes look OK and all CI checks are passing.
+   Request if all continuous integration checks passed.
 
-1. After the Pull Request is merged, sync the `main` branch:
+1. Immediately after the Pull Request is merged, sync the `main` branch:
 
    ```sh
    git checkout main
@@ -122,7 +110,7 @@ version (using `v2.7.1` as an example):
    git tag v2.7.1
    ```
 
-   and update the `v2` branch to point to the same commit as the new tag:
+1. Update the `v2` branch to point to the same commit as the new tag:
 
    ```sh
    git switch v2
@@ -130,18 +118,17 @@ version (using `v2.7.1` as an example):
    git switch main
    ```
 
-1. Push the commit and tags:
+1. Push the `v2` branch and new tag:
 
    ```sh
    git push origin v2 v2.7.1
    ```
 
-1. Create a new [GitHub Release]. If the version should be published to the
-   [GitHub Marketplace] ensure that checkbox is checked.
+1. Create a [GitHub Release] for the new version. Ensure it is published to the
+   [GitHub Marketplace].
 
-[git tag]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
-[github actions]: https://github.com/features/actions
 [github marketplace]: https://github.com/marketplace
 [github release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+[manually trigger]: https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow
+[release workflow]: ./.github/workflows/release.yml
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
-[triggered manually]: https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow

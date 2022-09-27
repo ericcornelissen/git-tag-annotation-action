@@ -10,7 +10,10 @@ on:
         required: true
         default: minor
         type: choice
-        options: [patch, minor, major]
+        options:
+          - patch
+          - minor
+          - major
 
 permissions: read-all
 
@@ -35,7 +38,7 @@ jobs:
             n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
-      - name: Check out code
+      - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - name: Install Node.js
         uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
@@ -48,18 +51,49 @@ jobs:
         run: npm version ${{ github.event.inputs.update_type }} --no-git-tag-version
       - name: Update CHANGELOG
         run: node script/bump-changelog.js
-      - name: Update build files
+      - name: Update built files
         run: npm run build
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@171dd555b9ab6b18fa02519fdfacbb8bf671e1b4
         with:
           title: New ${{ github.event.inputs.update_type }} release for v2
-          body: _This Pull Request was created automatically_
+          body: |
+            _This Pull Request was created automatically_
+
+            ---
+
+            ### Merge checklist
+
+            - [ ] All continuous integration checks passed.
+            - [ ] The version number is updated in `package.json` and
+                  `package-lock.json`.
+            - [ ] A new release is added to `CHANGELOG.md` with the correct
+                  version number and date.
+            - [ ] The new version number is in accordance with the [semantic
+                  versioning] rules.
+            - [ ] The `lib/index.cjs` file has been updated.
+            - [ ] There are no other changes in the Pull Request.
+
+            If any of the above doesn't hold, make adjustments as necessary
+            based on the Release Guidelines (in `RELEASE.md`).
+
+            ### Post-merge checklist
+
+            - [ ] Verify a git tag for the new release is created.[^1]
+            - [ ] Verify the `v2` branch is updated.[^1]
+            - [ ] Create a [GitHub Release] for the new version. Ensure it is
+                  published to the [GitHub Marketplace].
+
+            [^1]: It will take a few minutes for this to happen.
+
+            [github marketplace]: https://github.com/marketplace
+            [github release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+            [semantic versioning]: https://semver.org/spec/v2.0.0.html
           branch: release-${{ github.event.inputs.update_type }}
           branch-suffix: random
           commit-message: Version bump
   release:
-    name: Create Release
+    name: Create release
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     permissions:
@@ -77,7 +111,7 @@ jobs:
             n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
         with:
           fetch-depth: 0 # To obtain all tags
@@ -88,7 +122,7 @@ jobs:
           node-version-file: .nvmrc
       - name: Install dependencies
         run: npm ci
-      - name: Check if version is released
+      - name: Check if version is already released
         id: version
         run: |
           VERSION="v$(cat package.json | jq -r '.version')"
@@ -98,7 +132,7 @@ jobs:
           else
             echo "::set-output name=released::false"
           fi
-      - name: Release new version as tags
+      - name: Release new version
         if: ${{ steps.version.outputs.released == 'false' }}
         run: |
           # Create tag for new version

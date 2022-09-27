@@ -1,4 +1,4 @@
-name: Code Analysis
+name: Code analysis
 on:
   push:
   pull_request:
@@ -36,7 +36,7 @@ jobs:
         with:
           config-file: ./.github/codeql.yml
           languages: javascript
-      - name: Perform CodeQL Analysis
+      - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@904260d7d935dff982205cbdb42025ce30b7a34f
   gitleaks:
     name: Gitleaks
@@ -58,7 +58,7 @@ jobs:
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
         with:
           fetch-depth: 0
-      - name: Perform GitLeaks Analysis
+      - name: Perform GitLeaks analysis
         uses: gitleaks/gitleaks-action@5425999620c418539c61a8143f29e346d5f6cf08
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

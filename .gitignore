@@ -1,6 +1,6 @@
 # IDEs
-.idea
-.vscode
+.idea/
+.vscode/
 
 # generated or installed
 .temp/

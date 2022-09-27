@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The table below tells you which version of the Git Tag Annotation Action are
+The table below tells you which version of the _Git Tag Annotation Action_ are
 currently being supported with security updates.
 
 | Version | Supported | End-of-life |
@@ -12,18 +12,18 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-The maintainers of the Git Tag Annotation Action take security bugs very
+The maintainers of the _Git Tag Annotation Action_ take security bugs very
 seriously. We appreciate your efforts to responsibly disclose your findings. Due
 to the non-funded open-source nature of this project, we take a best-efforts
 approach when it comes to engaging with (security) reports.
 
-To report a security issue in a supported version of the Git Tag Annotation
-Action, send an email to [security@ericcornelissen.dev] and include the words
-_"SECURITY"_ and _"git-tag-annotation-action"_ in the subject line. Please do
-not open a regular issue or Pull Request in the public repository.
+To report a security issue in a supported version of the _Git Tag Annotation
+Action_, send an email to [security@ericcornelissen.dev] and include the terms
+"SECURITY" and "git-tag-annotation-action" in the subject line. Please do not
+open a regular issue or Pull Request in the public repository.
 
-If you found a security bug in an unsupported version of the Git Tag Annotation
-Action, please report this publicly. For example, as a regular issue in the
+If you found a security bug in an unsupported version of the _Git Tag Annotation
+Action_, please report this publicly. For example, as a regular issue in the
 public repository.
 
 ## Advisories

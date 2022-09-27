@@ -7,19 +7,6 @@
   "license": "MIT",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "build": "rollup -c",
-    "clean": "git clean -fqX .temp/ _reports/ & git checkout HEAD ./lib",
-    "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
-    "format": "npm run _prettier -- --write",
-    "lint": "npm run _prettier -- --check",
-    "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
-    "prepare": "is-ci || husky install script/hooks",
-    "test": "uvu test",
-    "test:e2e": "act --job test-e2e",
-    "test:mutation": "stryker run stryker.config.json",
-    "vet": "depcheck && unimported"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ericcornelissen/git-tag-annotation-action.git"
@@ -39,6 +26,19 @@
     "git-actions",
     "actions"
   ],
+  "scripts": {
+    "prepare": "is-ci || husky install script/hooks",
+    "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
+    "build": "rollup -c",
+    "clean": "git clean -fqX .temp/ _reports/ & git checkout HEAD ./lib",
+    "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
+    "format": "npm run _prettier -- --write",
+    "lint": "npm run _prettier -- --check",
+    "test": "uvu test",
+    "test:e2e": "act --job test-e2e",
+    "test:mutation": "stryker run stryker.config.json",
+    "vet": "depcheck && unimported"
+  },
   "dependencies": {
     "@actions/core": "1.9.1",
     "shescape": "1.5.10"

@@ -3,7 +3,6 @@
 [![Continuous Integration][ci-image]][ci-url]
 [![Coverage Report][coverage-image]][coverage-url]
 [![Mutation Report][mutation-image]][mutation-url]
-[![Quality Report][quality-image]][quality-url]
 
 A GitHub Action to get the annotation associated with the current git tag.
 
@@ -48,12 +47,12 @@ refers to the `id` of this Action's step):
 annotation: ${{ steps.tag-data.outputs.git-tag-annotation }}
 ```
 
-For more info on how to use outputs see [the GitHub Actions output docs].
+For more info on how to use outputs see the [GitHub Actions output docs].
 
 ## Full Example
 
 The Workflow file below shows how you can use this Action. If you use this file
-as is the git tag annotation will be outputted to the Workflow logs.
+as is, the git tag annotation will be outputted to the Workflow logs.
 
 ```yaml
 name: My workflow
@@ -89,17 +88,20 @@ that [actions/checkout@v1] is still supported when writing your workflow.
 
 For more information regarding this problem see [actions/checkout#290].
 
+---
+
+Please [open an issue] if you found a mistake or if you have a suggestion for
+how to improve the documentation.
+
 [actions/checkout@v1]: https://github.com/actions/checkout/tree/v1
 [actions/checkout@v2]: https://github.com/actions/checkout/tree/v2
 [actions/checkout@v3]: https://github.com/actions/checkout/tree/v3
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
-[kceb/git-message-action]: https://github.com/kceb/git-message-action
-[the github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
+[github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
+[open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml
 [ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/verify.yml/badge.svg
 [coverage-url]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action
 [coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main/graph/badge.svg
 [mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main
 [mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action%2Fmain
-[quality-url]: https://codeclimate.com/github/ericcornelissen/git-tag-annotation-action/maintainability
-[quality-image]: https://api.codeclimate.com/v1/badges/53d2c44543bf636105f3/maintainability

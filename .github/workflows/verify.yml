@@ -59,11 +59,15 @@ jobs:
         run: npm run build
   test-unit:
     name: Unit tests
-    needs: [build]
+    needs:
+      - build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
@@ -91,7 +95,8 @@ jobs:
         run: npm run test
   test-coverage:
     name: Coverage
-    needs: [test-unit]
+    needs:
+      - test-unit
     runs-on: ubuntu-latest
     if: ${{ always() }}
     steps:
@@ -119,7 +124,7 @@ jobs:
           node-version-file: .nvmrc
       - name: Initialize repository
         run: npm ci
-      - name: Run tests
+      - name: Run tests with coverage
         run: npm run coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
@@ -128,12 +133,17 @@ jobs:
           file: ./_reports/coverage/lcov.info
   test-e2e:
     name: End-to-end tests
-    needs: [test-unit]
+    needs:
+      - build
+      - test-unit
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
@@ -166,7 +176,7 @@ jobs:
         uses: ./
         with:
           tag: v1.0.0
-      - name: Check git-tag-annotation-action output
+      - name: Check output
         shell: bash
         run: |
           ACTUAL="${{ steps.action-test.outputs.git-tag-annotation }}"
@@ -180,7 +190,8 @@ jobs:
           fi
   test-mutation:
     name: Mutation tests
-    needs: [test-unit]
+    needs:
+      - test-unit
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
@@ -210,7 +221,7 @@ jobs:
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
         run: npm run test:mutation
   validate-action-types:
-    name: Validate Action Types
+    name: Validate action types
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
@@ -221,5 +232,5 @@ jobs:
             github.com:443
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
-      - name: Validate Action Types
+      - name: Validate action types
         uses: krzema12/github-actions-typing@6b4fa38aaae32cb0341fc0d7d1385b6c946d4588

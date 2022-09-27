@@ -12,5 +12,7 @@ comment:
 
 ignore:
   - "lib/**"
+  - "script/**/*"
   - "test/**/*"
   - "index.js"
+  - "rollup.config.js"
