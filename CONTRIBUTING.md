@@ -120,6 +120,15 @@ automatically unstage the changes.
 Instead, the file will be updated automatically prior to a release as well as
 build when necessary for testing.
 
+#### Linting
+
+The project uses linters to catch mistakes (in contrast to [Prettier], which is
+only for formatting). Use these commands to check your changes if applicable:
+
+| File type        | Command           |
+| :--------------- | :---------------- |
+| MarkDown (`.md`) | `npm run lint:md` |
+
 #### Vetting
 
 The project is vetted using a small collection of static analysis tools. Run
