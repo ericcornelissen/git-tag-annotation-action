@@ -13,6 +13,9 @@ npm run lint
 npm run lint:md
 npm run test
 
+if command -v shellcheck > /dev/null; then
+  npm run lint:sh
+fi
 if command -v gitleaks > /dev/null; then
   gitleaks protect
 fi
