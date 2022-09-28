@@ -79,6 +79,7 @@ To be able to contribute you need at least the following:
 - [Node.js] v18 or higher and [npm] v8 or higher;
 - (Recommended) a code editor with [EditorConfig] support;
 - (Optional) [act];
+- (Optional) [Fossa CLI];
 - (Suggested) [shellcheck];
 
 We use [husky] to automatically install git hooks. Please enable it when
@@ -134,6 +135,16 @@ only for formatting). Use these commands to check your changes if applicable:
 The project is vetted using a small collection of static analysis tools. Run
 `npm run vet` to analyze the project for potential problems.
 
+#### Licenses
+
+This project uses [Fossa] to check for potential license violations in project
+dependencies. This is an automated check in the CI. You can perform the check
+locally using the [Fossa CLI] - a Fossa account is required - by running (after
+authenticating) `npm run check-licenses`.
+
+> **Note** Your results may differ from the CI check because the license policy
+> can only be configured in the web app.
+
 ---
 
 ## Testing
@@ -179,6 +190,8 @@ There are some limitations to using [act]:
 [editorconfig]: https://editorconfig.org/
 [fast-check]: https://github.com/dubzzz/fast-check#readme
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
+[fossa]: https://fossa.com/
+[fossa cli]: https://github.com/fossas/fossa-cli
 [git]: https://git-scm.com/
 [husky]: https://typicode.github.io/husky/
 [mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing

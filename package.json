@@ -30,6 +30,7 @@
     "prepare": "is-ci || husky install script/hooks",
     "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
     "build": "rollup -c",
+    "check-licenses": "fossa analyze && fossa test",
     "clean": "git clean -fqX .temp/ _reports/ & git checkout HEAD ./lib",
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
     "format": "npm run _prettier -- --write",
