@@ -9,6 +9,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
+    "check-licenses": "fossa analyze && fossa test",
     "clean": "git clean -fqX .temp/ _reports/ & git checkout HEAD ./lib",
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
     "format": "npm run _prettier -- --write",

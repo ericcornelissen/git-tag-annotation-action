@@ -76,6 +76,7 @@ To be able to contribute you need at least the following:
 - _Node.js_ v18 or higher and _npm_ v8 or higher;
 - (Recommended) a code editor with _[EditorConfig]_ support;
 - (Optional) [`nektos/act`];
+- (Optional) [Fossa CLI];
 
 We use [Husky] to automatically install git hooks. Please enable it when
 contributing to this project. If you have npm installation scripts disabled, run
@@ -115,6 +116,16 @@ only for formatting). Use these commands to check your changes if applicable:
 
 The project is vetted using a small collection of static analysis tools. Run
 `npm run vet` to analyze the project for potential problems.
+
+#### Licenses
+
+This project uses [Fossa] to check for potential license violations in project
+dependencies. This is an automated check in the CI. You can perform the check
+locally using the [Fossa CLI] - a Fossa account is required - by running (after
+authenticating) `npm run check-licenses`.
+
+> **Note** Your results may differ from the CI check because the license policy
+> can only be configured in the web app.
 
 ---
 
@@ -162,6 +173,8 @@ There are some limitations to using [`nektos/act`]:
 [docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
 [fast-check]: https://github.com/dubzzz/fast-check#readme
+[fossa]: https://fossa.com/
+[fossa cli]: https://github.com/fossas/fossa-cli
 [husky]: https://typicode.github.io/husky/
 [mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing
 [`nektos/act`]: https://github.com/nektos/act
