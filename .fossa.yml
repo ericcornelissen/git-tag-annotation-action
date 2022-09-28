@@ -6,4 +6,6 @@ server: https://app.fossa.com
 
 paths:
   exclude:
-    - ./lib
+    - ./_reports/
+    - ./.temp/
+    - ./lib/
