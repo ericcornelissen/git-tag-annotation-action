@@ -75,6 +75,7 @@ To be able to contribute you need at least the following:
 - _Git_;
 - _Node.js_ v18 or higher and _npm_ v8 or higher;
 - (Recommended) a code editor with _[EditorConfig]_ support;
+- (Suggested) [ShellCheck];
 - (Optional) [`nektos/act`];
 - (Optional) [Fossa CLI];
 
@@ -108,9 +109,12 @@ the file will be updated automatically prior to a release.
 The project uses linters to catch mistakes (in contrast to [Prettier], which is
 only for formatting). Use these commands to check your changes if applicable:
 
-| File type        | Command           |
-| :--------------- | :---------------- |
-| MarkDown (`.md`) | `npm run lint:md` |
+| File type                | Command                |
+| :----------------------- | :--------------------- |
+| MarkDown (`.md`)         | `npm run lint:md`      |
+| Shell scripts (`.{,sh}`) | `npm run lint:sh` (\*) |
+
+(\*): requires you have [ShellCheck] available on your system.
 
 #### Vetting
 
@@ -187,4 +191,5 @@ There are some limitations to using [`nektos/act`]:
 [property tests]: https://en.wikipedia.org/wiki/Property_testing
 [rollup.js]: https://rollupjs.org/guide/en/
 [security policy]: ./SECURITY.md
+[shellcheck]: https://github.com/koalaman/shellcheck
 [uvu]: https://www.npmjs.com/package/uvu
