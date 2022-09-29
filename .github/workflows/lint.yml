@@ -6,6 +6,7 @@ on:
       - "**.json"
       - "**.md"
       - "**.yml"
+      - "script/hooks/**"
       - ".github/workflows/lint.yml"
       - "package-lock.json"
   push:
@@ -14,6 +15,7 @@ on:
       - "**.json"
       - "**.md"
       - "**.yml"
+      - "script/hooks/**"
       - ".github/workflows/lint.yml"
       - "package-lock.json"
 
@@ -49,6 +51,8 @@ jobs:
         run: npm run lint
       - name: Lint MarkDown
         run: npm run lint:md
+      - name: Lint shell scripts
+        run: npm run lint:sh
   vet:
     name: Vet
     runs-on: ubuntu-latest

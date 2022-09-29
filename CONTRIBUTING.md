@@ -78,9 +78,9 @@ To be able to contribute you need at least the following:
 - [Git];
 - [Node.js] v18 or higher and [npm] v8 or higher;
 - (Recommended) a code editor with [EditorConfig] support;
+- (Suggested) [ShellCheck];
 - (Optional) [act];
 - (Optional) [Fossa CLI];
-- (Suggested) [shellcheck];
 
 We use [husky] to automatically install git hooks. Please enable it when
 contributing to this project. If you have npm installation scripts disabled, run
@@ -126,9 +126,12 @@ build when necessary for testing.
 The project uses linters to catch mistakes (in contrast to [Prettier], which is
 only for formatting). Use these commands to check your changes if applicable:
 
-| File type        | Command           |
-| :--------------- | :---------------- |
-| MarkDown (`.md`) | `npm run lint:md` |
+| File type                | Command                |
+| :----------------------- | :--------------------- |
+| MarkDown (`.md`)         | `npm run lint:md`      |
+| Shell scripts (`.{,sh}`) | `npm run lint:sh` (\*) |
+
+(\*): requires you have [ShellCheck] available on your system.
 
 #### Vetting
 

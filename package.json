@@ -36,6 +36,7 @@
     "format": "npm run _prettier -- --write",
     "lint": "npm run _prettier -- --check",
     "lint:md": "markdownlint --dot --ignore-path .gitignore .",
+    "lint:sh": "shellcheck -e SC1090,SC1091,SC2155 script/hooks/*.sh script/hooks/pre-*",
     "test": "uvu test",
     "test:e2e": "act --job test-e2e",
     "test:mutation": "stryker run stryker.config.json",
