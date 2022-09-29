@@ -1,14 +1,19 @@
 # Release Guidelines
 
-If you need to release a new version of the _Git Tag Annotation Action_ follow
+If you need to release a new version of the _Git Tag Annotation Action_, follow
 the guidelines found in this document.
+
+- [Automated Releases (Preferred)](#automated-releases-preferred)
+- [Manual Releases (Discouraged)](#manual-releases-discouraged)
+- [Major Releases](#major-releases)
+- [Non-current Releases](#non-current-releases)
 
 ## Automated Releases (Preferred)
 
 To release a new version follow these steps:
 
 1. [Manually trigger] the [release workflow] from the `main` branch; Use an
-   update type in accordance with [semantic versioning]. This will create a Pull
+   update type in accordance with [Semantic Versioning]. This will create a Pull
    Request that start the release process.
 1. Follow the instructions in the description of the created Pull Request.
 
@@ -104,7 +109,7 @@ version (using `v2.7.1` as an example):
    git pull origin main
    ```
 
-1. Create a tag for the new version:
+1. Create a [git tag] for the new version:
 
    ```sh
    git tag v2.7.1
@@ -127,6 +132,23 @@ version (using `v2.7.1` as an example):
 1. Create a [GitHub Release] for the new version. Ensure it is published to the
    [GitHub Marketplace].
 
+## Major Releases
+
+For major releases, some additional steps are required. This may include:
+
+- Ensure any references to the major version in the documentation (external and
+  internal) are updated.
+- Update the automated release workflow to create releases for the new major
+  version.
+
+Make sure these additional changes are included in the release Pull Request.
+
+## Non-current Releases
+
+When releasing an older version of the project, refer to the Release Guidelines
+(`RELEASE.md`) of the respective main branch instead.
+
+[git tag]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
 [github marketplace]: https://github.com/marketplace
 [github release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
 [manually trigger]: https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow
