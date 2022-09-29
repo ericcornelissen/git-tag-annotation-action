@@ -3,10 +3,10 @@ on:
   push:
   pull_request:
     paths:
-      - ".github/workflows/code-analysis.yml"
-      - ".github/codeql.yml"
-      - "src/**.js"
-      - "index.js"
+      - ./.github/workflows/code-analysis.yml
+      - ./.github/codeql.yml
+      - ./src/**.js
+      - ./index.js
   schedule:
     - cron: "0 7 * * 3"
 

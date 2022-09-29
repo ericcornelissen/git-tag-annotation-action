@@ -2,30 +2,30 @@ name: Verify code
 on:
   pull_request:
     paths:
-      - ".github/workflows/verify.yml"
-      - ".github/codecov.yml"
-      - "src/**.js"
-      - "test/**.js"
-      - ".nvmrc"
-      - "action.yml"
-      - "action-types.yml"
-      - "index.js"
-      - "package-lock.json"
-      - "rollup.config.js"
-      - "stryker.config.json"
+      - ./.github/workflows/verify.yml
+      - ./.github/codecov.yml
+      - ./src/**.js
+      - ./test/**.js
+      - ./.nvmrc
+      - ./action.yml
+      - ./action-types.yml
+      - ./index.js
+      - ./package-lock.json
+      - ./rollup.config.js
+      - ./stryker.config.json
   push:
     paths:
-      - ".github/workflows/verify.yml"
-      - ".github/codecov.yml"
-      - "src/**.js"
-      - "test/**.js"
-      - ".nvmrc"
-      - "index.js"
-      - "action.yml"
-      - "action-types.yml"
-      - "package-lock.json"
-      - "rollup.config.js"
-      - "stryker.config.json"
+      - ./.github/workflows/verify.yml
+      - ./.github/codecov.yml
+      - ./src/**.js
+      - ./test/**.js
+      - ./.nvmrc
+      - ./index.js
+      - ./action.yml
+      - ./action-types.yml
+      - ./package-lock.json
+      - ./rollup.config.js
+      - ./stryker.config.json
 
 permissions: read-all
 

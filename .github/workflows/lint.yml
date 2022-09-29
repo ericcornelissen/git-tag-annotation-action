@@ -2,22 +2,22 @@ name: Lint
 on:
   pull_request:
     paths:
-      - "**.js"
-      - "**.json"
-      - "**.md"
-      - "**.yml"
-      - "script/hooks/**"
-      - ".github/workflows/lint.yml"
-      - "package-lock.json"
+      - ./**.js
+      - ./**.json
+      - ./**.md
+      - ./**.yml
+      - ./script/hooks/**
+      - ./.github/workflows/lint.yml
+      - ./package-lock.json
   push:
     paths:
-      - "**.js"
-      - "**.json"
-      - "**.md"
-      - "**.yml"
-      - "script/hooks/**"
-      - ".github/workflows/lint.yml"
-      - "package-lock.json"
+      - ./**.js
+      - ./**.json
+      - ./**.md
+      - ./**.yml
+      - ./script/hooks/**
+      - ./.github/workflows/lint.yml
+      - ./package-lock.json
 
 permissions: read-all
 
