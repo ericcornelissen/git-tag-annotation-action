@@ -15,10 +15,9 @@ For security related issues, please refer to the [security policy].
 
 ### Bugs
 
-If you have problems with the _Git Tag Annotation Action_ or think you've found
-a bug, please report it to the developers. We ask you to always open an issue
-describing the bug as soon as possible so that we, and others, are aware of the
-bug.
+If you have problems with the project or think you've found a bug, please report
+it to the developers. We ask you to always open an issue describing the bug as
+soon as possible so that we, and others, are aware of the bug.
 
 Before reporting a bug, make sure you've actually found a real bug. Carefully
 read the documentation and see if it really says you can do what you're trying
@@ -39,10 +38,10 @@ Once you have a precise problem you can report it as a [bug report].
 
 ### Feature Requests
 
-The simplicity of the _Git Tag Annotation Action_ Action is by design. It is
-unlikely new features will be added, but you are free to create a [feature
-request]. Please avoid implementing a new feature before submitting an issue for
-it first. Also, make sure the feature has not already been requested.
+The simplicity of the project is by design. It is unlikely new features will be
+added, but you are free to create a [feature request]. Please avoid implementing
+a new feature before submitting an issue for it first. Also, make sure the
+feature has not already been requested.
 
 ### Corrections
 

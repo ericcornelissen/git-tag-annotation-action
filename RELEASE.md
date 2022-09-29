@@ -1,7 +1,7 @@
 # Release Guidelines
 
-If you need to release a new version of _Git Tag Annotation Action_ follow the
-guidelines found in this document.
+If you need to release a new version of the _Git Tag Annotation Action_ follow
+the guidelines found in this document.
 
 ## Automated Releases (Preferred)
 
