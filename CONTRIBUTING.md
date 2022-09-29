@@ -186,6 +186,7 @@ There are some limitations to using [act]:
   couldn't run them for all operating systems.
 - All jobs that the end-to-end test job `needs` have to be executed as well.
 
+[act]: https://github.com/nektos/act
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
 [docker]: https://www.docker.com/
@@ -198,10 +199,9 @@ There are some limitations to using [act]:
 [husky]: https://typicode.github.io/husky/
 [mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing
 [node.js]: https://nodejs.org/en/
-[act]: https://github.com/nektos/act
 [npm]: https://www.npmjs.com/
-[open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
+[open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues
 [prettier]: https://prettier.io/
 [property tests]: https://en.wikipedia.org/wiki/Property_testing
 [rollup.js]: https://rollupjs.org/guide/en/
