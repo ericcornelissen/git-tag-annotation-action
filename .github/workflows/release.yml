@@ -32,7 +32,6 @@ jobs:
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
-            n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Check out code
@@ -74,7 +73,6 @@ jobs:
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
-            n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout code
