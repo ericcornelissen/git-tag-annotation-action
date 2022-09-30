@@ -2,7 +2,7 @@ name: Check
 on:
   pull_request_target:
   push:
-    branch:
+    branches:
       - main
       - v2
 
