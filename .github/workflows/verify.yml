@@ -1,6 +1,6 @@
 name: Verify code
 on:
-  pull_request:
+  pull_request_target:
     paths:
       - ".github/workflows/verify.yml"
       - ".github/codecov.yml"
