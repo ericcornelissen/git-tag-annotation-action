@@ -66,7 +66,7 @@ jobs:
     name: Example job
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
