@@ -9,6 +9,6 @@ permissions: read-all
 jobs:
   audit:
     name: Audit
-    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@revamp-ci
+    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@main
     with:
       refs: '["main", "v2"]'
