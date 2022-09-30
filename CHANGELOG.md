@@ -8,7 +8,7 @@ Versioning].
 
 ## [Unreleased]
 
-- Update dependency _actions/core_. ([#326])
+- _No changes yet_
 
 ## [2.0.3] - 2022-09-11
 
@@ -130,4 +130,3 @@ Versioning].
 [#262]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/262
 [#271]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/271
 [#282]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/282
-[#326]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/326
