@@ -7,5 +7,5 @@ queries:
   - uses: security-extended
 
 paths:
-  - index.js
-  - src/
+  - ./src/
+  - ./index.js

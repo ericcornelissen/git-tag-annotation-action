@@ -11,8 +11,8 @@ comment:
   require_head: yes
 
 ignore:
-  - lib/**
-  - script/**/*
-  - test/**/*
-  - index.js
-  - rollup.config.js
+  - ./lib/**
+  - ./script/**
+  - ./test/**/*
+  - ./index.js
+  - ./rollup.config.js

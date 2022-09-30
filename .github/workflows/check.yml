@@ -1,41 +1,23 @@
-name: Verify code
+name: Check
 on:
-  pull_request:
-    paths:
-      - ./.github/workflows/verify.yml
-      - ./.github/codecov.yml
-      - ./src/**.js
-      - ./test/**.js
-      - ./.nvmrc
-      - ./action.yml
-      - ./action-types.yml
-      - ./index.js
-      - ./package-lock.json
-      - ./rollup.config.js
-      - ./stryker.config.json
+  pull_request_target:
   push:
-    paths:
-      - ./.github/workflows/verify.yml
-      - ./.github/codecov.yml
-      - ./src/**.js
-      - ./test/**.js
-      - ./.nvmrc
-      - ./index.js
-      - ./action.yml
-      - ./action-types.yml
-      - ./package-lock.json
-      - ./rollup.config.js
-      - ./stryker.config.json
+    branches:
+      - main
+      - v2
 
 permissions: read-all
 
 jobs:
+  audit:
+    name: Audit
+    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@main
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -43,7 +25,6 @@ jobs:
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
-            n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
@@ -57,14 +38,37 @@ jobs:
         run: npm ci
       - name: Build standalone JavaScript file
         run: npm run build
+  codeql:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            ghcr.io:443
+            github.com:443
+            pkg-containers.githubusercontent.com:443
+            uploads.github.com:443
+      - name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@e0e5ded33cabb451ae0a9768fc7b0410bad9ad44
+        with:
+          config-file: ./.github/codeql.yml
+          languages: javascript
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@e0e5ded33cabb451ae0a9768fc7b0410bad9ad44
   licenses:
     name: Licenses
     runs-on: ubuntu-latest
-    env:
-      FOSSA_API_KEY: ${{ secrets.FOSSA_API_KEY }}
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -79,22 +83,15 @@ jobs:
         run: |
           curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install-latest.sh | bash
       - name: Check licenses
+        env:
+          FOSSA_API_KEY: ${{ secrets.FOSSA_API_KEY }}
         run: npm run check-licenses
-  test-unit:
-    name: Unit tests
-    needs:
-      - build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -102,7 +99,6 @@ jobs:
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
-            n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
@@ -114,17 +110,20 @@ jobs:
           node-version-file: .nvmrc
       - name: Initialize repository
         run: npm ci
-      - name: Run tests
-        run: npm run test
-  test-coverage:
-    name: Coverage
-    needs:
-      - test-unit
+      - name: Lint formatting
+        run: npm run lint
+      - name: Lint MarkDown
+        run: npm run lint:md
+      - name: Lint shell scripts
+        run: npm run lint:sh
+  test-unit:
+    name: Unit tests
     runs-on: ubuntu-latest
-    if: ${{ always() }}
+    needs:
+      - build
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -133,7 +132,6 @@ jobs:
             codecov.io:443
             github.com:443
             nodejs.org:443
-            n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
             storage.googleapis.com:443
@@ -156,10 +154,10 @@ jobs:
           file: ./_reports/coverage/lcov.info
   test-e2e:
     name: End-to-end tests
+    runs-on: ${{ matrix.os }}
     needs:
       - build
       - test-unit
-    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -169,7 +167,7 @@ jobs:
           - windows-latest
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
         if: ${{ matrix.os == 'ubuntu-latest' }}
         with:
           egress-policy: block
@@ -178,7 +176,6 @@ jobs:
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
-            n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
@@ -213,12 +210,12 @@ jobs:
           fi
   test-mutation:
     name: Mutation tests
+    runs-on: ubuntu-latest
     needs:
       - test-unit
-    runs-on: ubuntu-latest
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -227,7 +224,6 @@ jobs:
             dashboard.stryker-mutator.io:443
             github.com:443
             nodejs.org:443
-            n06iacprodeus1file4.blob.core.windows.net:443
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
@@ -244,11 +240,11 @@ jobs:
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
         run: npm run test:mutation
   validate-action-types:
-    name: Validate action types
+    name: Action types
     runs-on: ubuntu-latest
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -256,4 +252,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - name: Validate action types
-        uses: krzema12/github-actions-typing@6b4fa38aaae32cb0341fc0d7d1385b6c946d4588
+        uses: krzema12/github-actions-typing@ee1a42fd9ec5fb08b9cab98719608b7e56e4d796
+  vet:
+    name: Vet
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@2e205a28d0e1da00c5f53b161f4067b052c61f34
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            artifactcache.actions.githubusercontent.com:443
+            github.com:443
+            nodejs.org:443
+            objects.githubusercontent.com:443
+            registry.npmjs.org:443
+      - name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - name: Install Node.js
+        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - name: Initialize repository
+        run: npm ci
+      - name: Vet
+        run: npm run vet
