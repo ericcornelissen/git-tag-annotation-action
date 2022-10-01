@@ -8,6 +8,6 @@ export default {
     file: "lib/index.cjs",
     format: "cjs",
   },
-  external: ["node:child_process", "node:os", "node:process"],
-  plugins: [commonjs(), nodeResolve(), terser()],
+  // external: ["node:child_process", "node:os", "node:process"],
+  plugins: [commonjs(), nodeResolve({ preferBuiltins: true }), terser()],
 };
