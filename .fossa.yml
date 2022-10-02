@@ -4,6 +4,11 @@ version: 3
 
 server: https://app.fossa.com
 
+project:
+  id: github.com/ericcornelissen/git-tag-annotation-action
+  name: git-tag-annotation-action
+  url: https://github.com/ericcornelissen/git-tag-annotation-action
+
 paths:
   exclude:
     - ./_reports/
