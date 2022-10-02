@@ -1,9 +1,24 @@
-# Contributing to Git Tag Annotation Action
+# Contributing Guidelines
 
 The maintainers of the _Git Tag Annotation Action_ welcome contributions and
 corrections to the source code, tests, documentation, and other aspects of the
-project. If you plan to make a contribution, please do make sure to read through
-the relevant sections of this document.
+project.
+
+If you plan to make a contribution, please do make sure to read through the
+relevant sections of this document.
+
+- [Reporting Issues](#reporting-issues)
+  - [Security](#security)
+  - [Bugs](#bugs)
+  - [Feature Requests](#feature-requests)
+  - [Corrections](#corrections)
+- [Making Changes](#making-changes)
+  - [Prerequisites](#prerequisites)
+  - [Workflow](#workflow)
+  - [Development Details](#development-details)
+- [Testing](#testing)
+  - [Unit Testing](#unit-testing)
+  - [End-to-end Testing](#end-to-end-testing)
 
 ---
 
@@ -29,7 +44,7 @@ When preparing to report a bug, try to isolate it to a small working example
 that reproduces the problem. Once you have this, collect additional information
 such as:
 
-- The exact version of _Git Tag Annotation Action_ you're using.
+- The exact version of the Action you're using.
 - A description of the expected behaviour and the actual behaviour.
 - All error and warning messages.
 - A link to a workflow run where the bug occurs with [debug logging] enabled.

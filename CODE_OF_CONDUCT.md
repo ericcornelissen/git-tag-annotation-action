@@ -1,4 +1,8 @@
-# Contributor Covenant Code of Conduct
+# Code of Conduct
+
+This code of conduct is adapted from the [Contributor Covenant], version 1.4,
+available at: [contributor-covenant.org]. For answers to common questions about
+this code of conduct, see the [FAQ].
 
 ## Our Pledge
 
@@ -63,12 +67,6 @@ separately.
 Project maintainers who do not follow or enforce the code of conduct in good
 faith may face temporary or permanent repercussions as determined by other
 members of the project's leadership.
-
-## Attribution
-
-This code of conduct is adapted from the [Contributor Covenant], version 1.4,
-available at: [contributor-covenant.org]. For answers to common questions about
-this code of conduct, see the [FAQ].
 
 [contact@ericcornelissen.dev]: mailto:contact@ericcornelissen.dev
 [contributor covenant]: https://www.contributor-covenant.org

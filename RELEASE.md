@@ -25,20 +25,20 @@ version (using `v2.7.1` as an example):
 
 1. Make sure that your local copy of the repository is up-to-date, sync:
 
-   ```sh
+   ```shell
    git switch main
    git pull origin main
    ```
 
    Or clone:
 
-   ```sh
+   ```shell
    git clone git@github.com:ericcornelissen/git-tag-annotation-action.git
    ```
 
 1. Verify that the repository is in a state that can be released:
 
-   ```sh
+   ```shell
    npm clean-install
    npm run lint
    npm run test
@@ -47,13 +47,13 @@ version (using `v2.7.1` as an example):
 
 1. Update the contents of the `lib/` directory using:
 
-   ```sh
+   ```shell
    npm run build
    ```
 
 1. Update the version number in the package manifest and lockfile:
 
-   ```sh
+   ```shell
    npm version v2.7.1 --no-git-tag-version
    ```
 
@@ -71,14 +71,14 @@ version (using `v2.7.1` as an example):
 
 1. Update the changelog:
 
-   ```sh
+   ```shell
    node script/bump-changelog.js
    ```
 
    If that fails, manually add the following text after the `## [Unreleased]`
    line:
 
-   ```md
+   ```markdown
    - _No changes yet_
 
    ## [2.7.1] - YYYY-MM-DD
@@ -89,7 +89,7 @@ version (using `v2.7.1` as an example):
 
 1. Commit the changes to a new release branch and push using:
 
-   ```sh
+   ```shell
    git checkout -b release-$(sha1sum package-lock.json | awk '{print $1}')
    git add lib/ CHANGELOG.md package.json package-lock.json
    git commit --message "Version bump" --no-verify
@@ -104,20 +104,20 @@ version (using `v2.7.1` as an example):
 
 1. Immediately after the Pull Request is merged, sync the `main` branch:
 
-   ```sh
+   ```shell
    git checkout main
    git pull origin main
    ```
 
 1. Create a [git tag] for the new version:
 
-   ```sh
+   ```shell
    git tag v2.7.1
    ```
 
 1. Update the `v2` branch to point to the same commit as the new tag:
 
-   ```sh
+   ```shell
    git switch v2
    git merge main
    git switch main
@@ -125,7 +125,7 @@ version (using `v2.7.1` as an example):
 
 1. Push the `v2` branch and new tag:
 
-   ```sh
+   ```shell
    git push origin v2 v2.7.1
    ```
 
