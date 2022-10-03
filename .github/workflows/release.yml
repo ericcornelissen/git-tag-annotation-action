@@ -67,25 +67,24 @@ jobs:
                   `package-lock.json`.
             - [ ] A new release is added to `CHANGELOG.md` with the correct
                   version number and date.
-            - [ ] The new version number is in accordance with the [semantic
-                  versioning] rules.
+            - [ ] The new version number is in accordance with the [Semantic
+                  Versioning] rules.
             - [ ] The `lib/index.cjs` file has been updated.
             - [ ] There are no other changes in the Pull Request.
 
-            If any of the above doesn't hold, make adjustments as necessary
-            based on the Release Guidelines (in `RELEASE.md`).
+            If any of the above doesn't hold, or if this is a major release,
+            make adjustments as necessary based on the Release Guidelines (in
+            `RELEASE.md`).
 
             ### Post-merge checklist
 
             - [ ] Verify a git tag for the new release is created.[^1]
             - [ ] Verify the `v2` branch is updated.[^1]
-            - [ ] Create a [GitHub Release] for the new version. Ensure it is
-                  published to the [GitHub Marketplace].
+            - [ ] [Create a Github Release].
 
             [^1]: It will take a few minutes for this to happen.
 
-            [github marketplace]: https://github.com/marketplace
-            [github release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+            [create a github release]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main/RELEASE.md#creating-a-github-release
             [semantic versioning]: https://semver.org/spec/v2.0.0.html
           branch: release-${{ github.event.inputs.update_type }}
           branch-suffix: random
