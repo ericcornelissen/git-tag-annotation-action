@@ -5,6 +5,7 @@ the guidelines found in this document.
 
 - [Automated Releases (Preferred)](#automated-releases-preferred)
 - [Manual Releases (Discouraged)](#manual-releases-discouraged)
+- [Creating a GitHub Release](#creating-a-github-release)
 - [Major Releases](#major-releases)
 - [Non-current Releases](#non-current-releases)
 
@@ -26,7 +27,7 @@ version (using `v2.7.1` as an example):
 1. Make sure that your local copy of the repository is up-to-date, sync:
 
    ```shell
-   git switch main
+   git checkout main
    git pull origin main
    ```
 
@@ -34,15 +35,6 @@ version (using `v2.7.1` as an example):
 
    ```shell
    git clone git@github.com:ericcornelissen/git-tag-annotation-action.git
-   ```
-
-1. Verify that the repository is in a state that can be released:
-
-   ```shell
-   npm clean-install
-   npm run lint
-   npm run test
-   npm run vet
    ```
 
 1. Update the contents of the `lib/` directory using:
@@ -57,7 +49,7 @@ version (using `v2.7.1` as an example):
    npm version v2.7.1 --no-git-tag-version
    ```
 
-   If that fails change the value of the version field in `package.json` to the
+   If that fails, change the value of the version field in `package.json` to the
    new version:
 
    ```diff
@@ -65,9 +57,8 @@ version (using `v2.7.1` as an example):
    +  "version": "2.7.1",
    ```
 
-   and to update the version number in `package-lock.json` it is recommended to
-   run `npm install` (after updating `package.json`) which will sync the version
-   number.
+   and update the version number in `package-lock.json` using `npm install`
+   (after updating `package.json`), which will sync the version number.
 
 1. Update the changelog:
 
@@ -92,15 +83,21 @@ version (using `v2.7.1` as an example):
    ```shell
    git checkout -b release-$(sha1sum package-lock.json | awk '{print $1}')
    git add lib/ CHANGELOG.md package.json package-lock.json
-   git commit --message "Version bump" --no-verify
+   git commit --no-verify --message "Version bump"
    git push origin release-$(sha1sum package-lock.json | awk '{print $1}')
    ```
 
    The `--no-verify` option is required as otherwise the changes to `lib/` will
    be unstaged.
 
-1. Create a Pull Request to merge the release branch into `main`. Merge the Pull
-   Request if all continuous integration checks passed.
+1. Create a Pull Request to merge the release branch into `main`.
+
+1. Merge the Pull Request if the changes look OK and all continuous integration
+   checks are passing.
+
+   > **Note** At this point, the continuous delivery automation may pick up and
+   > complete the release process. If no, or only partially, continue following
+   > the remaining steps.
 
 1. Immediately after the Pull Request is merged, sync the `main` branch:
 
@@ -118,9 +115,8 @@ version (using `v2.7.1` as an example):
 1. Update the `v2` branch to point to the same commit as the new tag:
 
    ```shell
-   git switch v2
+   git checkout v2
    git merge main
-   git switch main
    ```
 
 1. Push the `v2` branch and new tag:
@@ -129,8 +125,15 @@ version (using `v2.7.1` as an example):
    git push origin v2 v2.7.1
    ```
 
-1. Create a [GitHub Release] for the new version. Ensure it is published to the
-   [GitHub Marketplace].
+1. [Create a GitHub Release](#creating-a-github-release).
+
+## Creating a GitHub Release
+
+Create a [GitHub Release] for the [git tag] of the new release. The release
+title should be "Release {_version_}" (e.g. "Release v2.1.7"). The release text
+should be the changes from the changelog for the version (including links).
+
+Ensure the version is published to the [GitHub Marketplace] as well.
 
 ## Major Releases
 

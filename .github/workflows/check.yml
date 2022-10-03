@@ -237,6 +237,7 @@ jobs:
         run: npm ci
       - name: Run mutation tests
         env:
+          CI: true
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
         run: npm run test:mutation
   validate-action-types:

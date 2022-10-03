@@ -1,8 +1,8 @@
 # Code of Conduct
 
-This code of conduct is adapted from the [Contributor Covenant], version 1.4,
-available at: [contributor-covenant.org]. For answers to common questions about
-this code of conduct, see the [FAQ].
+This is the code of conduct for the _Git Tag Annotation Action_. It is adapted
+from the [Contributor Covenant], version 1.4. For answers to common questions
+about this code of conduct, see the [FAQ].
 
 ## Our Pledge
 
@@ -70,5 +70,4 @@ members of the project's leadership.
 
 [contact@ericcornelissen.dev]: mailto:contact@ericcornelissen.dev
 [contributor covenant]: https://www.contributor-covenant.org
-[contributor-covenant.org]: https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
 [faq]: https://www.contributor-covenant.org/faq
