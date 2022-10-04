@@ -98,6 +98,7 @@ how to improve the documentation.
 [actions/checkout@v3]: https://github.com/actions/checkout/tree/v3
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
+[kceb/git-message-action]: https://github.com/kceb/git-message-action
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml
 [ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml/badge.svg
