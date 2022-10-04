@@ -7,22 +7,6 @@
   "license": "MIT",
   "type": "module",
   "main": "index.js",
-  "scripts": {
-    "build": "rollup -c",
-    "check-licenses": "fossa analyze && fossa test",
-    "clean": "git clean -fqX .temp/ _reports/ & git checkout HEAD ./lib",
-    "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
-    "format": "npm run _prettier -- --write",
-    "lint": "npm run _prettier -- --check",
-    "lint:md": "markdownlint --dot --ignore-path .gitignore .",
-    "lint:sh": "shellcheck -e SC1090,SC1091,SC2155 script/hooks/*.sh script/hooks/pre-*",
-    "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
-    "prepare": "is-ci || husky install script/hooks",
-    "test": "uvu test",
-    "test:e2e": "act --job test-e2e",
-    "test:mutation": "stryker run stryker.config.json",
-    "vet": "depcheck && unimported"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ericcornelissen/git-tag-annotation-action.git"
@@ -62,6 +46,22 @@
     "sinon": "14.0.0",
     "unimported": "1.21.0",
     "uvu": "0.5.6"
+  },
+  "scripts": {
+    "prepare": "is-ci || husky install script/hooks",
+    "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
+    "build": "rollup --config rollup.config.js",
+    "check-licenses": "fossa analyze && fossa test",
+    "clean": "git clean --force -X .temp/ _reports/ && git checkout HEAD ./lib",
+    "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
+    "format": "npm run _prettier -- --write",
+    "lint": "npm run _prettier -- --check",
+    "lint:md": "markdownlint --dot --ignore-path .gitignore .",
+    "lint:sh": "shellcheck -e SC1090,SC1091,SC2155 script/hooks/*.sh script/hooks/pre-*",
+    "test": "uvu test",
+    "test:e2e": "act --job test-e2e",
+    "test:mutation": "stryker run stryker.config.json",
+    "vet": "depcheck && unimported"
   },
   "engines": {
     "node": ">=18.0.0",

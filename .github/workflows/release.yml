@@ -55,7 +55,37 @@ jobs:
         uses: peter-evans/create-pull-request@671dc9c9e0c2d73f07fa45a3eb0220e1622f0c5f
         with:
           title: New ${{ github.event.inputs.update_type }} release for v2
-          body: _This Pull Request was created automatically_
+          body: |
+            _This Pull Request was created automatically_
+
+            ---
+
+            ### Merge checklist
+
+            - [ ] All continuous integration checks passed.
+            - [ ] The version number is updated in `package.json` and
+                  `package-lock.json`.
+            - [ ] A new release is added to `CHANGELOG.md` with the correct
+                  version number and date.
+            - [ ] The new version number is in accordance with the [Semantic
+                  Versioning] rules.
+            - [ ] The `lib/index.cjs` file has been updated.
+            - [ ] There are no other changes in the Pull Request.
+
+            If any of the above doesn't hold, or if this is a major release,
+            make adjustments as necessary based on the Release Guidelines (in
+            `RELEASE.md`).
+
+            ### Post-merge checklist
+
+            - [ ] Verify a git tag for the new release is created.[^1]
+            - [ ] Verify the `v2` branch is updated.[^1]
+            - [ ] [Create a Github Release].
+
+            [^1]: It will take a few minutes for this to happen.
+
+            [create a github release]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main/RELEASE.md#creating-a-github-release
+            [semantic versioning]: https://semver.org/spec/v2.0.0.html
           branch: release-${{ github.event.inputs.update_type }}
           branch-suffix: random
           commit-message: Version bump
@@ -93,7 +123,7 @@ jobs:
         run: |
           VERSION="v$(jq -r '.version' < package.json)"
           echo "::set-output name=version::$VERSION"
-          if [ "$(git tag -l "$VERSION")" ]; then
+          if [ "$(git tag --list "$VERSION")" ]; then
             echo "::set-output name=released::true"
           else
             echo "::set-output name=released::false"

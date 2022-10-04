@@ -1,4 +1,8 @@
-# Contributor Covenant Code of Conduct
+# Code of Conduct
+
+This is the code of conduct for the _Git Tag Annotation Action_. It is adapted
+from the [Contributor Covenant], version 1.4. For answers to common questions
+about this code of conduct, see the [FAQ].
 
 ## Our Pledge
 
@@ -39,13 +43,13 @@ response to any instances of unacceptable behavior.
 
 Project maintainers have the right and responsibility to remove, edit, or
 reject comments, commits, code, issues, and other contributions that are not
-aligned to this Code of Conduct, or to ban temporarily or permanently any
+aligned to this code of conduct, or to ban temporarily or permanently any
 contributor for other behaviors that they deem inappropriate, threatening,
 offensive, or harmful.
 
 ## Scope
 
-This Code of Conduct applies within all project spaces, and it also applies when
+This code of conduct applies within all project spaces, and it also applies when
 an individual is representing the project or its community in public spaces.
 Representation of a project may be further defined and clarified by project
 maintainers.
@@ -53,23 +57,17 @@ maintainers.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at contact@ericcornelissen.dev. All
+reported by contacting the project team at [contact@ericcornelissen.dev]. All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. The project team is
 obligated to maintain confidentiality with regard to the reporter of an
 incident. Further details of specific enforcement policies may be posted
 separately.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good
+Project maintainers who do not follow or enforce the code of conduct in good
 faith may face temporary or permanent repercussions as determined by other
 members of the project's leadership.
 
-## Attribution
-
-This Code of Conduct is adapted from the [Contributor Covenant][homepage],
-version 1.4, available at: [contributor-covenant.org]. For answers to common
-questions about this code of conduct, see the [FAQ].
-
-[homepage]: https://www.contributor-covenant.org
-[contributor-covenant.org]: https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+[contact@ericcornelissen.dev]: mailto:contact@ericcornelissen.dev
+[contributor covenant]: https://www.contributor-covenant.org
 [faq]: https://www.contributor-covenant.org/faq

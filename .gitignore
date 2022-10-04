@@ -1,9 +1,12 @@
-# IDEs
-.idea
-.vscode
-
-# generated or installed
 .temp/
 _reports/
+
+# IDEs
+.idea/
+.vscode/
+
+# Node.js
 node_modules/
-*.log
+.npm/
+.node_repl_history
+npm-debug.log*

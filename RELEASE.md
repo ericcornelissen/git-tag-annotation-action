@@ -1,28 +1,22 @@
 # Release Guidelines
 
-If you need to release a new version of git-tag-annotation-action you should
-follow the guidelines found in this file.
+If you need to release a new version of the _Git Tag Annotation Action_, follow
+the guidelines found in this document.
+
+- [Automated Releases (Preferred)](#automated-releases-preferred)
+- [Manual Releases (Discouraged)](#manual-releases-discouraged)
+- [Creating a GitHub Release](#creating-a-github-release)
+- [Major Releases](#major-releases)
+- [Non-current Releases](#non-current-releases)
 
 ## Automated Releases (Preferred)
 
-The [`release.yml`](./.github/workflows/release.yml) [GitHub Actions] workflow
-should be used to create releases. This workflow:
+To release a new version follow these steps:
 
-1. Can be [triggered manually] to initiate a new release by means of a Pull
-   Request.
-1. Is triggered on the `main` branch and will create a [git tag] for the version
-   in the manifest **if** it doesn't exist yet. This will also keep the `v2`
-   branch up-to-date.
-
-The release process is as follows:
-
-1. Initiate a new release by triggering the `release.yml` workflow manually. Use
-   an update type in accordance with [Semantic Versioning].
-1. Review the created Pull Request and merge if everything looks OK. After
-   merging, a [git tag] for the new version will be created automatically.
-1. Create a new [GitHub Release] for the (automatically) created tag. If the
-   version should be published to the [GitHub Marketplace] ensure that checkbox
-   is checked.
+1. [Manually trigger] the [release workflow] from the `main` branch; Use an
+   update type in accordance with [Semantic Versioning]. This will create a Pull
+   Request that start the release process.
+1. Follow the instructions in the description of the created Pull Request.
 
 ## Manual Releases (Discouraged)
 
@@ -32,39 +26,30 @@ version (using `v2.7.1` as an example):
 
 1. Make sure that your local copy of the repository is up-to-date, sync:
 
-   ```sh
-   git switch main
+   ```shell
+   git checkout main
    git pull origin main
    ```
 
    Or clone:
 
-   ```sh
+   ```shell
    git clone git@github.com:ericcornelissen/git-tag-annotation-action.git
-   ```
-
-1. Verify that the repository is in a state that can be released:
-
-   ```sh
-   npm clean-install
-   npm run lint
-   npm run test
-   npm run vet
    ```
 
 1. Update the contents of the `lib/` directory using:
 
-   ```sh
+   ```shell
    npm run build
    ```
 
 1. Update the version number in the package manifest and lockfile:
 
-   ```sh
+   ```shell
    npm version v2.7.1 --no-git-tag-version
    ```
 
-   If that fails change the value of the version field in `package.json` to the
+   If that fails, change the value of the version field in `package.json` to the
    new version:
 
    ```diff
@@ -72,20 +57,19 @@ version (using `v2.7.1` as an example):
    +  "version": "2.7.1",
    ```
 
-   and to update the version number in `package-lock.json` it is recommended to
-   run `npm install` (after updating `package.json`) which will sync the version
-   number.
+   and update the version number in `package-lock.json` using `npm install`
+   (after updating `package.json`), which will sync the version number.
 
 1. Update the changelog:
 
-   ```sh
+   ```shell
    node script/bump-changelog.js
    ```
 
    If that fails, manually add the following text after the `## [Unreleased]`
    line:
 
-   ```md
+   ```markdown
    - _No changes yet_
 
    ## [2.7.1] - YYYY-MM-DD
@@ -96,52 +80,80 @@ version (using `v2.7.1` as an example):
 
 1. Commit the changes to a new release branch and push using:
 
-   ```sh
+   ```shell
    git checkout -b release-$(sha1sum package-lock.json | awk '{print $1}')
    git add lib/ CHANGELOG.md package.json package-lock.json
-   git commit -m "Version bump" --no-verify
+   git commit --no-verify --message "Version bump"
    git push origin release-$(sha1sum package-lock.json | awk '{print $1}')
    ```
 
    The `--no-verify` option is required as otherwise the changes to `lib/` will
    be unstaged.
 
-1. Create a Pull Request to merge the release branch into `main`. Merge the Pull
-   Request if the changes look OK and all CI checks are passing.
+1. Create a Pull Request to merge the release branch into `main`.
 
-1. After the Pull Request is merged, sync the `main` branch:
+1. Merge the Pull Request if the changes look OK and all continuous integration
+   checks are passing.
 
-   ```sh
+   > **Note** At this point, the continuous delivery automation may pick up and
+   > complete the release process. If no, or only partially, continue following
+   > the remaining steps.
+
+1. Immediately after the Pull Request is merged, sync the `main` branch:
+
+   ```shell
    git checkout main
    git pull origin main
    ```
 
-1. Create a tag for the new version:
+1. Create a [git tag] for the new version:
 
-   ```sh
+   ```shell
    git tag v2.7.1
    ```
 
-   and update the `v2` branch to point to the same commit as the new tag:
+1. Update the `v2` branch to point to the same commit as the new tag:
 
-   ```sh
-   git switch v2
+   ```shell
+   git checkout v2
    git merge main
-   git switch main
    ```
 
-1. Push the commit and tags:
+1. Push the `v2` branch and new tag:
 
-   ```sh
+   ```shell
    git push origin v2 v2.7.1
    ```
 
-1. Create a new [GitHub Release]. If the version should be published to the
-   [GitHub Marketplace] ensure that checkbox is checked.
+1. [Create a GitHub Release](#creating-a-github-release).
+
+## Creating a GitHub Release
+
+Create a [GitHub Release] for the [git tag] of the new release. The release
+title should be "Release {_version_}" (e.g. "Release v2.1.7"). The release text
+should be the changes from the changelog for the version (including links).
+
+Ensure the version is published to the [GitHub Marketplace] as well.
+
+## Major Releases
+
+For major releases, some additional steps are required. This may include:
+
+- Ensure any references to the major version in the documentation (external and
+  internal) are updated.
+- Update the automated release workflow to create releases for the new major
+  version.
+
+Make sure these additional changes are included in the release Pull Request.
+
+## Non-current Releases
+
+When releasing an older version of the project, refer to the Release Guidelines
+(`RELEASE.md`) of the respective main branch instead.
 
 [git tag]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
-[github actions]: https://github.com/features/actions
 [github marketplace]: https://github.com/marketplace
 [github release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+[manually trigger]: https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow
+[release workflow]: ./.github/workflows/release.yml
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
-[triggered manually]: https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow

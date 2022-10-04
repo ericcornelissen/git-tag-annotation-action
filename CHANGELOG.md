@@ -1,6 +1,7 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to the _Git Tag Annotation Action_ will be documented in
+this file.
 
 The format is based on [Keep a Changelog], and this project adheres to [Semantic
 Versioning].
@@ -31,7 +32,7 @@ Versioning].
 
 ## [1.1.9] - 2022-07-29
 
-- Update deprecation warning for end-of-life (EOL) of v1 of the Action. ([#254])
+- Update deprecation warning for end-of-life (EOL). ([#254])
 
 ## [1.1.8] - 2022-07-17
 
@@ -39,7 +40,7 @@ Versioning].
 
 ## [1.1.7] - 2022-05-02
 
-- Update deprecation warning for end-of-life (EOL) of v1 of the Action. ([#175])
+- Update deprecation warning for end-of-life (EOL). ([#175])
 - Update dependencies _actions/core_. ([#171])
 
 ## [1.1.6] - 2022-03-27
@@ -74,7 +75,7 @@ Versioning].
 
 ## [1.1.0] - 2020-12-07
 
-- Add support for running the Action on Windows. ([cd5bd03])
+- Add support for running on Windows. ([cd5bd03])
 
 ## [1.0.1] - 2020-10-24
 
@@ -83,8 +84,8 @@ Versioning].
 
 ## [1.0.0] - 2020-10-22
 
-- Run the Action to get the git tag annotation of the current tag.
-- Run the Action to get the git tag annotation of a specified tag.
+- Get the git tag annotation of the current tag.
+- Get the git tag annotation of a specified tag.
 
 [keep a changelog]: https://keepachangelog.com/en/1.0.0/
 [semantic versioning]: https://semver.org/spec/v2.0.0.html

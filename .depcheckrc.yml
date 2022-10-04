@@ -1,0 +1,5 @@
+# Check out depcheck at: https://github.com/depcheck/depcheck
+
+ignores:
+  - rollup
+ignore-path: .gitignore
