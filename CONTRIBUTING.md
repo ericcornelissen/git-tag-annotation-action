@@ -147,10 +147,16 @@ The project is vetted using a small collection of static analysis tools. Run
 
 ##### Vulnerabilities
 
-To scan for vulnerabilities in Node.js dependencies, run:
+To scan for vulnerabilities in all npm dependencies, run:
 
 ```shell
-npm audit
+npm run audit
+```
+
+To scan for vulnerabilities in runtime npm dependencies only, run:
+
+```shell
+npm run audit:prod
 ```
 
 ##### Licenses
