@@ -91,9 +91,9 @@ as clearly as possible.
 
 ### Prerequisites
 
-To be able to contribute you need at least the following:
+To be able to contribute you need the following tooling:
 
-- [Git];
+- [git];
 - [Node.js] v18 or higher and [npm] v8 or higher;
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [ShellCheck];
@@ -133,12 +133,10 @@ correctly.
 On top of that, the project uses linters to catch mistakes. Use the following
 command to check your changes if applicable:
 
-| File type                | Command                |
-| :----------------------- | :--------------------- |
-| MarkDown (`.md`)         | `npm run lint:md`      |
-| Shell scripts (`.{,sh}`) | `npm run lint:sh` (\*) |
-
-(\*): requires you have [ShellCheck] available on your system.
+| File type        | Command           | Linter         |
+| :--------------- | :---------------- | :------------- |
+| MarkDown (`.md`) | `npm run lint:md` | [markdownlint] |
+| Shell (`.{,sh}`) | `npm run lint:sh` | [ShellCheck]   |
 
 #### Vetting
 
@@ -232,11 +230,12 @@ There are some limitations to using [act]:
 [fossa cli]: https://github.com/fossas/fossa-cli
 [git]: https://git-scm.com/
 [husky]: https://typicode.github.io/husky/
+[markdownlint]: https://github.com/DavidAnson/markdownlint
 [mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing
 [node.js]: https://nodejs.org/en/
 [npm]: https://www.npmjs.com/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
-[open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues
+[open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
 [prettier]: https://prettier.io/
 [property tests]: https://en.wikipedia.org/wiki/Property_testing
 [rollup.js]: https://rollupjs.org/guide/en/
