@@ -50,6 +50,8 @@
   "scripts": {
     "prepare": "is-ci || husky install script/hooks",
     "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
+    "audit": "npm audit",
+    "audit:prod": "npm audit --omit dev",
     "build": "rollup --config rollup.config.js",
     "check-licenses": "fossa analyze && fossa test",
     "clean": "git clean --force -X .temp/ _reports/ && git checkout HEAD ./lib",
