@@ -1,8 +1,11 @@
 # Contributing Guidelines
 
 The maintainers of the _Git Tag Annotation Action_ welcome contributions and
-corrections to the source code, tests, documentation, and other aspects of the
-project.
+corrections of all forms. This includes improvements to the documentation or
+code base, new tests, bug fixes, and implementations of new features. We
+recommend you open an issue before making any substantial changes so you can be
+sure your work won't be rejected. But for small changes, such as fixing a typo,
+you can open a Pull Request directly.
 
 If you plan to make a contribution, please do make sure to read through the
 relevant sections of this document.
@@ -53,23 +56,24 @@ Once you have a precise problem you can report it as a [bug report].
 
 ### Feature Requests
 
-The simplicity of the project is by design. It is unlikely new features will be
-added, but you are free to create a [feature request]. Please avoid implementing
-a new feature before submitting an issue for it first. Also, make sure the
-feature has not already been requested.
+The simplicity of the project is by design - it is unlikely new features will be
+added. Please avoid implementing a new feature before submitting an issue for it
+first. To request a feature, make sure you have a clear idea what you need and
+why. Also, make sure the feature has not already been requested.
+
+When you have a clear idea of what you need, you can submit a [feature request].
 
 ### Corrections
 
-Corrections, such as fixing typos, are valuable contributions. For small changes
-you can open a Pull Request with the changes directly. Or you can [open an
-issue] instead.
+Corrections, such as fixing typos or refactoring code, are important. For small
+changes you can open a Pull Request directly, Or you can first [open an issue].
 
 ---
 
 ## Making Changes
 
 You are always free to contribute by working on one of the confirmed or accepted
-(and unassigned) [open issues] and opening a Pull Request for it.
+and unassigned [open issues] and opening a Pull Request for it.
 
 It is advised to indicate that you will be working on a issue by commenting on
 that issue. This is so others don't start working on the same issue as you are.
@@ -93,12 +97,8 @@ To be able to contribute you need at least the following:
 - [Node.js] v18 or higher and [npm] v8 or higher;
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [ShellCheck];
-- (Optional) [act];
+- (Optional) [act] and [Docker];
 - (Optional) [Fossa CLI];
-
-We use [husky] to automatically install git hooks. Please enable it when
-contributing to this project. If you have npm installation scripts disabled, run
-`npm run prepare` after installing dependencies.
 
 ### Workflow
 
@@ -112,13 +112,58 @@ If you decide to contribute anything, please use the following workflow:
 
 ### Development Details
 
-#### Formatting
+Before you start making changes you should run npm install. This ensures your
+local development environment is setup and ready to go.
+
+We use [husky] to automatically install git hooks. Please enable it when
+contributing to this project. If you have npm installation scripts disabled, run
+`npm run prepare` after installing dependencies.
+
+When making contributions, make sure your changes are [tested](#testing),
+[well-formatted](#formatting-and-linting), and [vetted](#vetting).
+
+#### Formatting and Linting
 
 The source code of the project is formatted using [Prettier]. Run the command
 `npm run format` to format the source code, or `npm run lint` to check if your
 changes follow the expected format. The pre-commit hook will format all staged
 changes. The pre-push hook will prevent pushing code that is not formatted
 correctly.
+
+On top of that, the project uses linters to catch mistakes. Use the following
+command to check your changes if applicable:
+
+| File type                | Command                |
+| :----------------------- | :--------------------- |
+| MarkDown (`.md`)         | `npm run lint:md`      |
+| Shell scripts (`.{,sh}`) | `npm run lint:sh` (\*) |
+
+(\*): requires you have [ShellCheck] available on your system.
+
+#### Vetting
+
+The project is vetted using a small collection of static analysis tools. Run
+`npm run vet` to analyze the project for potential problems.
+
+#### Auditing
+
+##### Vulnerabilities
+
+To scan for vulnerabilities in Node.js dependencies, run:
+
+```shell
+npm audit
+```
+
+##### Licenses
+
+This project uses [Fossa] to check for potential license violations in project
+dependencies. This is an automated check in the CI. You can perform the check
+locally using the [Fossa CLI] - a Fossa account is required - by running (after
+authenticating) `npm run check-licenses`.
+
+> **Note** Your results may differ from the CI check because the license policy
+> can only be configured in the web app.
 
 #### Building
 
@@ -135,33 +180,6 @@ automatically unstage the changes.
 Instead, the file will be updated automatically prior to a release as well as
 build when necessary for testing.
 
-#### Linting
-
-The project uses linters to catch mistakes (in contrast to [Prettier], which is
-only for formatting). Use these commands to check your changes if applicable:
-
-| File type                | Command                |
-| :----------------------- | :--------------------- |
-| MarkDown (`.md`)         | `npm run lint:md`      |
-| Shell scripts (`.{,sh}`) | `npm run lint:sh` (\*) |
-
-(\*): requires you have [ShellCheck] available on your system.
-
-#### Vetting
-
-The project is vetted using a small collection of static analysis tools. Run
-`npm run vet` to analyze the project for potential problems.
-
-#### Licenses
-
-This project uses [Fossa] to check for potential license violations in project
-dependencies. This is an automated check in the CI. You can perform the check
-locally using the [Fossa CLI] - a Fossa account is required - by running (after
-authenticating) `npm run check-licenses`.
-
-> **Note** Your results may differ from the CI check because the license policy
-> can only be configured in the web app.
-
 ---
 
 ## Testing
@@ -177,9 +195,11 @@ Unit tests may be written as a [property tests]. The [fast-check] framework is
 used to write property tests. When writing a unit test, it is encouraged to
 write it as a property test, though this is not required.
 
-The effectiveness of unit tests is measured using [mutation testing]. You can
-run the mutation tests using the `npm run test:mutation` command. The mutation
-report can be found in `_reports/mutation`.
+#### Mutation Testing
+
+The effectiveness of unit tests is measured using [mutation testing] with
+[Stryker]. You can run the mutation tests using the `npm run test:mutation`
+command. The mutation report can be found in `_reports/mutation`.
 
 ### End-to-end Testing
 
@@ -222,4 +242,5 @@ There are some limitations to using [act]:
 [rollup.js]: https://rollupjs.org/guide/en/
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
+[stryker]: https://stryker-mutator.io/
 [uvu]: https://www.npmjs.com/package/uvu
