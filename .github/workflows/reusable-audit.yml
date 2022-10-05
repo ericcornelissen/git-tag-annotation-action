@@ -43,10 +43,10 @@ jobs:
         run: npm ci
       - name: Audit all npm dependencies
         if: ${{ !startsWith(matrix.ref, 'v') }}
-        run: npm audit
+        run: npm audit # TODO: Replace with `run: npm run audit`
       - name: Audit production npm dependencies
         if: ${{ startsWith(matrix.ref, 'v') }}
-        run: npm audit --omit dev
+        run: npm audit --omit dev # TODO: Replace with `run: npm run audit:prod`
   secrets:
     name: Secrets
     runs-on: ubuntu-latest
