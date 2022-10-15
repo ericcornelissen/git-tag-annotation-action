@@ -1,6 +1,6 @@
 {
   "name": "git-tag-annotation-action",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": true,
   "description": "Github Action for obtaining the annotation of a git tag",
   "homepage": "https://github.com/ericcornelissen/git-tag-annotation-action#readme",
