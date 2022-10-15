@@ -8,6 +8,10 @@ Versioning].
 
 ## [Unreleased]
 
+- _No changes yet_
+
+## [2.0.4] - 2022-10-15
+
 - Update dependency _actions/core_. ([#333])
 
 ## [2.0.3] - 2022-09-11
