@@ -8,7 +8,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Update dependency _shescape_. ([#353])
 
 ## [2.0.4] - 2022-10-15
 
@@ -135,3 +135,4 @@ Versioning].
 [#271]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/271
 [#282]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/282
 [#333]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/333
+[#353]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/353
