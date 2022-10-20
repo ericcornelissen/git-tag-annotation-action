@@ -117,7 +117,7 @@ jobs:
         id: version
         run: |
           VERSION="v$(jq -r '.version' < package.json)"
-          echo "name=$VERSION" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
           if [ "$(git tag --list "$VERSION")" ]; then
             echo "released=true" >> $GITHUB_OUTPUT
           else
