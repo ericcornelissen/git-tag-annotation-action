@@ -25,5 +25,5 @@ export default {
   },
 
   tempDirName: ".temp/stryker",
-  cleanTempDir: false,
+  cleanTempDir: true,
 };
