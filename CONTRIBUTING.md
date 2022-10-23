@@ -98,7 +98,6 @@ To be able to contribute you need the following tooling:
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [ShellCheck];
 - (Optional) [act] and [Docker];
-- (Optional) [Fossa CLI];
 
 ### Workflow
 
@@ -161,13 +160,17 @@ npm run audit:prod
 
 ##### Licenses
 
-This project uses [Fossa] to check for potential license violations in project
-dependencies. This is an automated check in the CI. You can perform the check
-locally using the [Fossa CLI] - a Fossa account is required - by running (after
-authenticating) `npm run check-licenses`.
+This project uses [licensee] to check for potential license violations in
+project dependencies. To validate the licenses of dependencies, run:
 
-> **Note** Your results may differ from the CI check because the license policy
-> can only be configured in the web app.
+```shell
+npm run check-licenses
+```
+
+which will exit with a non-zero exit code if there's a violation.
+
+The configuration, including allowed licenses and exceptions, can be found in
+`.licensee.json`.
 
 #### Building
 
@@ -232,10 +235,9 @@ There are some limitations to using [act]:
 [editorconfig]: https://editorconfig.org/
 [fast-check]: https://github.com/dubzzz/fast-check#readme
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
-[fossa]: https://fossa.com/
-[fossa cli]: https://github.com/fossas/fossa-cli
 [git]: https://git-scm.com/
 [husky]: https://typicode.github.io/husky/
+[licensee]: https://github.com/jslicense/licensee.js#readme
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing
 [node.js]: https://nodejs.org/en/
