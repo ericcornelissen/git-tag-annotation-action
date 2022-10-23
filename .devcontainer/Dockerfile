@@ -10,5 +10,4 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     # Install manual dependencies
-    && curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sh \
-    && curl https://raw.githubusercontent.com/fossas/fossa-cli/master/install-latest.sh | sh
+    && curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sh
