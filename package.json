@@ -31,7 +31,7 @@
     "shescape": "1.6.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "23.0.0",
+    "@rollup/plugin-commonjs": "23.0.1",
     "@rollup/plugin-node-resolve": "15.0.0",
     "@stryker-mutator/core": "6.2.3",
     "c8": "7.12.0",
@@ -54,7 +54,7 @@
     "audit:prod": "npm audit --omit dev",
     "build": "rollup --config rollup.config.js",
     "check-licenses": "fossa analyze && fossa test",
-    "clean": "git clean --force -X .temp/ _reports/ && git checkout HEAD ./lib",
+    "clean": "git clean --force -X .cache/ .temp/ _reports/ && git checkout HEAD ./lib",
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
     "format": "npm run _prettier -- --write",
     "lint": "npm run _prettier -- --check",
