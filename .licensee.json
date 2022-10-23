@@ -1,6 +1,22 @@
 {
   "licenses": {
-    "spdx": ["MIT"]
+    "spdx": [
+      "0BSD",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "CC0-1.0",
+      "CC-BY-3.0",
+      "CC-BY-4.0",
+      "ISC",
+      "MIT",
+      "MPL-2.0",
+      "Python-2.0"
+    ]
+  },
+  "packages": {
+    "docopt": "<=0.6.2",
+    "scss-parser": "<=1.0.5"
   },
   "corrections": false
 }
