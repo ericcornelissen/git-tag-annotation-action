@@ -1,5 +1,7 @@
-ARG VARIANT=16-bullseye
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
+ARG NODE_VERSION
+ARG IMAGE_VARIANT
+
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${NODE_VERSION}-${IMAGE_VARIANT}
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     # Install dependencies using apt-get

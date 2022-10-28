@@ -3,7 +3,8 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "VARIANT": "18-bullseye"
+      "NODE_VERSION": "18",
+      "IMAGE_VARIANT": "bullseye"
     }
   },
   "features": {
