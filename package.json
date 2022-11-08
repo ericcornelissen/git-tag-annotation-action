@@ -38,7 +38,7 @@
     "c8": "7.12.0",
     "depcheck": "1.4.3",
     "fast-check": "3.3.0",
-    "husky": "8.0.1",
+    "husky": "8.0.2",
     "is-ci": "3.0.1",
     "licensee": "9.0.0",
     "markdownlint-cli": "0.32.2",
