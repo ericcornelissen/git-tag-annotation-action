@@ -44,7 +44,7 @@
     "markdownlint-cli": "0.32.2",
     "prettier": "2.7.1",
     "rollup": "3.2.5",
-    "sinon": "14.0.0",
+    "sinon": "14.0.2",
     "unimported": "1.21.0",
     "uvu": "0.5.6"
   },
