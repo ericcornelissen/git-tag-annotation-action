@@ -134,3 +134,12 @@ jobs:
 
           # Update what commit the v2 branch points to
           git push origin HEAD:v2
+      - name: Create GitHub Release
+        if: ${{ steps.version.outputs.released == 'false' }}
+        uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
+        with:
+          # body: TODO
+          draft: false
+          name: Release ${{ steps.version.outputs.version }}
+          prerelease: false
+          tag: ${{ steps.version.outputs.version }}
