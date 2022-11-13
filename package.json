@@ -59,6 +59,7 @@
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
     "format": "npm run _prettier -- --write",
     "lint": "npm run _prettier -- --check",
+    "lint:docker": "docker run -i --rm --mount \"type=bind,source=$(pwd)/.hadolint.yml,target=/.config/hadolint.yaml\" hadolint/hadolint@sha256:d355bd7df747a0f124f3b5e7b21e9dafd0cb19732a276f901f0fdee243ec1f3b < ./.devcontainer/Dockerfile",
     "lint:md": "markdownlint --dot --ignore-path .gitignore .",
     "lint:sh": "shellcheck -e SC1090,SC1091,SC2155 script/hooks/*.sh script/hooks/pre-*",
     "test": "uvu test",
