@@ -16,6 +16,7 @@ fi
 
 # Checks
 npm run vet
+npm run license-check
 npm run lint:md
 npm run format
 git update-index --again
