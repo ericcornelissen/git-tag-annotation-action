@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     permissions:
-      contents: write # To push a tag
+      contents: write # To push a tag and create a GitHub Release
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -124,6 +124,10 @@ jobs:
             echo "released=true" >> $GITHUB_OUTPUT
           else
             echo "released=false" >> $GITHUB_OUTPUT
+
+            echo 'release_notes<<EOF' >> $GITHUB_OUTPUT
+            echo "$(node script/get-release-notes.js)" >> $GITHUB_OUTPUT
+            echo 'EOF' >> $GITHUB_OUTPUT
           fi
       - name: Release new version
         if: ${{ steps.version.outputs.released == 'false' }}
@@ -138,7 +142,7 @@ jobs:
         if: ${{ steps.version.outputs.released == 'false' }}
         uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
         with:
-          # body: TODO
+          body: ${{ steps.version.outputs.release_notes }}
           draft: false
           name: Release ${{ steps.version.outputs.version }}
           prerelease: false
