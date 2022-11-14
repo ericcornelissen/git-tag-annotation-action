@@ -91,9 +91,7 @@ jobs:
       - name: Initialize repository
         run: npm ci
       - name: Check licenses
-        run: |
-          npm run check-licenses
-          echo $?
+        run: npm run license-check
   lint:
     name: Lint
     runs-on: ubuntu-latest
