@@ -165,10 +165,12 @@ This project uses [licensee] to check for potential license violations in
 project dependencies. To validate the licenses of dependencies, run:
 
 ```shell
-npm run check-licenses
+npm run license-check
 ```
 
-which will exit with a non-zero exit code if there's a violation.
+which will output nothing if no problems are detected, or output a list of
+packages without approved licenses and exit with a non-zero exit code if there
+is any violation.
 
 The configuration, including allowed licenses and exceptions, can be found in
 `.licensee.json`.
