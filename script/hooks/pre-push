@@ -14,6 +14,9 @@ npm run lint
 npm run lint:md
 npm run test
 
+if command -v docker > /dev/null; then
+  npm run lint:docker
+fi
 if command -v shellcheck > /dev/null; then
   npm run lint:sh
 fi

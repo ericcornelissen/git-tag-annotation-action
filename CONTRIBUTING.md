@@ -132,10 +132,11 @@ correctly.
 On top of that, the project uses linters to catch mistakes. Use the following
 command to check your changes if applicable:
 
-| File type        | Command           | Linter         |
-| :--------------- | :---------------- | :------------- |
-| MarkDown (`.md`) | `npm run lint:md` | [markdownlint] |
-| Shell (`.{,sh}`) | `npm run lint:sh` | [ShellCheck]   |
+| File type        | Command               | Linter         |
+| :--------------- | :-------------------- | :------------- |
+| `Dockerfile`     | `npm run lint:docker` | [hadolint]     |
+| MarkDown (`.md`) | `npm run lint:md`     | [markdownlint] |
+| Shell (`.{,sh}`) | `npm run lint:sh`     | [ShellCheck]   |
 
 #### Vetting
 
@@ -238,6 +239,7 @@ There are some limitations to using [act]:
 [fast-check]: https://github.com/dubzzz/fast-check#readme
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
+[hadolint]: https://github.com/hadolint/hadolint
 [husky]: https://typicode.github.io/husky/
 [licensee]: https://github.com/jslicense/licensee.js#readme
 [markdownlint]: https://github.com/DavidAnson/markdownlint
