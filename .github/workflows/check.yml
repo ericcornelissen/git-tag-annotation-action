@@ -292,7 +292,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
       - name: Validate action types
-        uses: krzema12/github-actions-typing@ee1a42fd9ec5fb08b9cab98719608b7e56e4d796 # v0.5.2
+        uses: krzema12/github-actions-typing@c62d4007d3d5d487152f92af8b595bb6b4a10d6f # v0.6.0
   vet:
     name: Vet
     runs-on: ubuntu-latest
