@@ -68,14 +68,23 @@ jobs:
     name: Create
     if: ${{ needs.check.outputs.released == 'false' }}
     steps:
+      - name: Get major version
+        uses: actions/github-script@100527700e8b29ca817ac0e0dfbfc5e8ff38edda # v6.3.2
+        id: major-version
+        with:
+          result-encoding: string
+          script: |
+            const version = "${{ needs.check.outputs.version }}"
+            const major = version.replace(/\.\d\.\d$/, "")
+            return major
       - name: Release new version
         run: |
           # Create tag for new version
           git tag "${{ needs.check.outputs.version }}"
           git push origin "${{ needs.check.outputs.version }}"
 
-          # Update what commit the v2 branch points to
-          git push origin HEAD:v2
+          # Update what commit the major version branch points to
+          git push origin HEAD:${{ steps.major-version.outputs.released }}
       - name: Create GitHub Release
         uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
         with:
