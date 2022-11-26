@@ -69,11 +69,10 @@ jobs:
             return major
       - name: Release new version
         run: |
-          # Create tag for new version
           git tag "${{ needs.check.outputs.version }}"
           git push origin "${{ needs.check.outputs.version }}"
-
-          # Update what commit the major version branch points to
+      - name: Update major version branch
+        run: |
           git push origin HEAD:${{ steps.major-version.outputs.released }}
       - name: Create GitHub Release
         uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
