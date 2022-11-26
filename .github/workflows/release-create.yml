@@ -3,13 +3,27 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      update_type:
+        description: Update type
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 permissions: read-all
 
 jobs:
-  release:
-    name: Create
+  check:
+    name: Check
     runs-on: ubuntu-latest
+    outputs:
+      released: ${{ steps.version.outputs.released }}
+      release_notes: ${{ steps.version.outputs.release_notes }}
+      version: ${{ steps.version.outputs.version }}
     permissions:
       contents: write # To push a tag and create a GitHub Release
     steps:
@@ -50,21 +64,23 @@ jobs:
             echo "$(node script/get-release-notes.js)" >> $GITHUB_OUTPUT
             echo 'EOF' >> $GITHUB_OUTPUT
           fi
+  release:
+    name: Create
+    if: ${{ needs.check.outputs.released == 'false' }}
+    steps:
       - name: Release new version
-        if: ${{ steps.version.outputs.released == 'false' }}
         run: |
           # Create tag for new version
-          git tag "${{ steps.version.outputs.version }}"
-          git push origin "${{ steps.version.outputs.version }}"
+          git tag "${{ needs.check.outputs.version }}"
+          git push origin "${{ needs.check.outputs.version }}"
 
           # Update what commit the v2 branch points to
           git push origin HEAD:v2
       - name: Create GitHub Release
-        if: ${{ steps.version.outputs.released == 'false' }}
         uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
         with:
-          body: ${{ steps.version.outputs.release_notes }}
+          body: ${{ needs.check.outputs.release_notes }}
           draft: false
-          name: Release ${{ steps.version.outputs.version }}
+          name: Release ${{ needs.check.outputs.version }}
           prerelease: false
-          tag: ${{ steps.version.outputs.version }}
+          tag: ${{ needs.check.outputs.version }}
