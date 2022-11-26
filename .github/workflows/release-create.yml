@@ -3,16 +3,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      update_type:
-        description: Update type
-        required: true
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
 
 permissions: read-all
 
