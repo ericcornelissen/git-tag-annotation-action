@@ -1,0 +1,70 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+
+permissions: read-all
+
+jobs:
+  release:
+    name: Create
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # To push a tag and create a GitHub Release
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            artifactcache.actions.githubusercontent.com:443
+            github.com:443
+            nodejs.org:443
+            objects.githubusercontent.com:443
+            registry.npmjs.org:443
+      - name: Checkout repository
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+        with:
+          fetch-depth: 0
+      - name: Install Node.js
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - name: Install dependencies
+        run: npm ci
+      - name: Check if version is already released
+        id: version
+        run: |
+          VERSION="v$(jq -r '.version' < package.json)"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          if [ "$(git tag --list "$VERSION")" ]; then
+            echo "released=true" >> $GITHUB_OUTPUT
+          else
+            echo "released=false" >> $GITHUB_OUTPUT
+
+            echo 'release_notes<<EOF' >> $GITHUB_OUTPUT
+            echo "$(node script/get-release-notes.js)" >> $GITHUB_OUTPUT
+            echo 'EOF' >> $GITHUB_OUTPUT
+          fi
+      - name: Release new version
+        if: ${{ steps.version.outputs.released == 'false' }}
+        run: |
+          # Create tag for new version
+          git tag "${{ steps.version.outputs.version }}"
+          git push origin "${{ steps.version.outputs.version }}"
+
+          # Update what commit the v2 branch points to
+          git push origin HEAD:v2
+      - name: Create GitHub Release
+        if: ${{ steps.version.outputs.released == 'false' }}
+        uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
+        with:
+          body: ${{ steps.version.outputs.release_notes }}
+          draft: false
+          name: Release ${{ steps.version.outputs.version }}
+          prerelease: false
+          tag: ${{ steps.version.outputs.version }}
