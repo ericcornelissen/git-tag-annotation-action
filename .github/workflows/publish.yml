@@ -1,4 +1,4 @@
-name: Release
+name: Publish
 on:
   push:
     branches:
@@ -54,8 +54,8 @@ jobs:
             echo "$(node script/get-release-notes.js)" >> $GITHUB_OUTPUT
             echo 'EOF' >> $GITHUB_OUTPUT
           fi
-  release:
-    name: Create
+  github:
+    name: GitHub
     if: ${{ needs.check.outputs.released == 'false' }}
     steps:
       - name: Get major version
