@@ -14,32 +14,16 @@ jobs:
       released: ${{ steps.version.outputs.released }}
       release_notes: ${{ steps.version.outputs.release_notes }}
       version: ${{ steps.version.outputs.version }}
-    permissions:
-      contents: write # To push a tag and create a GitHub Release
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
         with:
           disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            github.com:443
-            nodejs.org:443
-            objects.githubusercontent.com:443
-            registry.npmjs.org:443
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
         with:
           fetch-depth: 0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
-      - name: Install dependencies
-        run: npm ci
       - name: Check if version is already released
         id: version
         run: |
@@ -57,7 +41,14 @@ jobs:
   github:
     name: GitHub
     if: ${{ needs.check.outputs.released == 'false' }}
+    permissions:
+      contents: write # To push a tag, a branch, and create a GitHub Release
     steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
+        with:
+          disable-sudo: true
+          egress-policy: audit
       - name: Get major version
         uses: actions/github-script@100527700e8b29ca817ac0e0dfbfc5e8ff38edda # v6.3.2
         id: major-version
