@@ -11,9 +11,7 @@ permissions: read-all
 jobs:
   audit:
     name: Audit
-    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@381-audit-script
-    with:
-      refs: '["v2"]'
+    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@main
   build:
     name: Build
     runs-on: ubuntu-latest
