@@ -11,4 +11,8 @@ jobs:
     name: Audit
     uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@main
     with:
-      refs: '["main", "v2"]'
+      npm: |
+        [
+          {"ref":"main"},
+          {"ref":"v2","args":"--exclude GHSA-cr84-xvw4-qx3c"}
+        ]
