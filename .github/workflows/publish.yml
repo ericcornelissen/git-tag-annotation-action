@@ -47,6 +47,7 @@ jobs:
           fi
   github:
     name: GitHub
+    runs-on: ubuntu-latest
     if: ${{ needs.check.outputs.released == 'false' }}
     needs:
       - check
