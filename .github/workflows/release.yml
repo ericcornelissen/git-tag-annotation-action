@@ -66,17 +66,17 @@ jobs:
             - [ ] The `lib/index.cjs` file has been updated.
             - [ ] There are no other changes in the Pull Request.
 
-            If any of the above doesn't hold, or if this is a major release, make adjustments as necessary based on the Release Guidelines (in `RELEASE.md`).
+            If any of the above doesn't hold, or if this is a major release, make adjustments as necessary based on the [Release Guidelines].
 
             ### Post-merge checklist
 
-            - [ ] Verify a git tag for the new release is created.[^1]
-            - [ ] Verify the `v2` branch is updated.[^1]
-            - [ ] [Create a GitHub Release].
+            _It will take a few minutes for this to happen._
 
-            [^1]: It will take a few minutes for this to happen.
+            - [ ] Verify a git tag for the new release is created.
+            - [ ] Verify the `v2` branch is updated.
+            - [ ] Verify a GitHub release is created.
 
-            [create a github release]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main/RELEASE.md#creating-a-github-release
+            [release guidelines]: https://github.com/ericcornelissen/git-tag-annotation-action/blob/main/RELEASE.md
             [semantic versioning]: https://semver.org/spec/v2.0.0.html
           branch: release-${{ github.event.inputs.update_type }}
           branch-suffix: random
