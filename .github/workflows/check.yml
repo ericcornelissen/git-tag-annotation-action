@@ -11,14 +11,10 @@ permissions: read-all
 jobs:
   audit:
     name: Audit
-    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@381-better-npm-audit
+    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@main
     with:
       npm: |
-        [
-          {"ref":"${{ github.ref }}"},
-          {"ref":"main"},
-          {"ref":"v2","args":"--exclude GHSA-cr84-xvw4-qx3c"}
-        ]
+        [{"ref":"${{ github.ref }}"}]
   build:
     name: Build
     runs-on: ubuntu-latest
