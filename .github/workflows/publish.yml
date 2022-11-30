@@ -48,6 +48,8 @@ jobs:
   github:
     name: GitHub
     if: ${{ needs.check.outputs.released == 'false' }}
+    needs:
+      - check
     permissions:
       contents: write # To push a tag, a branch, and create a GitHub Release
     steps:
