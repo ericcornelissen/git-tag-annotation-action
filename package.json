@@ -51,8 +51,8 @@
   "scripts": {
     "prepare": "is-ci || husky install script/hooks",
     "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
-    "audit": "npm audit",
-    "audit:prod": "npm audit --omit dev",
+    "audit": "node script/audit.js all",
+    "audit:prod": "node script/audit.js prod",
     "build": "rollup --config rollup.config.js",
     "clean": "git clean --force -X .cache/ .temp/ _reports/ && git checkout HEAD ./lib",
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
