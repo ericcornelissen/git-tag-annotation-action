@@ -18,11 +18,11 @@ const rawReport = cp.spawnSync(
 );
 const report = JSON.parse(rawReport.stdout);
 
-const x = Object.values(report.vulnerabilities).filter(
+const vulnerabilities = Object.values(report.vulnerabilities).filter(
   (vulnerability) =>
     !vulnerability.via.some((entry) =>
       excludes.some(([key, value]) => entry[key] === value)
     )
 );
 
-console.log(x);
+process.exit(vulnerabilities.length);
