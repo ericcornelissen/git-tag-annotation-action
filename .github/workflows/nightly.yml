@@ -14,5 +14,5 @@ jobs:
       npm: |
         [
           {"ref":"main"},
-          {"ref":"v2","args":"--exclude GHSA-cr84-xvw4-qx3c"}
+          {"ref":"v2"}
         ]
