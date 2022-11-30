@@ -35,6 +35,7 @@
     "@rollup/plugin-node-resolve": "15.0.0",
     "@rollup/plugin-terser": "0.1.0",
     "@stryker-mutator/core": "6.3.0",
+    "better-npm-audit": "3.7.3",
     "c8": "7.12.0",
     "depcheck": "1.4.3",
     "fast-check": "3.3.0",
@@ -51,8 +52,8 @@
   "scripts": {
     "prepare": "is-ci || husky install script/hooks",
     "_prettier": "prettier ./**/*.{js,json,md,yml} !lib/* --ignore-path .gitignore",
-    "audit": "npm audit",
-    "audit:prod": "npm audit --omit dev",
+    "audit": "better-npm-audit audit",
+    "audit:prod": "better-npm-audit audit --production",
     "build": "rollup --config rollup.config.js",
     "clean": "git clean --force -X .cache/ .temp/ _reports/ && git checkout HEAD ./lib",
     "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
