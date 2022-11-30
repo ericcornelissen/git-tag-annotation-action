@@ -1,0 +1,88 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+
+permissions: read-all
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    outputs:
+      released: ${{ steps.version.outputs.released }}
+      release_notes: ${{ steps.version.outputs.release_notes }}
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
+        with:
+          disable-sudo: true
+          egress-policy: audit
+      - name: Checkout repository
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+        with:
+          fetch-depth: 0 # To fetch all tags
+      - name: Install Node.js
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - name: Install dependencies
+        run: npm ci
+      - name: Check if version is already released
+        id: version
+        run: |
+          VERSION="v$(jq -r '.version' < package.json)"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          if [ "$(git tag --list "$VERSION")" ]; then
+            echo "released=true" >> $GITHUB_OUTPUT
+          else
+            echo "released=false" >> $GITHUB_OUTPUT
+
+            echo 'release_notes<<EOF' >> $GITHUB_OUTPUT
+            echo "$(node script/get-release-notes.js)" >> $GITHUB_OUTPUT
+            echo 'EOF' >> $GITHUB_OUTPUT
+          fi
+  github:
+    name: GitHub
+    if: ${{ needs.check.outputs.released == 'false' }}
+    needs:
+      - check
+    permissions:
+      contents: write # To push a tag, a branch, and create a GitHub Release
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
+        with:
+          disable-sudo: true
+          egress-policy: audit
+      - name: Checkout repository
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
+        with:
+          fetch-depth: 0 # To fetch all major version branches
+      - name: Get major version
+        uses: actions/github-script@100527700e8b29ca817ac0e0dfbfc5e8ff38edda # v6.3.2
+        id: major-version
+        with:
+          result-encoding: string
+          script: |
+            const version = "${{ needs.check.outputs.version }}"
+            const major = version.replace(/\.\d\.\d$/, "")
+            return major
+      - name: Release new version
+        run: |
+          git tag "${{ needs.check.outputs.version }}"
+          git push origin "${{ needs.check.outputs.version }}"
+      - name: Update major version branch
+        run: |
+          git push origin HEAD:${{ steps.major-version.outputs.released }}
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
+        with:
+          body: ${{ needs.check.outputs.release_notes }}
+          draft: false
+          name: Release ${{ needs.check.outputs.version }}
+          prerelease: false
+          tag: ${{ needs.check.outputs.version }}
