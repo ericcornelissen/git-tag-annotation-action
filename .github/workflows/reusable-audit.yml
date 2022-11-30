@@ -2,9 +2,8 @@ name: Audit
 on:
   workflow_call:
     inputs:
-      refs:
-        default: '[""]'
-        required: false
+      npm:
+        required: true
         type: string
 
 permissions: read-all
@@ -16,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ref: ${{ fromJSON(inputs.refs) }}
+        include: ${{ fromJSON(inputs.npm) }}
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -44,10 +43,10 @@ jobs:
         run: npm ci
       - name: Audit all npm dependencies
         if: ${{ !startsWith(matrix.ref, 'v') }}
-        run: npm run audit
+        run: npm run audit -- ${{ matrix.args }}
       - name: Audit production npm dependencies
         if: ${{ startsWith(matrix.ref, 'v') }}
-        run: npm run audit:prod
+        run: npm run audit:prod -- ${{ matrix.args }}
   secrets:
     name: Secrets
     runs-on: ubuntu-latest
