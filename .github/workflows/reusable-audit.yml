@@ -47,7 +47,7 @@ jobs:
         run: npm run audit
       - name: Audit production npm dependencies
         if: ${{ startsWith(matrix.ref, 'v') }}
-        run: npm run audit:prod -- "-e=url:https://github.com/advisories/GHSA-cr84-xvw4-qx3c"
+        run: npm run audit:prod
   secrets:
     name: Secrets
     runs-on: ubuntu-latest
