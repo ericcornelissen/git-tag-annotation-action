@@ -78,7 +78,7 @@ jobs:
           git push origin "${{ needs.check.outputs.version }}"
       - name: Update major version branch
         run: |
-          git push origin HEAD:${{ steps.major-version.outputs.released }}
+          git push origin HEAD:${{ steps.major-version.outputs.result }}
       - name: Create GitHub Release
         uses: ncipollo/release-action@4c75f0f2e4ae5f3c807cf0904605408e319dcaac # tag=v1.11.1
         with:
