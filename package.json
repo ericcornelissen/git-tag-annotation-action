@@ -56,7 +56,7 @@
     "audit:prod": "better-npm-audit audit --production",
     "build": "rollup --config rollup.config.js",
     "clean": "git clean --force -X .cache/ .temp/ _reports/ && git checkout HEAD ./lib",
-    "coverage": "c8 --reports-dir=_reports/coverage --reporter=lcov --reporter=text npm test",
+    "coverage": "c8 --config .c8rc.json npm test",
     "format": "npm run _prettier -- --write",
     "license-check": "licensee --errors-only",
     "lint": "npm run _prettier -- --check",
