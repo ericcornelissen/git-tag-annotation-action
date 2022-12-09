@@ -9,7 +9,7 @@ permissions: read-all
 jobs:
   check:
     name: Check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     outputs:
       released: ${{ steps.version.outputs.released }}
       release_notes: ${{ steps.version.outputs.release_notes }}
@@ -47,7 +47,7 @@ jobs:
           fi
   github:
     name: GitHub
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     if: ${{ needs.check.outputs.released == 'false' }}
     needs:
       - check

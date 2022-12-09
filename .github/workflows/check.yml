@@ -17,7 +17,7 @@ jobs:
         [{"ref":"${{ github.ref }}"}]
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -44,7 +44,7 @@ jobs:
         run: npm run build
   codeql:
     name: CodeQL
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     permissions:
       security-events: write
     steps:
@@ -70,7 +70,7 @@ jobs:
         uses: github/codeql-action/analyze@a669cc5936cc5e1b6a362ec1ff9e410dc570d190 # v2.1.36
   licenses:
     name: Licenses
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -97,7 +97,7 @@ jobs:
         run: npm run license-check
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -136,7 +136,7 @@ jobs:
         run: npm run lint:sh
   test-unit:
     name: Unit tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - build
     steps:
@@ -181,13 +181,13 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
+          - macos-11
+          - ubuntu-20.04
+          - windows-2022
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+        if: ${{ matrix.os == 'ubuntu-20.04' }}
         with:
           disable-sudo: true
           egress-policy: block
@@ -230,7 +230,7 @@ jobs:
           fi
   test-mutation:
     name: Mutation tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     needs:
       - test-unit
     steps:
@@ -283,7 +283,7 @@ jobs:
         run: npm run test:mutation -- --incremental --force
   validate-action-types:
     name: Action types
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -298,7 +298,7 @@ jobs:
         uses: krzema12/github-actions-typing@c62d4007d3d5d487152f92af8b595bb6b4a10d6f # v0.6.0
   vet:
     name: Vet
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
