@@ -11,7 +11,7 @@ permissions: read-all
 jobs:
   npm:
     name: npm
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
@@ -49,7 +49,7 @@ jobs:
         run: npm run audit:prod -- ${{ matrix.args }}
   secrets:
     name: Secrets
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
