@@ -96,8 +96,10 @@ To be able to contribute you need the following tooling:
 - [git];
 - [Node.js] v18 or higher and [npm] v8.1.2 or higher;
 - (Recommended) a code editor with [EditorConfig] support;
+- (Suggested) [actionlint];
 - (Suggested) [ShellCheck];
-- (Optional) [act] and [Docker];
+- (Optional) [act];
+- (Optional) [Docker];
 
 ### Workflow
 
@@ -134,6 +136,7 @@ command to check your changes if applicable:
 
 | File type        | Command               | Linter         |
 | :--------------- | :-------------------- | :------------- |
+| CI workflows     | `npm run lint:ci`     | [actionlint]   |
 | `Dockerfile`     | `npm run lint:docker` | [hadolint]     |
 | MarkDown (`.md`) | `npm run lint:md`     | [markdownlint] |
 | Shell (`.{,sh}`) | `npm run lint:sh`     | [ShellCheck]   |
@@ -232,6 +235,7 @@ There are some limitations to using [act]:
 - All jobs that the end-to-end test job `needs` have to be executed as well.
 
 [act]: https://github.com/nektos/act
+[actionlint]: https://github.com/rhysd/actionlint
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
 [docker]: https://www.docker.com/
