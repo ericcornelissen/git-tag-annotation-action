@@ -172,7 +172,7 @@ jobs:
         with:
           file: ./_reports/coverage/lcov.info
   test-e2e:
-    name: End-to-end tests
+    name: End-to-end tests (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
     needs:
       - build
@@ -180,10 +180,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - macos-11
-          - ubuntu-20.04
-          - windows-2022
+        include:
+          - name: MacOS
+            os: macos-11
+          - name: Ubuntu
+            os: ubuntu-20.04
+          - name: Windows
+            os: windows-2022
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
