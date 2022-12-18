@@ -10,10 +10,19 @@ inputs:
 outputs:
   git-tag-annotation:
     description: The git tag annotation
+    value: ${{ steps.tag.outputs.annotation }}
 
 runs:
-  using: node16
-  main: lib/index.cjs
+  using: composite
+  steps:
+    - name: Get tag annotation
+      id: tag
+      run: $GITHUB_ACTION_PATH/src/main.sh
+      shell: bash
+      env:
+        GITHUB_REF: $GITHUB_REF
+        GITHUB_OUTPUT: $GITHUB_OUTPUT
+        PROVIDED_TAG: ${{ inputs.tag }}
 
 branding:
   icon: tag

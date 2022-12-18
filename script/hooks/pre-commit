@@ -3,23 +3,12 @@
 . "$(dirname "$0")/common.sh"
 
 # Pre
-LIB_STAGED_COUNT=$(git diff --name-only --staged lib/ | wc --lines)
-if [ "$LIB_STAGED_COUNT" -ne "0" ]; then
-  echo "[INFO] All changes to the lib/ directory have been unstaged"
-  echo "[INFO] Changes in the lib/ directory should not be committed"
-  git restore --staged lib/
-fi
-
 if [ ! "$(IS_MERGING)" ]; then
   git stash push --include-untracked --keep-index --quiet
 fi
 
 # Checks
-npm run vet
-npm run license-check
 npm run lint:md
-npm run format
-git update-index --again
 
 if command -v actionlint > /dev/null; then
   npm run lint:ci

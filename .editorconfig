@@ -18,5 +18,5 @@ max_line_length = unset
 [lib/*]
 max_line_length = unset # Irrelevant for generated files
 
-[Dockerfile]
+[{Dockerfile,Makefile}]
 indent_style = tab

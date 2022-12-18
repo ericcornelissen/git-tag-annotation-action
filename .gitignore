@@ -1,6 +1,4 @@
-.cache/
-.temp/
-_reports/
+github_output
 
 # IDEs
 .idea/

@@ -1,12 +1,8 @@
 # Git Tag Annotation Action
 
 [![Continuous Integration][ci-image]][ci-url]
-[![Coverage Report][coverage-image]][coverage-url]
-[![Mutation Report][mutation-image]][mutation-url]
 
 A GitHub Action to get the annotation associated with the current git tag.
-
-_Based on [kceb/git-message-action]._
 
 ## Example usage
 
@@ -98,11 +94,6 @@ how to improve the documentation.
 [actions/checkout@v3]: https://github.com/actions/checkout/tree/v3
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
-[kceb/git-message-action]: https://github.com/kceb/git-message-action
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml
 [ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml/badge.svg
-[coverage-url]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action
-[coverage-image]: https://codecov.io/gh/ericcornelissen/git-tag-annotation-action/branch/main/graph/badge.svg
-[mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/ericcornelissen/git-tag-annotation-action/main
-[mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fericcornelissen%2Fgit-tag-annotation-action%2Fmain
