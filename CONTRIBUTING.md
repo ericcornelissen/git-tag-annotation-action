@@ -20,7 +20,6 @@ relevant sections of this document.
   - [Workflow](#workflow)
   - [Development Details](#development-details)
 - [Testing](#testing)
-  - [Unit Testing](#unit-testing)
   - [End-to-end Testing](#end-to-end-testing)
 
 ---
