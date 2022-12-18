@@ -113,7 +113,7 @@ If you decide to contribute anything, please use the following workflow:
 
 ### Development Details
 
-Before you start making changes you should run npm install. This ensures your
+Before you start making changes you should run `npm install`. This ensures your
 local development environment is setup and ready to go.
 
 We use [husky] to automatically install git hooks. Please enable it when
@@ -217,8 +217,8 @@ command. The mutation report can be found in `_reports/mutation`.
 ### End-to-end Testing
 
 The end-to-end tests for this project run in the Continuous Integration as part
-of the "Verify code" workflow. These tests aim to verify that the Action can run
-in the GitHub Actions environment and outputs the expected values.
+of the "Check" workflow. These tests aim to verify that the Action can run in
+the GitHub Actions environment and outputs the expected values.
 
 #### Running End-to-end Tests Locally
 
