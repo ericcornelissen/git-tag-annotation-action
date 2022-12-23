@@ -5,10 +5,10 @@
 The table below shows which versions of the _Git Tag Annotation Action_ are
 currently supported with security updates.
 
-| Version | Supported | End-of-life |
-| ------: | :-------- | :---------- |
-|   2.x.x | Yes       | -           |
-|   1.x.x | No        | 2022-07-29  |
+| Version | End-of-life |
+| ------: | :---------- |
+|   2.x.x | -           |
+|   1.x.x | 2022-07-29  |
 
 ## Reporting a Vulnerability
 
