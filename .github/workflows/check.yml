@@ -229,7 +229,7 @@ jobs:
       - name: Check output
         shell: bash
         run: |
-          ACTUAL="${{ steps.action-test.outputs.git-tag-annotation }}"
+          ACTUAL='${{ steps.action-test.outputs.git-tag-annotation }}'
           EXPECTED='- Run the Action to get the git tag annotation of the current tag.
           - Run the Action to get the git tag annotation of a specified tag.
 
