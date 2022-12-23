@@ -62,21 +62,21 @@ jobs:
       - check
     permissions:
       contents: write # To push a tag, a branch, and create a GitHub Release
+      id-token: write # To perform keyless signing with cosign
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
         with:
           disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            github.com:443
-            objects.githubusercontent.com:443
+          egress-policy: audit
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
         with:
           fetch-depth: 0 # To fetch all major version branches
+      - name: Install cosign
+        uses: sigstore/cosign-installer@9becc617647dfa20ae7b1151972e9b3a2c338a2b # v2.8.1
+        with:
+          cosign-release: v1.13.1
       - name: Get major version
         uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0 # v6.3.3
         id: major-version
@@ -93,12 +93,23 @@ jobs:
       - name: Update major version branch
         run: |
           git push origin HEAD:${{ steps.major-version.outputs.result }}
+      - name: Sign Action
+        env:
+          COSIGN_EXPERIMENTAL: 1
+        run: |
+          cosign sign-blob \
+            --output-certificate index.cjs.cert \
+            --output-signature index.cjs.sign \
+            lib/index.cjs
       - name: Create GitHub Release
         uses: ncipollo/release-action@a2e71bdd4e7dab70ca26a852f29600c98b33153e # v1.12.0
         with:
           body: ${{ needs.check.outputs.release_notes }}
           name: Release ${{ needs.check.outputs.version }}
           tag: ${{ needs.check.outputs.version }}
+          artifacts: >-
+            index.cjs.cert,
+            index.cjs.sign
           draft: false
           makeLatest: true
           prerelease: false
