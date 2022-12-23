@@ -39,7 +39,7 @@ jobs:
           cache: npm
           node-version-file: .nvmrc
       - name: Initialize repository
-        run: npm ci
+        run: npm clean-install
       - name: Build standalone JavaScript file
         run: npm run build
   codeql:
@@ -92,7 +92,7 @@ jobs:
           cache: npm
           node-version-file: .nvmrc
       - name: Initialize repository
-        run: npm ci
+        run: npm clean-install
       - name: Check licenses
         run: npm run license-check
   lint:
@@ -127,7 +127,7 @@ jobs:
       - name: Install tooling
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
       - name: Initialize repository
-        run: npm ci
+        run: npm clean-install
       - name: Lint formatting
         run: npm run lint
       - name: Lint Dockerfile
@@ -171,7 +171,7 @@ jobs:
           cache: npm
           node-version-file: .nvmrc
       - name: Initialize repository
-        run: npm ci
+        run: npm clean-install
       - name: Run tests
         run: npm run coverage
       - name: Upload coverage to Codecov
@@ -218,7 +218,7 @@ jobs:
           cache: npm
           node-version-file: .nvmrc
       - name: Initialize repository
-        run: npm ci
+        run: npm clean-install
       - name: Build standalone JavaScript file
         run: npm run build
       - name: Run git-tag-annotation-action
@@ -278,7 +278,7 @@ jobs:
           filters: |
             tests: test/*.js
       - name: Initialize repository
-        run: npm ci
+        run: npm clean-install
       - name: Run mutation tests (incremental)
         if: ${{ steps.changes.outputs.tests == 'false' }}
         env:
@@ -330,6 +330,6 @@ jobs:
           cache: npm
           node-version-file: .nvmrc
       - name: Initialize repository
-        run: npm ci
+        run: npm clean-install
       - name: Vet
         run: npm run vet
