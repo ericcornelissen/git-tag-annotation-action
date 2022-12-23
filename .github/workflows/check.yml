@@ -129,19 +129,21 @@ jobs:
       - name: Initialize repository
         run: npm clean-install
       - name: Lint formatting
-        run: npm run lint
+        continue-on-error: true
+        run: exit 1
+        # run: npm run lint
+      - name: Lint CI workflows
+        continue-on-error: true
+        run: npm run lint:ci
       - name: Lint Dockerfile
-        if: ${{ always() }}
+        continue-on-error: true
         run: npm run lint:docker
       - name: Lint MarkDown
-        if: ${{ always() }}
+        continue-on-error: true
         run: npm run lint:md
       - name: Lint shell scripts
-        if: ${{ always() }}
+        continue-on-error: true
         run: npm run lint:sh
-      - name: Lint CI workflows
-        if: ${{ always() }}
-        run: npm run lint:ci
   test-unit:
     name: Unit tests
     runs-on: ubuntu-22.04
