@@ -26,17 +26,10 @@
     "actions"
   ],
   "devDependencies": {
-    "husky": "8.0.1",
-    "is-ci": "3.0.1",
     "markdownlint-cli": "0.32.2"
   },
   "scripts": {
-    "prepare": "is-ci || husky install script/hooks",
-    "lint:ci": "actionlint",
-    "lint:docker": "docker run -i --rm --mount \"type=bind,source=$(pwd)/.hadolint.yml,target=/.config/hadolint.yaml\" hadolint/hadolint:v2.12.0 < ./.devcontainer/Dockerfile",
-    "lint:md": "markdownlint --dot --ignore-path .gitignore .",
-    "lint:sh": "shellcheck -e SC1090,SC1091,SC2155 script/hooks/*.sh script/hooks/pre-* src/*.sh",
-    "test:e2e": "act --job test-e2e"
+    "markdownlint": "markdownlint"
   },
   "engines": {
     "npm": ">=8.1.2"
