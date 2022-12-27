@@ -22,14 +22,13 @@ jobs:
             api.github.com:443
             artifactcache.actions.githubusercontent.com:443
             auth.docker.io:443
+            docker.io:443
             github.com:443
             nodejs.org:443
             objects.githubusercontent.com:443
             production.cloudflare.docker.com:443
-            proxy.golang.org:443
             registry-1.docker.io:443
             registry.npmjs.org:443
-            sum.golang.org:443
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
       - name: Install Node.js
@@ -37,26 +36,25 @@ jobs:
         with:
           cache: npm
           node-version-file: .nvmrc
-      - name: Install Go
-        uses: actions/setup-go@6edd4406fa81c3da01a34fa6f6343087c207a568 # v3.5.0
-        with:
-          go-version: 1.17
+      - name: Install tooling
+        uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
       - name: Initialize repository
-        run: |
-          npm ci
-          go install github.com/rhysd/actionlint/cmd/actionlint@v1.6.22
+        run: npm clean-install
+      - name: Set setup success flag
+        id: setup
+        run: echo 'succeeded=true' >> "$GITHUB_OUTPUT"
+      - name: Lint CI workflows
+        if: ${{ steps.setup.outputs.succeeded }}
+        run: npm run lint:ci
       - name: Lint Dockerfile
-        if: ${{ always() }}
+        if: ${{ steps.setup.outputs.succeeded }}
         run: npm run lint:docker
       - name: Lint MarkDown
-        if: ${{ always() }}
+        if: ${{ steps.setup.outputs.succeeded }}
         run: npm run lint:md
       - name: Lint shell scripts
-        if: ${{ always() }}
+        if: ${{ steps.setup.outputs.succeeded }}
         run: npm run lint:sh
-      - name: Lint CI workflows
-        if: ${{ always() }}
-        run: npm run lint:ci
   secrets:
     name: Secrets
     runs-on: ubuntu-22.04
@@ -120,7 +118,7 @@ jobs:
       - name: Check output
         shell: bash
         run: |
-          ACTUAL="${{ steps.action-test.outputs.git-tag-annotation }}"
+          ACTUAL='${{ steps.action-test.outputs.git-tag-annotation }}'
           EXPECTED='- Run the Action to get the git tag annotation of the current tag.
           - Run the Action to get the git tag annotation of a specified tag.
           '
