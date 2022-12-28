@@ -1,5 +1,4 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 . "$(dirname "$0")/common.sh"
 
 # Pre
@@ -8,16 +7,16 @@ if [ ! "$(IS_MERGING)" ]; then
 fi
 
 # Checks
-npm run lint:md
+make lint-md
 
 if command -v actionlint > /dev/null; then
-  npm run lint:ci
+  make lint-ci
 fi
 if command -v docker > /dev/null; then
-  npm run lint:docker
+  make lint-docker
 fi
 if command -v shellcheck > /dev/null; then
-  npm run lint:sh
+  make lint-sh
 fi
 if command -v gitleaks > /dev/null; then
   gitleaks protect

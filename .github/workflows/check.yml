@@ -45,16 +45,16 @@ jobs:
         run: echo 'succeeded=true' >> "$GITHUB_OUTPUT"
       - name: Lint CI workflows
         if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:ci
+        run: make lint-ci
       - name: Lint Dockerfile
         if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:docker
+        run: make lint-docker
       - name: Lint MarkDown
         if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:md
+        run: make lint-md
       - name: Lint shell scripts
         if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:sh
+        run: make lint-sh
   secrets:
     name: Secrets
     runs-on: ubuntu-22.04

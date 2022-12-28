@@ -115,21 +115,17 @@ If you decide to contribute anything, please use the following workflow:
 Before you start making changes you should run `npm install`. This ensures your
 local development environment is setup and ready to go.
 
-We use [husky] to automatically install git hooks. Please enable it when
-contributing to this project. If you have npm installation scripts disabled, run
-`npm run prepare` after installing dependencies.
-
 #### Formatting and Linting
 
 This project uses linters to catch mistakes. Use the following command to check
 your changes if applicable:
 
-| File type        | Command               | Linter         |
-| :--------------- | :-------------------- | :------------- |
-| CI workflows     | `npm run lint:ci`     | [actionlint]   |
-| `Dockerfile`     | `npm run lint:docker` | [hadolint]     |
-| MarkDown (`.md`) | `npm run lint:md`     | [markdownlint] |
-| Shell (`.{,sh}`) | `npm run lint:sh`     | [ShellCheck]   |
+| File type        | Command            | Linter         |
+| :--------------- | :----------------- | :------------- |
+| CI workflows     | `make lint-ci`     | [actionlint]   |
+| `Dockerfile`     | `make lint-docker` | [hadolint]     |
+| MarkDown (`.md`) | `make lint-md`     | [markdownlint] |
+| Shell (`.{,sh}`) | `make lint-sh`     | [ShellCheck]   |
 
 ---
 
@@ -143,9 +139,9 @@ the GitHub Actions environment and outputs the expected values.
 
 #### Running End-to-end Tests Locally
 
-You can use [act] to run the end-to-end tests locally. If you have the
-`act` program available on your PATH you can use `npm run test:e2e` to run the
-end-to-end tests locally.
+You can use [act] to run the end-to-end tests locally. If you have the `act`
+program available on your PATH you can use `make test` to run the end-to-end
+tests locally.
 
 There are some limitations to using [act]:
 
@@ -164,7 +160,6 @@ There are some limitations to using [act]:
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
 [hadolint]: https://github.com/hadolint/hadolint
-[husky]: https://typicode.github.io/husky/
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [node.js]: https://nodejs.org/en/
 [npm]: https://www.npmjs.com/
