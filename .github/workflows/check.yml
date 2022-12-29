@@ -128,23 +128,20 @@ jobs:
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
       - name: Initialize repository
         run: npm clean-install
-      - name: Set setup success flag
-        id: setup
-        run: echo 'succeeded=true' >> "$GITHUB_OUTPUT"
       - name: Lint formatting
-        if: ${{ steps.setup.outputs.succeeded }}
+        if: ${{ failure() || success() }}
         run: npm run lint
       - name: Lint CI workflows
-        if: ${{ steps.setup.outputs.succeeded }}
+        if: ${{ failure() || success() }}
         run: npm run lint:ci
       - name: Lint Dockerfile
-        if: ${{ steps.setup.outputs.succeeded }}
+        if: ${{ failure() || success() }}
         run: npm run lint:docker
       - name: Lint MarkDown
-        if: ${{ steps.setup.outputs.succeeded }}
+        if: ${{ failure() || success() }}
         run: npm run lint:md
       - name: Lint shell scripts
-        if: ${{ steps.setup.outputs.succeeded }}
+        if: ${{ failure() || success() }}
         run: npm run lint:sh
   test-unit:
     name: Unit tests
@@ -335,12 +332,9 @@ jobs:
           node-version-file: .nvmrc
       - name: Initialize repository
         run: npm clean-install
-      - name: Set setup success flag
-        id: setup
-        run: echo 'succeeded=true' >> "$GITHUB_OUTPUT"
       - name: Vet dependencies
-        if: ${{ steps.setup.outputs.succeeded }}
+        if: ${{ failure() || success() }}
         run: npm run vet:deps
       - name: Vet imports
-        if: ${{ steps.setup.outputs.succeeded }}
+        if: ${{ failure() || success() }}
         run: npm run vet:imports
