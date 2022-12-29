@@ -12,7 +12,6 @@
     "git": "os-provided"
   },
 
-  "postStartCommand": "npm install",
   "remoteUser": "root",
 
   "customizations": {

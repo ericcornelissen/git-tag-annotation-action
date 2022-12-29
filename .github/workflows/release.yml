@@ -38,15 +38,11 @@ jobs:
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
         with:
           node-version-file: .nvmrc
-      - name: Initialize repository
-        run: npm clean-install
       - uses: tibdex/github-app-token@021a2405c7f990db57f5eae5397423dcc554159c # v1.7.0
         id: release-token
         with:
           app_id: ${{ secrets.RELEASE_APP_ID }}
           private_key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
-      - name: Bump version
-        run: npm version ${{ github.event.inputs.update_type }} --no-git-tag-version
       - name: Update CHANGELOG
         run: node script/bump-changelog.mjs
       - name: Create Pull Request

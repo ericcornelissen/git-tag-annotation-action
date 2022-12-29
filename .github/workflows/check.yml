@@ -31,8 +31,6 @@ jobs:
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
       - name: Install tooling
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
-      - name: Initialize repository
-        run: npm clean-install
       - name: Set setup success flag
         id: setup
         run: echo 'succeeded=true' >> "$GITHUB_OUTPUT"

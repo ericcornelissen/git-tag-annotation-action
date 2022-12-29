@@ -19,8 +19,6 @@ relevant sections of this document.
   - [Prerequisites](#prerequisites)
   - [Workflow](#workflow)
   - [Development Details](#development-details)
-- [Testing](#testing)
-  - [End-to-end Testing](#end-to-end-testing)
 
 ---
 
