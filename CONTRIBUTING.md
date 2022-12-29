@@ -93,12 +93,12 @@ as clearly as possible.
 To be able to contribute you need the following tooling:
 
 - [git];
-- [Node.js] v18 or higher and [npm] v8.1.2 or higher;
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [actionlint] (see `.tool-versions` for prefered version);
 - (Suggested) [ShellCheck] (see `.tool-versions` for prefered version);
 - (Optional) [act] v0.2.22 or higher;
 - (Optional) [Docker];
+- (Optional) [Node.js] v18 or higher;
 
 ### Workflow
 
@@ -112,9 +112,6 @@ If you decide to contribute anything, please use the following workflow:
 
 ### Development Details
 
-Before you start making changes you should run `npm install`. This ensures your
-local development environment is setup and ready to go.
-
 #### Formatting and Linting
 
 This project uses linters to catch mistakes. Use the following command to check
@@ -124,20 +121,16 @@ your changes if applicable:
 | :--------------- | :----------------- | :------------- |
 | CI workflows     | `make lint-ci`     | [actionlint]   |
 | `Dockerfile`     | `make lint-docker` | [hadolint]     |
-| MarkDown (`.md`) | `make lint-md`     | [markdownlint] |
 | Shell (`.{,sh}`) | `make lint-sh`     | [ShellCheck]   |
 
----
+#### Testing
 
-## Testing
+The only tests for this project are end-to-end tests that are ran in the
+Continuous Integration as part of the "Check" workflow. These tests aim to
+verify that the Action can run in the GitHub Actions environment and outputs
+the expected values.
 
-### End-to-end Testing
-
-The end-to-end tests for this project run in the Continuous Integration as part
-of the "Check" workflow. These tests aim to verify that the Action can run in
-the GitHub Actions environment and outputs the expected values.
-
-#### Running End-to-end Tests Locally
+##### Running End-to-end Tests Locally
 
 You can use [act] to run the end-to-end tests locally. If you have the `act`
 program available on your PATH you can use `make test` to run the end-to-end
@@ -160,7 +153,6 @@ There are some limitations to using [act]:
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
 [hadolint]: https://github.com/hadolint/hadolint
-[markdownlint]: https://github.com/DavidAnson/markdownlint
 [node.js]: https://nodejs.org/en/
 [npm]: https://www.npmjs.com/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new

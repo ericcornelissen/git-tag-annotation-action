@@ -37,33 +37,10 @@ version (using `v2.7.1` as an example):
    git clone git@github.com:ericcornelissen/git-tag-annotation-action.git
    ```
 
-1. Update the contents of the `lib/` directory using:
-
-   ```shell
-   npm run build
-   ```
-
-1. Update the version number in the package manifest and lockfile:
-
-   ```shell
-   npm version v2.7.1 --no-git-tag-version
-   ```
-
-   If that fails, change the value of the version field in `package.json` to the
-   new version:
-
-   ```diff
-   -  "version": "2.7.0",
-   +  "version": "2.7.1",
-   ```
-
-   and update the version number in `package-lock.json` using `npm install`
-   (after updating `package.json`), which will sync the version number.
-
 1. Update the changelog:
 
    ```shell
-   node script/bump-changelog.js
+   node script/bump-changelog.mjs
    ```
 
    If that fails, manually add the following text after the `## [Unreleased]`
@@ -81,14 +58,11 @@ version (using `v2.7.1` as an example):
 1. Commit the changes to a new release branch and push using:
 
    ```shell
-   git checkout -b release-$(sha1sum package-lock.json | awk '{print $1}')
-   git add lib/ CHANGELOG.md package.json package-lock.json
-   git commit --no-verify --message "Version bump"
-   git push origin release-$(sha1sum package-lock.json | awk '{print $1}')
+   git checkout -b release-$(sha1sum .version | awk '{print $1}')
+   git add .version CHANGELOG.md
+   git commit --message "Version bump"
+   git push origin release-$(sha1sum .version | awk '{print $1}')
    ```
-
-   The `--no-verify` option is required as otherwise the changes to `lib/` will
-   be unstaged.
 
 1. Create a Pull Request to merge the release branch into `main`.
 

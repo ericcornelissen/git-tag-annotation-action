@@ -7,8 +7,6 @@ if [ ! "$(IS_MERGING)" ]; then
 fi
 
 # Checks
-make lint-md
-
 if command -v actionlint > /dev/null; then
   make lint-ci
 fi

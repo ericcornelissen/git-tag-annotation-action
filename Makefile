@@ -15,8 +15,6 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
-init: node_modules/ ## Initialize the project
-
 lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
@@ -26,12 +24,6 @@ lint-docker: ## Lint Dockerfiles
 		--mount "type=bind,source=$(ROOT_DIR)/.hadolint.yml,target=/.config/hadolint.yaml" \
 		hadolint/hadolint:v2.12.0 \
 		< ./.devcontainer/Dockerfile
-
-lint-md: ## Lint MarkDown files
-	@npm run markdownlint -- \
-		--dot \
-		--ignore-path .gitignore \
-		.
 
 lint-sh: ## Lint shell scripts
 	@shellcheck \
@@ -51,7 +43,4 @@ test-run: ## Run the action locally
 		./src/main.sh \
 	)
 
-.PHONY: clean help lint-ci lint-docker lint-md lint-sh test test-run
-
-node_modules/: .npmrc .nvmrc package*.json
-	@npm clean-install
+.PHONY: clean help lint-ci lint-docker lint-sh test test-run
