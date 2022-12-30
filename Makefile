@@ -17,12 +17,6 @@ help: ## Show this help message
 lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
-lint-docker: ## Lint Dockerfiles
-	@docker run -i --rm \
-		--mount "type=bind,source=$(ROOT_DIR)/.hadolint.yml,target=/.config/hadolint.yaml" \
-		hadolint/hadolint:v2.12.0 \
-		< ./.devcontainer/Dockerfile
-
 lint-sh: ## Lint shell scripts
 	@shellcheck \
 		src/main.sh
@@ -40,4 +34,4 @@ test-run: ## Run the action locally
 		./src/main.sh \
 	)
 
-.PHONY: clean default help lint-ci lint-docker lint-sh test test-run
+.PHONY: clean default help lint-ci lint-sh test test-run

@@ -118,7 +118,6 @@ your changes if applicable:
 | File type        | Command            | Linter         |
 | :--------------- | :----------------- | :------------- |
 | CI workflows     | `make lint-ci`     | [actionlint]   |
-| `Dockerfile`     | `make lint-docker` | [hadolint]     |
 | Shell (`.{,sh}`) | `make lint-sh`     | [ShellCheck]   |
 
 #### Testing
