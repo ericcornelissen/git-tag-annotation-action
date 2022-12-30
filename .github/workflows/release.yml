@@ -43,6 +43,8 @@ jobs:
         with:
           app_id: ${{ secrets.RELEASE_APP_ID }}
           private_key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+      - name: Bump version
+        run: node script/bump-version.mjs '${{ github.event.inputs.update_type }}'
       - name: Update CHANGELOG
         run: node script/bump-changelog.mjs
       - name: Create Pull Request

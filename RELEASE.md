@@ -37,6 +37,12 @@ version (using `v2.7.1` as an example):
    git clone git@github.com:ericcornelissen/git-tag-annotation-action.git
    ```
 
+1. Update the version number in the `.version` file:
+
+   ```shell
+   node script/bump-version.mjs [patch|minor|major]
+   ```
+
 1. Update the changelog:
 
    ```shell
