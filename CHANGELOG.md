@@ -8,7 +8,7 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- Change from a JavaScript runtime to a composite runtime. ([#436])
 
 ## [2.0.5] - 2022-11-30
 
@@ -141,3 +141,4 @@ Versioning].
 [#333]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/333
 [#353]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/353
 [#368]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/368
+[#436]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/436
