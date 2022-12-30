@@ -92,8 +92,8 @@ To be able to contribute you need the following tooling:
 
 - [git];
 - (Recommended) a code editor with [EditorConfig] support;
-- (Suggested) [actionlint] (see `.tool-versions` for prefered version);
-- (Suggested) [ShellCheck] (see `.tool-versions` for prefered version);
+- (Suggested) [actionlint] (see `.tool-versions` for preferred version);
+- (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Optional) [act] v0.2.22 or higher;
 - (Optional) [Docker];
 - (Optional) [Node.js] v18 or higher;
@@ -123,7 +123,17 @@ your changes if applicable:
 
 #### Testing
 
-The only tests for this project are end-to-end tests that are ran in the
+You can do a test run locally using the `make test-run` command. This will
+emulate a run using `refs/tags/v1.0.0` as the environment git ref and the
+(optional) `tag` argument as the Action's `tag` input, for example
+
+```shell
+make test-run tag=v1.1.0
+```
+
+This Action output will be written to the `github_output` file.
+
+The automated tests for this project are end-to-end tests that are ran in the
 Continuous Integration as part of the "Check" workflow. These tests aim to
 verify that the Action can run in the GitHub Actions environment and outputs
 the expected values.

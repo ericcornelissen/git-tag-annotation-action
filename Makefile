@@ -1,6 +1,5 @@
-ROOT_DIR:=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))
-
 GITHUB_OUTPUT:=github_output
+ROOT_DIR:=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 
 default: help
 
@@ -19,19 +18,17 @@ lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
 lint-docker: ## Lint Dockerfiles
-	@docker run -i \
-		--rm \
+	@docker run -i --rm \
 		--mount "type=bind,source=$(ROOT_DIR)/.hadolint.yml,target=/.config/hadolint.yaml" \
 		hadolint/hadolint:v2.12.0 \
 		< ./.devcontainer/Dockerfile
 
 lint-sh: ## Lint shell scripts
 	@shellcheck \
-		src/*.sh
+		src/main.sh
 
 test: ## Run the tests
-	@act \
-		--job test-e2e
+	@act --job test-e2e
 
 test-run: ## Run the action locally
 	@rm -f ${GITHUB_OUTPUT}
@@ -43,4 +40,4 @@ test-run: ## Run the action locally
 		./src/main.sh \
 	)
 
-.PHONY: clean help lint-ci lint-docker lint-sh test test-run
+.PHONY: clean default help lint-ci lint-docker lint-sh test test-run
