@@ -8,6 +8,10 @@ Versioning].
 
 ## [Unreleased]
 
+- _No changes yet_
+
+## [2.0.6] - 2023-01-03
+
 - Change from a JavaScript runtime to a composite runtime. ([#436])
 
 ## [2.0.5] - 2022-11-30
