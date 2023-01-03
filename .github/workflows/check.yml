@@ -9,92 +9,6 @@ on:
 permissions: read-all
 
 jobs:
-  audit:
-    name: Audit
-    uses: ericcornelissen/git-tag-annotation-action/.github/workflows/reusable-audit.yml@main
-    with:
-      npm: |
-        [{"ref":"${{ github.ref }}"}]
-  build:
-    name: Build
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Harden runner
-        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
-        with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            github.com:443
-            nodejs.org:443
-            objects.githubusercontent.com:443
-            registry.npmjs.org:443
-      - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
-      - name: Initialize repository
-        run: npm clean-install
-      - name: Build standalone JavaScript file
-        run: npm run build
-  codeql:
-    name: CodeQL
-    runs-on: ubuntu-22.04
-    permissions:
-      security-events: write
-    steps:
-      - name: Harden runner
-        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
-        with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            ghcr.io:443
-            github.com:443
-            pkg-containers.githubusercontent.com:443
-            uploads.github.com:443
-      - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@959cbb7472c4d4ad70cdfe6f4976053fe48ab394 # v2.1.37
-        with:
-          config-file: ./.github/codeql.yml
-          languages: javascript
-      - name: Perform CodeQL analysis
-        uses: github/codeql-action/analyze@959cbb7472c4d4ad70cdfe6f4976053fe48ab394 # v2.1.37
-  licenses:
-    name: Licenses
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Harden runner
-        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
-        with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            github.com:443
-            nodejs.org:443
-            objects.githubusercontent.com:443
-            registry.npmjs.org:443
-      - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
-      - name: Initialize repository
-        run: npm clean-install
-      - name: Check licenses
-        run: npm run license-check
   lint:
     name: Lint
     runs-on: ubuntu-22.04
@@ -106,51 +20,21 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            auth.docker.io:443
-            docker.io:443
             github.com:443
-            nodejs.org:443
             objects.githubusercontent.com:443
-            production.cloudflare.docker.com:443
-            proxy.golang.org:443
-            registry-1.docker.io:443
-            registry.npmjs.org:443
-            sum.golang.org:443
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
       - name: Install tooling
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
-      - name: Initialize repository
-        run: npm clean-install
-      - name: Set setup success flag
-        id: setup
-        run: echo 'succeeded=true' >> "$GITHUB_OUTPUT"
-      - name: Lint formatting
-        if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint
       - name: Lint CI workflows
-        if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:ci
-      - name: Lint Dockerfile
-        if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:docker
-      - name: Lint MarkDown
-        if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:md
+        if: ${{ failure() || success() }}
+        run: make lint-ci
       - name: Lint shell scripts
-        if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run lint:sh
-  test-unit:
-    name: Unit tests
+        if: ${{ failure() || success() }}
+        run: make lint-sh
+  secrets:
+    name: Secrets
     runs-on: ubuntu-22.04
-    needs:
-      - build
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -160,35 +44,24 @@ jobs:
           allowed-endpoints: >
             api.github.com:443
             artifactcache.actions.githubusercontent.com:443
-            codecov.io:443
+            ghcr.io:443
             github.com:443
-            nodejs.org:443
             objects.githubusercontent.com:443
-            registry.npmjs.org:443
-            storage.googleapis.com:443
-            uploader.codecov.io:443
+            pkg-containers.githubusercontent.com:443
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
         with:
-          cache: npm
-          node-version-file: .nvmrc
-      - name: Initialize repository
-        run: npm clean-install
-      - name: Run tests
-        run: npm run coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70 # v3.1.1
-        if: ${{ always() }}
-        with:
-          file: ./_reports/coverage/lcov.info
+          fetch-depth: 0
+      - name: Scan for secrets
+        uses: gitleaks/gitleaks-action@e7168103501562d92f3f52e2c69c253cff74438d # v2.3.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: false
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: false
+          GITLEAKS_ENABLE_SUMMARY: false
   test-e2e:
     name: End-to-end tests (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
-    needs:
-      - build
-      - test-unit
     strategy:
       fail-fast: false
       matrix:
@@ -207,24 +80,12 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
             github.com:443
-            nodejs.org:443
             objects.githubusercontent.com:443
-            registry.npmjs.org:443
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
         with:
           fetch-depth: 0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
-      - name: Initialize repository
-        run: npm clean-install
-      - name: Build standalone JavaScript file
-        run: npm run build
       - name: Run git-tag-annotation-action
         id: action-test
         uses: ./
@@ -236,65 +97,11 @@ jobs:
           ACTUAL='${{ steps.action-test.outputs.git-tag-annotation }}'
           EXPECTED='- Run the Action to get the git tag annotation of the current tag.
           - Run the Action to get the git tag annotation of a specified tag.
-
           '
 
           if [ "$ACTUAL" != "$EXPECTED" ]; then
             exit 1
           fi
-  test-mutation:
-    name: Mutation tests
-    runs-on: ubuntu-22.04
-    needs:
-      - test-unit
-    steps:
-      - name: Harden runner
-        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
-        with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            dashboard.stryker-mutator.io:443
-            github.com:443
-            nodejs.org:443
-            objects.githubusercontent.com:443
-            registry.npmjs.org:443
-      - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
-      - name: Cache Stryker incremental report
-        uses: actions/cache@4723a57e26efda3a62cbde1812113b730952852d # v3.2.2
-        with:
-          path: .cache/stryker-incremental.json
-          key: mutation-${{ github.run_number }}
-          restore-keys: |
-            mutation-
-      - name: Determine if unit tests changed
-        uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # v2.11.1
-        id: changes
-        with:
-          filters: |
-            tests: test/*.js
-      - name: Initialize repository
-        run: npm clean-install
-      - name: Run mutation tests (incremental)
-        if: ${{ steps.changes.outputs.tests == 'false' }}
-        env:
-          CI: true
-          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
-        run: npm run test:mutation -- --incremental
-      - name: Run mutation tests (non-incremental)
-        if: ${{ steps.changes.outputs.tests == 'true' }}
-        env:
-          CI: true
-          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_TOKEN }}
-        run: npm run test:mutation -- --incremental --force
   validate-action-types:
     name: Action types
     runs-on: ubuntu-22.04
@@ -310,37 +117,3 @@ jobs:
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
       - name: Validate action types
         uses: krzema12/github-actions-typing@c62d4007d3d5d487152f92af8b595bb6b4a10d6f # v0.6.0
-  vet:
-    name: Vet
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Harden runner
-        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
-        with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
-            github.com:443
-            nodejs.org:443
-            objects.githubusercontent.com:443
-            registry.npmjs.org:443
-      - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
-      - name: Install Node.js
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
-        with:
-          cache: npm
-          node-version-file: .nvmrc
-      - name: Initialize repository
-        run: npm clean-install
-      - name: Set setup success flag
-        id: setup
-        run: echo 'succeeded=true' >> "$GITHUB_OUTPUT"
-      - name: Vet dependencies
-        if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run vet:deps
-      - name: Vet imports
-        if: ${{ steps.setup.outputs.succeeded }}
-        run: npm run vet:imports

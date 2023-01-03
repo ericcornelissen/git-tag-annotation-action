@@ -1,5 +1,1 @@
 * text=auto
-
-# don't diff machine generated files
-lib/index.cjs -diff
-package-lock.json -diff

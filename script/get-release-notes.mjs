@@ -2,12 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
-const manifestFile = path.resolve("./package.json");
+const manifestFile = path.resolve("./.version");
 const changelogFile = path.resolve("./CHANGELOG.md");
 
 const manifestRaw = fs.readFileSync(manifestFile).toString();
-const manifest = JSON.parse(manifestRaw);
-const version = manifest.version;
+const version = manifestRaw.trim();
 const versionHeader = `## [${version}]`;
 
 const changelog = fs.readFileSync(changelogFile).toString();

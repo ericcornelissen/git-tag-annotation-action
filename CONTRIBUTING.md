@@ -19,9 +19,6 @@ relevant sections of this document.
   - [Prerequisites](#prerequisites)
   - [Workflow](#workflow)
   - [Development Details](#development-details)
-- [Testing](#testing)
-  - [Unit Testing](#unit-testing)
-  - [End-to-end Testing](#end-to-end-testing)
 
 ---
 
@@ -94,12 +91,12 @@ as clearly as possible.
 To be able to contribute you need the following tooling:
 
 - [git];
-- [Node.js] v18 or higher and [npm] v8.1.2 or higher;
 - (Recommended) a code editor with [EditorConfig] support;
-- (Suggested) [actionlint] (see `.tool-versions` for prefered version);
-- (Suggested) [ShellCheck] (see `.tool-versions` for prefered version);
+- (Suggested) [actionlint] (see `.tool-versions` for preferred version);
+- (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Optional) [act] v0.2.22 or higher;
 - (Optional) [Docker];
+- (Optional) [Node.js] v18 or higher;
 
 ### Workflow
 
@@ -113,118 +110,38 @@ If you decide to contribute anything, please use the following workflow:
 
 ### Development Details
 
-Before you start making changes you should run `npm install`. This ensures your
-local development environment is setup and ready to go.
-
-We use [husky] to automatically install git hooks. Please enable it when
-contributing to this project. If you have npm installation scripts disabled, run
-`npm run prepare` after installing dependencies.
-
-When making contributions, make sure your changes are [tested](#testing),
-[well-formatted](#formatting-and-linting), and [vetted](#vetting).
-
 #### Formatting and Linting
 
-The source code of the project is formatted using [Prettier]. Run the command
-`npm run format` to format the source code, or `npm run lint` to check if your
-changes follow the expected format. The pre-commit hook will format all staged
-changes. The pre-push hook will prevent pushing code that is not formatted
-correctly.
+This project uses linters to catch mistakes. Use the following command to check
+your changes if applicable:
 
-On top of that, the project uses linters to catch mistakes. Use the following
-command to check your changes if applicable:
+| File type        | Command            | Linter         |
+| :--------------- | :----------------- | :------------- |
+| CI workflows     | `make lint-ci`     | [actionlint]   |
+| Shell (`.{,sh}`) | `make lint-sh`     | [ShellCheck]   |
 
-| File type        | Command               | Linter         |
-| :--------------- | :-------------------- | :------------- |
-| CI workflows     | `npm run lint:ci`     | [actionlint]   |
-| `Dockerfile`     | `npm run lint:docker` | [hadolint]     |
-| MarkDown (`.md`) | `npm run lint:md`     | [markdownlint] |
-| Shell (`.{,sh}`) | `npm run lint:sh`     | [ShellCheck]   |
+#### Testing
 
-#### Vetting
-
-The project is vetted using a small collection of static analysis tools. Run
-`npm run vet` to analyze the project for potential problems.
-
-#### Auditing
-
-##### Vulnerabilities
-
-To scan for vulnerabilities in all npm dependencies, run:
+You can do a test run locally using the `make test-run` command. This will
+emulate a run using `refs/tags/v1.0.0` as the environment git ref and the
+(optional) `tag` argument as the Action's `tag` input, for example
 
 ```shell
-npm run audit
+make test-run tag=v1.1.0
 ```
 
-To scan for vulnerabilities in runtime npm dependencies only, run:
+This Action output will be written to the `github_output` file.
 
-```shell
-npm run audit:prod
-```
+The automated tests for this project are end-to-end tests that are ran in the
+Continuous Integration as part of the "Check" workflow. These tests aim to
+verify that the Action can run in the GitHub Actions environment and outputs
+the expected values.
 
-##### Licenses
+##### Running End-to-end Tests Locally
 
-This project uses [licensee] to check for potential license violations in
-project dependencies. To validate the licenses of dependencies, run:
-
-```shell
-npm run license-check
-```
-
-which will output nothing if no problems are detected, or output a list of
-packages without approved licenses and exit with a non-zero exit code if there
-is any violation.
-
-The configuration, including allowed licenses and exceptions, can be found in
-`.licensee.json`.
-
-#### Building
-
-This project uses [rollup.js] to compile the source code into a standalone
-JavaScript file (which can be found in the `lib/` directory). This is done so
-that it can be invoked as a standalone file when used as an Action. Otherwise
-the contents of `node_modules/` would have to be included in the repository.
-
-The file is generated using the `npm run build` command; you can run this
-command to see if your changes are valid. You should **not** include changes to
-this file when committing - if you try to commit it, the pre-commit hook will
-automatically unstage the changes.
-
-Instead, the file will be updated automatically prior to a release as well as
-build when necessary for testing.
-
----
-
-## Testing
-
-### Unit Testing
-
-The unit tests for this project can be found in the `test` directory. The
-testing framework is [uvu]. To run the unit tests you can use the `npm run test`
-command. Use `npm run coverage` to run tests and generate a coverage report. The
-coverage report can be found in `_reports/coverage`.
-
-Unit tests may be written as a [property tests]. The [fast-check] framework is
-used to write property tests. When writing a unit test, it is encouraged to
-write it as a property test, though this is not required.
-
-#### Mutation Testing
-
-The effectiveness of unit tests is measured using [mutation testing] with
-[Stryker]. You can run the mutation tests using the `npm run test:mutation`
-command. The mutation report can be found in `_reports/mutation`.
-
-### End-to-end Testing
-
-The end-to-end tests for this project run in the Continuous Integration as part
-of the "Check" workflow. These tests aim to verify that the Action can run in
-the GitHub Actions environment and outputs the expected values.
-
-#### Running End-to-end Tests Locally
-
-You can use [act] to run the end-to-end tests locally. If you have the
-`act` program available on your PATH you can use `npm run test:e2e` to run the
-end-to-end tests locally.
+You can use [act] to run the end-to-end tests locally. If you have the `act`
+program available on your PATH you can use `make test` to run the end-to-end
+tests locally.
 
 There are some limitations to using [act]:
 
@@ -240,22 +157,12 @@ There are some limitations to using [act]:
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
 [docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
-[fast-check]: https://github.com/dubzzz/fast-check#readme
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
 [hadolint]: https://github.com/hadolint/hadolint
-[husky]: https://typicode.github.io/husky/
-[licensee]: https://github.com/jslicense/licensee.js#readme
-[markdownlint]: https://github.com/DavidAnson/markdownlint
-[mutation testing]: https://en.wikipedia.org/wiki/Mutation_testing
 [node.js]: https://nodejs.org/en/
 [npm]: https://www.npmjs.com/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
-[prettier]: https://prettier.io/
-[property tests]: https://en.wikipedia.org/wiki/Property_testing
-[rollup.js]: https://rollupjs.org/guide/en/
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
-[stryker]: https://stryker-mutator.io/
-[uvu]: https://www.npmjs.com/package/uvu

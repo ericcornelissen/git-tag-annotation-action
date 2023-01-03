@@ -22,7 +22,6 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
-            artifactcache.actions.githubusercontent.com:443
             github.com:443
             nodejs.org:443
             objects.githubusercontent.com:443
@@ -34,14 +33,11 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v3.5.1
         with:
-          cache: npm
           node-version-file: .nvmrc
-      - name: Initialize repository
-        run: npm clean-install
       - name: Check if version is already released
         id: version
         run: |
-          VERSION="v$(jq -r '.version' < package.json)"
+          VERSION="v$(cat .version)"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           if [ "$(git tag --list "$VERSION")" ]; then
             echo 'released=true' >> "$GITHUB_OUTPUT"
@@ -50,7 +46,7 @@ jobs:
 
             {
               echo 'release_notes<<EOF'
-              node script/get-release-notes.js
+              node script/get-release-notes.mjs
               echo 'EOF'
             } >> "$GITHUB_OUTPUT"
           fi
@@ -88,27 +84,27 @@ jobs:
             return major
       - name: Release new version
         run: |
-          git tag "${{ needs.check.outputs.version }}"
-          git push origin "${{ needs.check.outputs.version }}"
+          git tag '${{ needs.check.outputs.version }}'
+          git push origin '${{ needs.check.outputs.version }}'
       - name: Update major version branch
         run: |
-          git push origin HEAD:${{ steps.major-version.outputs.result }}
+          git push origin 'HEAD:${{ steps.major-version.outputs.result }}'
       - name: Sign Action
         env:
           COSIGN_EXPERIMENTAL: 1
         run: |
           cosign sign-blob \
-            --output-certificate index.cjs.cert \
-            --output-signature index.cjs.sign \
-            lib/index.cjs
+            --output-certificate main.sh.cert \
+            --output-signature main.sh.sign \
+            src/main.sh
       - name: Verify signatures
         env:
           COSIGN_EXPERIMENTAL: 1
         run: |
           cosign verify-blob \
-            --certificate index.cjs.cert \
-            --signature index.cjs.sign \
-            lib/index.cjs
+            --certificate main.sh.cert \
+            --signature main.sh.sign \
+            src/main.sh
       - name: Create GitHub Release
         uses: ncipollo/release-action@a2e71bdd4e7dab70ca26a852f29600c98b33153e # v1.12.0
         with:
@@ -116,8 +112,8 @@ jobs:
           name: Release ${{ needs.check.outputs.version }}
           tag: ${{ needs.check.outputs.version }}
           artifacts: >-
-            index.cjs.cert,
-            index.cjs.sign
+            main.sh.cert,
+            main.sh.sign
           draft: false
           makeLatest: true
           prerelease: false

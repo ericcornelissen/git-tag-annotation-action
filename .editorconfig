@@ -1,22 +1,23 @@
 # Check out EditorConfig at: https://editorconfig.org
 
-root = true
+root=true
 
 [*]
-charset = utf-8
-indent_style = space
-indent_size = 2
-insert_final_newline = true
-max_line_length = 80
-trim_trailing_whitespace = true
+charset=utf-8
+indent_size=2
+indent_style=space
+insert_final_newline=true
+max_line_length=80
+trim_trailing_whitespace=true
+
+[{*.md,LICENSE}]
+indent_size=unset
+indent_style=space
 
 [*.yml]
-indent_style = space
-indent_size = 2
-max_line_length = unset
+indent_size=2
+indent_style=space
+max_line_length=unset
 
-[lib/*]
-max_line_length = unset # Irrelevant for generated files
-
-[Dockerfile]
-indent_style = tab
+[Makefile]
+indent_style=tab

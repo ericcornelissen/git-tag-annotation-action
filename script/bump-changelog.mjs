@@ -4,12 +4,11 @@ import * as path from "node:path";
 const STR_UNRELEASED = "## [Unreleased]";
 const STR_NO_CHANGES = "- _No changes yet_";
 
-const manifestFile = path.resolve("./package.json");
+const manifestFile = path.resolve("./.version");
 const changelogFile = path.resolve("./CHANGELOG.md");
 
 const manifestRaw = fs.readFileSync(manifestFile).toString();
-const manifest = JSON.parse(manifestRaw);
-const version = manifest.version;
+const version = manifestRaw.trim();
 
 const changelog = fs.readFileSync(changelogFile).toString();
 if (changelog.includes(`## [${version}]`)) {
