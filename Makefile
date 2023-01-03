@@ -21,6 +21,11 @@ lint-sh: ## Lint shell scripts
 	@shellcheck \
 		src/main.sh
 
+lint-yaml: ## Lint YAML files
+	@yamllint \
+		-c .yamllint.yml \
+		.
+
 test: ## Run the tests
 	@act --job test-e2e
 
@@ -34,4 +39,4 @@ test-run: ## Run the action locally
 		./src/main.sh \
 	)
 
-.PHONY: clean default help lint-ci lint-sh test test-run
+.PHONY: clean default help lint-ci lint-sh lint-yaml test test-run
