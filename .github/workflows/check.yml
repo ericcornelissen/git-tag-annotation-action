@@ -1,6 +1,6 @@
 name: Check
 on:
-  pull_request:
+  pull_request: ~
   push:
     branches:
       - main
@@ -32,6 +32,9 @@ jobs:
       - name: Lint shell scripts
         if: ${{ failure() || success() }}
         run: make lint-sh
+      - name: Lint YAML files
+        if: ${{ failure() || success() }}
+        run: make lint-yaml
   secrets:
     name: Secrets
     runs-on: ubuntu-22.04

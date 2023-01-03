@@ -94,6 +94,7 @@ To be able to contribute you need the following tooling:
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [actionlint] (see `.tool-versions` for preferred version);
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
+- (Suggested) [yamllint] v1.26.3;
 - (Optional) [act] v0.2.22 or higher;
 - (Optional) [Docker];
 - (Optional) [Node.js] v18 or higher;
@@ -119,6 +120,7 @@ your changes if applicable:
 | :--------------- | :----------------- | :------------- |
 | CI workflows     | `make lint-ci`     | [actionlint]   |
 | Shell (`.{,sh}`) | `make lint-sh`     | [ShellCheck]   |
+| YAML (`.yaml`)   | `make lint-yaml`   | [yamllint]     |
 
 #### Testing
 
@@ -164,3 +166,4 @@ There are some limitations to using [act]:
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
+[yamllint]: https://github.com/adrienverge/yamllint
