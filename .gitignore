@@ -3,3 +3,7 @@ github_output
 # IDEs
 .idea/
 .vscode/
+
+# Signatures
+*.cert
+*.sign
