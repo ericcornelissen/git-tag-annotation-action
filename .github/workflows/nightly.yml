@@ -39,7 +39,13 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@d7db273d6c7206ba99224e659c982ae34a1025e3 # v4.2.1
         with:
-          title: Update ${{ matrix.tool }} to ${{ steps.version.outputs.latest }}
+          title: Update ${{ matrix.tool }} to v${{ steps.version.outputs.latest }}
+          body:
+            _This Pull Request was created automatically_
+
+            ---
+
+            Bump ${{ matrix.tool }} to v${{ steps.version.outputs.latest }}
           branch: asdf-${{ matrix.tool }}-${{ steps.version.outputs.latest }}
           labels: dependencies
           commit-message: Update ${{ matrix.tool }} to ${{ steps.version.outputs.latest }}
