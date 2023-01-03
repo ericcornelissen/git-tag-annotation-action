@@ -161,9 +161,7 @@ There are some limitations to using [act]:
 [editorconfig]: https://editorconfig.org/
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
-[hadolint]: https://github.com/hadolint/hadolint
 [node.js]: https://nodejs.org/en/
-[npm]: https://www.npmjs.com/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
 [security policy]: ./SECURITY.md
