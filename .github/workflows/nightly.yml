@@ -47,7 +47,7 @@ jobs:
           retry_wait_seconds: 30
           timeout_minutes: 1
           command: >-
-            LATEST_VERSION="$(asdf latest '${{ matrix.tool }}d')"
+            LATEST_VERSION="$(asdf latest '${{ matrix.tool }}')"
             &&
             echo "latest=$LATEST_VERSION" >> "$GITHUB_ENV"
       - name: Install new version
