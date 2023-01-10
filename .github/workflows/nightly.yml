@@ -19,6 +19,7 @@ jobs:
         tool:
           - act
           - actionlint
+          - cosign
           - shellcheck
     steps:
       - name: Harden runner
