@@ -21,6 +21,7 @@ jobs:
           - actionlint
           - cosign
           - shellcheck
+          - yamllint
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5 # v2.0.0
@@ -29,11 +30,18 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
+            files.pythonhosted.org:443
             github.com:443
             gitlab.com:443
             objects.githubusercontent.com:443
+            pypi.org:443
       - name: Checkout repository
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
+      - name: Add plugins
+        run: |
+         asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
       - name: Create token to create Pull Request

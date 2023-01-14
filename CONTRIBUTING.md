@@ -94,7 +94,7 @@ To be able to contribute you need the following tooling:
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [actionlint] (see `.tool-versions` for preferred version);
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
-- (Suggested) [yamllint] v1.26.3;
+- (Suggested) [yamllint] (see `.tool-versions` for preferred version);
 - (Optional) [act] v0.2.22 or higher;
 - (Optional) [Docker];
 - (Optional) [Node.js] v18 or higher;

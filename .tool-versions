@@ -4,3 +4,4 @@ act 0.2.35
 actionlint 1.6.22
 cosign 1.13.1
 shellcheck 0.9.0
+yamllint 1.28.0
