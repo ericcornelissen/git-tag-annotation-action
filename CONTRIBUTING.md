@@ -91,6 +91,7 @@ as clearly as possible.
 To be able to contribute you need the following tooling:
 
 - [git];
+- [Make];
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [actionlint] (see `.tool-versions` for preferred version);
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
@@ -113,8 +114,13 @@ If you decide to contribute anything, please use the following workflow:
 
 #### Formatting and Linting
 
-This project uses linters to catch mistakes. Use the following command to check
-your changes if applicable:
+This project uses linters to catch mistakes and enforce style. Run:
+
+```shell
+make lint
+```
+
+to run all linters or use the following commands to check specific file types:
 
 | File type        | Command            | Linter         |
 | :--------------- | :----------------- | :------------- |
@@ -161,6 +167,7 @@ There are some limitations to using [act]:
 [editorconfig]: https://editorconfig.org/
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
+[make]: https://www.gnu.org/software/make/
 [node.js]: https://nodejs.org/en/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
