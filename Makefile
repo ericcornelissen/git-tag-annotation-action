@@ -14,6 +14,8 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
+lint: lint-ci lint-sh lint-yaml ## Lint the project
+
 lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
@@ -39,4 +41,6 @@ test-run: ## Run the action locally
 		./src/main.sh \
 	)
 
-.PHONY: clean default help lint-ci lint-sh lint-yaml test test-run
+verify: lint test-run ## Verify project is in a good state
+
+.PHONY: clean default help lint lint-ci lint-sh lint-yaml test test-run verify
