@@ -71,7 +71,7 @@ jobs:
         with:
           token: ${{ steps.release-token.outputs.token }}
           title: Update ${{ matrix.tool }} to v${{ env.latest }}
-          body:
+          body: |
             _This Pull Request was created automatically_
 
             ---
