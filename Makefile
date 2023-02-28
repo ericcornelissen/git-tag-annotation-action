@@ -7,6 +7,16 @@ clean: ## Clean the repository
 	@git clean -fx \
 		$(GITHUB_OUTPUT)
 
+format: ## Format the source code
+	@shfmt \
+		--simplify --write \
+		src/main.sh
+
+format-check: ## Check the source code formatting
+	@shfmt \
+		--diff \
+		src/main.sh
+
 help: ## Show this help message
 	@printf "Usage: make <command>\n\n"
 	@printf "Commands:\n"
@@ -41,6 +51,6 @@ test-run: ## Run the action locally
 		./src/main.sh \
 	)
 
-verify: lint test-run ## Verify project is in a good state
+verify: format-check lint test-run ## Verify project is in a good state
 
 .PHONY: clean default help lint lint-ci lint-sh lint-yaml test test-run verify

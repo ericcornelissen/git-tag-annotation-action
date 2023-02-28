@@ -9,6 +9,28 @@ on:
 permissions: read-all
 
 jobs:
+  format:
+    name: Format
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57 # v2.2.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            files.pythonhosted.org:443
+            github.com:443
+            gitlab.com:443
+            objects.githubusercontent.com:443
+            pypi.org:443
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+      - name: Install tooling
+        uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
+      - name: Check formatting
+        run: make format-check
   lint:
     name: Lint
     runs-on: ubuntu-22.04
