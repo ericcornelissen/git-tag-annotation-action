@@ -21,6 +21,7 @@ jobs:
           - actionlint
           - cosign
           - shellcheck
+          - shfmt
           - yamllint
     steps:
       - name: Harden runner
