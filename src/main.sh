@@ -8,4 +8,4 @@
     git for-each-ref "refs/tags/${PROVIDED_TAG}" --format '%(contents)'
   fi
   echo 'EOF'
-} >> "${GITHUB_OUTPUT}"
+} >>"${GITHUB_OUTPUT}"
