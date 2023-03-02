@@ -53,4 +53,4 @@ test-run: ## Run the action locally
 
 verify: format-check lint test-run ## Verify project is in a good state
 
-.PHONY: clean default help lint lint-ci lint-sh lint-yaml test test-run verify
+.PHONY: clean default format format-check help lint lint-ci lint-sh lint-yaml test test-run verify
