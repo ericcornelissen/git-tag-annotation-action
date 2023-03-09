@@ -1,12 +1,15 @@
 GITHUB_OUTPUT:=github_output
 ROOT_DIR:=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 
+.PHONY: default
 default: help
 
+.PHONY: clean
 clean: ## Clean the repository
 	@git clean -fx \
 		$(GITHUB_OUTPUT)
 
+.PHONY: format format-check
 format: ## Format the source code
 	@shfmt \
 		--simplify --write \
@@ -17,6 +20,7 @@ format-check: ## Check the source code formatting
 		--diff \
 		src/main.sh
 
+.PHONY: help
 help: ## Show this help message
 	@printf "Usage: make <command>\n\n"
 	@printf "Commands:\n"
@@ -24,6 +28,7 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
+.PHONY: lint lint-ci lint-sh lint-yaml
 lint: lint-ci lint-sh lint-yaml ## Lint the project
 
 lint-ci: ## Lint Continuous Integration configuration files
@@ -38,6 +43,7 @@ lint-yaml: ## Lint YAML files
 		-c .yamllint.yml \
 		.
 
+.PHONY: test test-run
 test: ## Run the tests
 	@act --job test-e2e
 
@@ -51,6 +57,5 @@ test-run: ## Run the action locally
 		./src/main.sh \
 	)
 
+.PHONY: verify
 verify: format-check lint test-run ## Verify project is in a good state
-
-.PHONY: clean default format format-check help lint lint-ci lint-sh lint-yaml test test-run verify
