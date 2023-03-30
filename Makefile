@@ -1,5 +1,4 @@
 GITHUB_OUTPUT:=github_output
-ROOT_DIR:=$(dir $(realpath $(lastword $(MAKEFILE_LIST))))
 
 .PHONY: default
 default: help
