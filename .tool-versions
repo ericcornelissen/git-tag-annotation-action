@@ -4,7 +4,7 @@
 
 act 0.2.44
 actionlint 1.6.24
-cosign 2.0.0
+cosign 2.0.1
 shellcheck 0.9.0
 shfmt 3.6.0
 yamllint 1.30.0
