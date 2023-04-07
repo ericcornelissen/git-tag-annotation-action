@@ -123,6 +123,7 @@ jobs:
       - name: Sign Action
         run: |
           cosign sign-blob \
+            --yes \
             --output-certificate main.sh.cert \
             --output-signature main.sh.sign \
             src/main.sh
