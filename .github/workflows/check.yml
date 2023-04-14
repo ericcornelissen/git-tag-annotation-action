@@ -29,7 +29,7 @@ jobs:
             rekor.sigstore.dev:443
             sigstore-tuf-root.storage.googleapis.com:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       - name: Install tooling
         uses: asdf-vm/actions/install@75bab86b342b8aa14f3b547296607599522cbe90 # v2.1.0
       - name: Check formatting
@@ -54,7 +54,7 @@ jobs:
             rekor.sigstore.dev:443
             sigstore-tuf-root.storage.googleapis.com:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       - name: Install tooling
         uses: asdf-vm/actions/install@75bab86b342b8aa14f3b547296607599522cbe90 # v2.1.0
       - name: Lint CI workflows
@@ -83,7 +83,7 @@ jobs:
             objects.githubusercontent.com:443
             pkg-containers.githubusercontent.com:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
           fetch-depth: 0
       - name: Scan for secrets
@@ -103,7 +103,7 @@ jobs:
       image: returntocorp/semgrep
     steps:
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       - name: Perform Semgrep analysis
         run: semgrep ci --sarif --output semgrep.sarif
         env:
@@ -137,7 +137,7 @@ jobs:
             github.com:443
             objects.githubusercontent.com:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
           fetch-depth: 0
       - name: Run git-tag-annotation-action
@@ -168,6 +168,6 @@ jobs:
           allowed-endpoints: >
             github.com:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       - name: Validate action types
         uses: krzema12/github-actions-typing@5bf880e54403b345c182e6fdedc321781f2d7550 # v1.0.0

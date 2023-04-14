@@ -28,7 +28,7 @@ jobs:
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
           fetch-depth: 0 # To fetch all tags
       - name: Install Node.js
@@ -75,7 +75,7 @@ jobs:
           disable-sudo: true
           egress-policy: audit
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
         with:
           fetch-depth: 0 # To fetch all major version branches
       - name: Release new version
@@ -110,7 +110,7 @@ jobs:
             storage.googleapis.com:443
             uploads.github.com:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       - name: Get cosign version
         id: versions
         run: |
