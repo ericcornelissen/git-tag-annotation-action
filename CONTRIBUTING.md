@@ -99,7 +99,7 @@ To be able to contribute you need the following tooling:
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
 - (Optional) [act] v0.2.22 or higher;
 - (Optional) [Docker];
-- (Optional) [Node.js] v18 or higher;
+- (Optional) [Node.js] v20 or higher;
 
 ### Workflow
 
