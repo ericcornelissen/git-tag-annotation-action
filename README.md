@@ -75,6 +75,8 @@ jobs:
 
 ## Security
 
+### Permissions
+
 This Action requires no [permissions].
 
 ### Network
