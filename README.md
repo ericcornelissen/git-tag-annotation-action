@@ -4,7 +4,7 @@
 
 A GitHub Action to get the annotation associated with the current git tag.
 
-## Example usage
+## Usage
 
 Make sure to only use this Action in the context of a tag, this can be achieved
 by configuring your workflow to only run on tag pushes.
@@ -72,6 +72,14 @@ jobs:
       - name: The output
         run: echo ${{ steps.tag-data.outputs.git-tag-annotation }}
 ```
+
+## Security
+
+This Action requires no [permissions].
+
+### Network
+
+This Action requires no network access.
 
 ## Known Issues
 
