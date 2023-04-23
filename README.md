@@ -4,7 +4,7 @@
 
 A GitHub Action to get the annotation associated with the current git tag.
 
-## Example usage
+## Usage
 
 Make sure to only use this Action in the context of a tag, this can be achieved
 by configuring your workflow to only run on tag pushes.
@@ -73,6 +73,16 @@ jobs:
         run: echo ${{ steps.tag-data.outputs.git-tag-annotation }}
 ```
 
+## Security
+
+### Permissions
+
+This Action requires no [permissions].
+
+### Network
+
+This Action requires no network access.
+
 ## Known Issues
 
 There have been issues when using this Action with [actions/checkout@v3] and
@@ -95,5 +105,6 @@ how to improve the documentation.
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
+[permissions]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml
 [ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml/badge.svg
