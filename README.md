@@ -103,5 +103,6 @@ how to improve the documentation.
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
+[permissions]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml
 [ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml/badge.svg
