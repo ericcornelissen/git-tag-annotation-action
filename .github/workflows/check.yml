@@ -95,26 +95,6 @@ jobs:
           GITLEAKS_ENABLE_COMMENTS: false
           GITLEAKS_ENABLE_UPLOAD_ARTIFACT: false
           GITLEAKS_ENABLE_SUMMARY: false
-  semgrep:
-    name: Semgrep
-    runs-on: ubuntu-22.04
-    if: ${{ github.actor != 'dependabot[bot]' }}
-    permissions:
-      security-events: write # To upload SARIF results
-    container:
-      image: returntocorp/semgrep
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
-      - name: Perform Semgrep analysis
-        run: semgrep ci --sarif --output semgrep.sarif
-        env:
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-      - name: Upload Semgrep report to GitHub
-        uses: github/codeql-action/upload-sarif@83f0fe6c4988d98a455712a27f0255212bba9bd4 # v2.3.6
-        if: ${{ failure() || success() }}
-        with:
-          sarif_file: semgrep.sarif
   test-e2e:
     name: End-to-end tests (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
