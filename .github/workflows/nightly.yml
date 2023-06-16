@@ -25,7 +25,7 @@ jobs:
           - yamllint
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@6b3083af2869dc3314a0257a42f4af696cc79ba3 # v2.3.1
+        uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 # v2.4.0
         with:
           disable-sudo: true
           egress-policy: block
@@ -39,10 +39,11 @@ jobs:
             pypi.org:443
             rekor.sigstore.dev:443
             sigstore-tuf-root.storage.googleapis.com:443
+            tuf-repo-cdn.sigstore.dev:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - name: Install tooling
-        uses: asdf-vm/actions/install@75bab86b342b8aa14f3b547296607599522cbe90 # v2.1.0
+        uses: asdf-vm/actions/install@6a442392015fbbdd8b48696d41e0051b2698b2e4 # v2.2.0
       - name: Create token to create Pull Request
         uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92 # v1.8.0
         id: release-token
@@ -61,7 +62,7 @@ jobs:
         run: |
           asdf local '${{ matrix.tool }}' '${{ steps.version.outputs.latest }}'
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@5b4a9f6a9e2af26e5f02351490b90d01eb8ec1e5 # v5.0.0
+        uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38 # v5.0.2
         with:
           token: ${{ steps.release-token.outputs.token }}
           title: Update ${{ matrix.tool }} to v${{ steps.version.outputs.latest }}

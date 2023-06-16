@@ -17,7 +17,7 @@ jobs:
       major_version: ${{ steps.major-version.outputs.result }}
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@6b3083af2869dc3314a0257a42f4af696cc79ba3 # v2.3.1
+        uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 # v2.4.0
         with:
           disable-sudo: true
           egress-policy: block
@@ -28,7 +28,7 @@ jobs:
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
         with:
           fetch-depth: 0 # To fetch all tags
       - name: Install Node.js
@@ -70,12 +70,12 @@ jobs:
       contents: write # To push a tag and a branch
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@6b3083af2869dc3314a0257a42f4af696cc79ba3 # v2.3.1
+        uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 # v2.4.0
         with:
           disable-sudo: true
           egress-policy: audit
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
         with:
           fetch-depth: 0 # To fetch all major version branches
       - name: Release new version
@@ -97,7 +97,7 @@ jobs:
       id-token: write # To perform keyless signing with cosign
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@6b3083af2869dc3314a0257a42f4af696cc79ba3 # v2.3.1
+        uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 # v2.4.0
         with:
           disable-sudo: true
           egress-policy: block
@@ -108,16 +108,17 @@ jobs:
             rekor.sigstore.dev:443
             sigstore-tuf-root.storage.googleapis.com:443
             storage.googleapis.com:443
+            tuf-repo-cdn.sigstore.dev:443
             uploads.github.com:443
       - name: Checkout repository
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247 # v3.5.1
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - name: Get cosign version
         id: versions
         run: |
           COSIGN_VERSION="$(grep cosign < .tool-versions | awk '{print $2}')"
           echo "cosign=$COSIGN_VERSION" >> "$GITHUB_OUTPUT"
       - name: Install cosign
-        uses: sigstore/cosign-installer@9e9de2292db7abb3f51b7f4808d98f0d347a8919 # v3.0.2
+        uses: sigstore/cosign-installer@dd6b2e2b610a11fd73dd187a43d57cc1394e35f9 # v3.0.5
         with:
           cosign-release: v${{ steps.versions.outputs.cosign }}
       - name: Sign Action
