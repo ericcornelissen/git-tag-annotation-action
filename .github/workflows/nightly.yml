@@ -32,13 +32,13 @@ jobs:
             tuf-repo-cdn.sigstore.dev:443
       - name: Create token to create Pull Request
         uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92 # v1.8.0
-        id: release-token
+        id: automation-token
         with:
-          app_id: ${{ secrets.RELEASE_APP_ID }}
-          private_key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          app_id: ${{ secrets.AUTOMATION_ID }}
+          private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
       - name: Update tooling
         uses: ericcornelissen/tool-versions-update-action/pr@4aa009179b76d163c08a950036ac508bd5520d0c # v0.3.1
         with:
           labels: dependencies
           max: 1
-          token: ${{ steps.release-token.outputs.token }}
+          token: ${{ steps.automation-token.outputs.token }}
