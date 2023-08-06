@@ -3,6 +3,10 @@
 yaml-files:
   - "*.yml"
 
+ignore: |
+  test/bats/
+  test/test_helper/
+
 rules:
   anchors:
     forbid-duplicated-anchors: true
