@@ -70,7 +70,7 @@ jobs:
         id: tag-data
         uses: ericcornelissen/git-tag-annotation-action@v2
       - name: The output
-        run: echo ${{ steps.tag-data.outputs.git-tag-annotation }}
+        run: echo '${{ steps.tag-data.outputs.git-tag-annotation }}'
 ```
 
 ## Security
@@ -83,6 +83,32 @@ This Action requires no [permissions].
 
 This Action requires no network access.
 
+## Known Issues
+
+The [Checkout Action] is known to not always fetch tags as expected. For
+workflows triggered by a tag push we recommend manually fetching all tags after
+the repository has been checked out like:
+
+```yaml
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v3
+  - name: Fetch tags
+    run: git fetch --tags --force
+```
+
+For other workflows, using the `fetch-depth` option should be sufficient:
+
+```yaml
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v3
+    with:
+      fetch-depth: 0
+```
+
+For more information regarding this problem see [actions/checkout#290].
+
 ---
 
 Please [open an issue] if you found a mistake or if you have a suggestion for
@@ -92,7 +118,9 @@ how to improve the documentation.
 
 _Content licensed under [CC BY-SA 4.0]; Code snippets under the [MIT license]._
 
+[actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [cc by-sa 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
+[checkout action]: https://github.com/actions/checkout
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
 [mit license]: https://opensource.org/license/mit/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
