@@ -35,7 +35,16 @@ EOF"
   assert_equal "${actual}" "${expected}"
 }
 
-@test "shell injection" {
+@test "shell injection, context tag" {
+  CONTEXT_TAG='" && ls . ;'
+
+  GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
+    GITHUB_REF="refs/tags/${CONTEXT_TAG}" \
+    run ./src/main.sh
+  assert_success
+}
+
+@test "shell injection, provided tag" {
   PROVIDED_TAG='" && ls . ;'
 
   GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
