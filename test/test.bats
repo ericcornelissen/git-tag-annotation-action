@@ -7,7 +7,7 @@ setup() {
   rm --force github_output
 }
 
-@test "context tag only" {
+@test "only context tag" {
   CONTEXT_TAG='v1.0.0'
 
   GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
@@ -24,7 +24,7 @@ EOF"
   assert_equal "${actual}" "${expected}"
 }
 
-@test "provided tag only" {
+@test "only provided tag" {
   PROVIDED_TAG='v1.0.0'
 
   GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
