@@ -109,20 +109,22 @@ steps:
 
 For more information regarding this problem see [actions/checkout#290].
 
+## License
+
+The project source code is licensed under the MIT license, see [LICENSE] for the
+full license text. The documentation text is licensed under [CC BY-SA 4.0]; code
+snippets under the MIT license.
+
 ---
 
 Please [open an issue] if you found a mistake or if you have a suggestion for
 how to improve the documentation.
 
----
-
-_Content licensed under [CC BY-SA 4.0]; Code snippets under the [MIT license]._
-
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
 [cc by-sa 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
 [checkout action]: https://github.com/actions/checkout
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
-[mit license]: https://opensource.org/license/mit/
+[license]: ./LICENSE
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [permissions]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 [ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml
