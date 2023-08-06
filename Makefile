@@ -12,12 +12,14 @@ clean: ## Clean the repository
 format: ## Format the source code
 	@shfmt \
 		--simplify --write \
-		src/main.sh
+		src/main.sh \
+		test/*.bats
 
 format-check: ## Check the source code formatting
 	@shfmt \
 		--diff \
-		src/main.sh
+		src/main.sh \
+		test/*.bats
 
 .PHONY: help
 help: ## Show this help message
@@ -35,15 +37,20 @@ lint-ci: ## Lint Continuous Integration configuration files
 
 lint-sh: ## Lint shell scripts
 	@shellcheck \
-		src/main.sh
+		src/main.sh \
+		test/*.bats
 
 lint-yaml: ## Lint YAML files
 	@yamllint \
-		-c .yamllint.yml \
+		--config-file .yamllint.yml \
 		.
 
-.PHONY: test test-run
-test: ## Run the tests
+.PHONY: test test-e2e test-run
+test: ## Run the automated tests
+	@./test/bats/bin/bats \
+		test/*.bats
+
+test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
 
 test-run: ## Run the action locally
@@ -57,4 +64,4 @@ test-run: ## Run the action locally
 	)
 
 .PHONY: verify
-verify: format-check lint test-run ## Verify project is in a good state
+verify: format-check lint test ## Verify project is in a good state
