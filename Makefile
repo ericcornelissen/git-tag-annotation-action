@@ -42,8 +42,12 @@ lint-yaml: ## Lint YAML files
 		-c .yamllint.yml \
 		.
 
-.PHONY: test test-run
-test: ## Run the tests
+.PHONY: test test-e2e test-run
+test: ## Run the automated tests
+	@./test/bats/bin/bats \
+		test/test.bats
+
+test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
 
 test-run: ## Run the action locally
