@@ -4,7 +4,7 @@ setup() {
   load 'test_helper/bats-support/load'
   load 'test_helper/bats-assert/load'
 
-  rm --force github_output
+  rm -f github_output
 }
 
 @test "only context tag" {
