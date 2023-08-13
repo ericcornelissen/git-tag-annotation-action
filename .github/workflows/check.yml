@@ -151,12 +151,12 @@ jobs:
           tag: v1.0.0
       - name: Check output
         shell: bash
+        env:
+          ACTUAL: ${{ steps.action-test.outputs.git-tag-annotation }}
+          EXPECTED: |
+            - Run the Action to get the git tag annotation of the current tag.
+            - Run the Action to get the git tag annotation of a specified tag.
         run: |
-          ACTUAL='${{ steps.action-test.outputs.git-tag-annotation }}'
-          EXPECTED='- Run the Action to get the git tag annotation of the current tag.
-          - Run the Action to get the git tag annotation of a specified tag.
-          '
-
           if [ "${ACTUAL}" != "${EXPECTED}" ]; then
             exit 1
           fi

@@ -70,7 +70,9 @@ jobs:
         id: tag-data
         uses: ericcornelissen/git-tag-annotation-action@v2
       - name: The output
-        run: echo '${{ steps.tag-data.outputs.git-tag-annotation }}'
+        env:
+          ANNOTATION: ${{ steps.tag-data.outputs.git-tag-annotation }}
+        run: echo "$ANNOTATION"
 ```
 
 ## Security
