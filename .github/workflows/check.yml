@@ -157,7 +157,7 @@ jobs:
             - Run the Action to get the git tag annotation of the current tag.
             - Run the Action to get the git tag annotation of a specified tag.
         run: |
-          if [ "$ACTUAL" != "$EXPECTED" ]; then
+          if [ "${ACTUAL}" != "${EXPECTED}" ]; then
             exit 1
           fi
   validate-action-types:
