@@ -84,13 +84,13 @@ jobs:
         env:
           VERSION: ${{ needs.check.outputs.version }}
         run: |
-          git tag "$VERSION"
-          git push origin "$VERSION"
+          git tag "${VERSION}"
+          git push origin "${VERSION}"
       - name: Update major version branch
         env:
           MAJOR_VERSION: ${{ needs.check.outputs.major_version }}
         run: |
-          git push origin "HEAD:$MAJOR_VERSION"
+          git push origin "HEAD:${MAJOR_VERSION}"
   github:
     name: GitHub
     runs-on: ubuntu-22.04
