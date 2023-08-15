@@ -151,7 +151,9 @@ This Action output will be written to the `github_output` file.
 
 ##### Automated Testing
 
-You can run automated tests using the `make test` command.
+You can run automated tests using the `make test` command. This uses [t-bash] to
+run tests. Automated tests are located in the `test/` directory and must use the
+`test_` prefix.
 
 ##### End-to-end Testing
 
@@ -187,4 +189,5 @@ There are some limitations to using [act]:
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
 [shfmt]: https://github.com/mvdan/sh
+[t-bash]: https://github.com/leonschreuder/t-bash
 [yamllint]: https://github.com/adrienverge/yamllint

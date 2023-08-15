@@ -12,12 +12,14 @@ clean: ## Clean the repository
 format: ## Format the source code
 	@shfmt \
 		--simplify --write \
-		src/main.sh
+		src/main.sh \
+		test/test_*.sh
 
 format-check: ## Check the source code formatting
 	@shfmt \
 		--diff \
-		src/main.sh
+		src/main.sh \
+		test/test_*.sh
 
 .PHONY: help
 help: ## Show this help message
@@ -35,7 +37,8 @@ lint-ci: ## Lint Continuous Integration configuration files
 
 lint-sh: ## Lint shell scripts
 	@shellcheck \
-		src/main.sh
+		src/main.sh \
+		test/test_*.sh
 
 lint-yaml: ## Lint YAML files
 	@yamllint \
@@ -44,7 +47,7 @@ lint-yaml: ## Lint YAML files
 
 .PHONY: test test-e2e test-run
 test: ## Run the automated tests
-	@echo TODO: add automated tests
+	@./test/run-tests.sh test/test_*.sh
 
 test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
