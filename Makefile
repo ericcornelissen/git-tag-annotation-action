@@ -47,7 +47,8 @@ lint-yaml: ## Lint YAML files
 
 .PHONY: test test-e2e test-run
 test: ## Run the automated tests
-	@./test/run-tests.sh test/test_*.sh
+	@./test/run-tests.sh \
+		test/test_*.sh
 
 test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
