@@ -4,7 +4,7 @@ setup() {
   load 'test_helper/bats-support/load'
   load 'test_helper/bats-assert/load'
 
-  rm -f github_output
+  rm -f "${GITHUB_OUTPUT}"
 }
 
 @test "argument splitting, context tag" {
