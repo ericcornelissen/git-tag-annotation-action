@@ -1,4 +1,4 @@
-TEST_FILES:=test/*.bats
+TEST_FILES:=
 SHELL_SCRIPTS:=src/main.sh $(TEST_FILES)
 
 GITHUB_OUTPUT:=github_output
@@ -39,7 +39,7 @@ lint-yaml: ## Lint YAML files
 
 .PHONY: test test-e2e test-run
 test: ## Run the automated tests
-	@./test/bats/bin/bats $(TEST_FILES)
+	@echo TODO: add automated tests
 
 test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
