@@ -8,19 +8,14 @@ default: help
 
 .PHONY: clean
 clean: ## Clean the repository
-	@git clean -fx \
-		$(GITHUB_OUTPUT)
+	@git clean -fx $(GITHUB_OUTPUT)
 
 .PHONY: format format-check
 format: ## Format the source code
-	@shfmt \
-		--simplify --write \
-		$(SHELL_SCRIPTS)
+	@shfmt --simplify --write $(SHELL_SCRIPTS)
 
 format-check: ## Check the source code formatting
-	@shfmt \
-		--diff \
-		$(SHELL_SCRIPTS)
+	@shfmt --diff $(SHELL_SCRIPTS)
 
 .PHONY: help
 help: ## Show this help message
@@ -37,18 +32,14 @@ lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
 lint-sh: ## Lint shell scripts
-	@shellcheck \
-		$(SHELL_SCRIPTS)
+	@shellcheck $(SHELL_SCRIPTS)
 
 lint-yaml: ## Lint YAML files
-	@yamllint \
-		--config-file .yamllint.yml \
-		.
+	@yamllint --config-file .yamllint.yml .
 
 .PHONY: test test-e2e test-run
 test: ## Run the automated tests
-	@./test/bats/bin/bats \
-		$(TEST_FILES)
+	@./test/bats/bin/bats $(TEST_FILES)
 
 test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
