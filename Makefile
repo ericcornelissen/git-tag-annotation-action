@@ -1,3 +1,6 @@
+TEST_FILES:=test/*.bats
+SHELL_SCRIPTS:=src/main.sh $(TEST_FILES)
+
 GITHUB_OUTPUT:=github_output
 
 .PHONY: default
@@ -5,21 +8,14 @@ default: help
 
 .PHONY: clean
 clean: ## Clean the repository
-	@git clean -fx \
-		$(GITHUB_OUTPUT)
+	@git clean -fx $(GITHUB_OUTPUT)
 
 .PHONY: format format-check
 format: ## Format the source code
-	@shfmt \
-		--simplify --write \
-		src/main.sh \
-		test/*.bats
+	@shfmt --simplify --write $(SHELL_SCRIPTS)
 
 format-check: ## Check the source code formatting
-	@shfmt \
-		--diff \
-		src/main.sh \
-		test/*.bats
+	@shfmt --diff $(SHELL_SCRIPTS)
 
 .PHONY: help
 help: ## Show this help message
@@ -36,19 +32,14 @@ lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
 lint-sh: ## Lint shell scripts
-	@shellcheck \
-		src/main.sh \
-		test/*.bats
+	@shellcheck $(SHELL_SCRIPTS)
 
 lint-yaml: ## Lint YAML files
-	@yamllint \
-		--config-file .yamllint.yml \
-		.
+	@yamllint --config-file .yamllint.yml .
 
 .PHONY: test test-e2e test-run
 test: ## Run the automated tests
-	@./test/bats/bin/bats \
-		test/*.bats
+	@./test/bats/bin/bats $(TEST_FILES)
 
 test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
