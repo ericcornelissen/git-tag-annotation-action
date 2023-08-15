@@ -16,7 +16,7 @@ indent_style=space
 indent_size=unset
 indent_style=space
 
-[*.{sh,bats}]
+[*.sh]
 indent_size=2
 indent_style=space
 
