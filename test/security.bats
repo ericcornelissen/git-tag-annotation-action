@@ -46,9 +46,13 @@ EOF"
     GITHUB_REF="refs/tags/${CONTEXT_TAG}" \
     run ./src/main.sh
 
-  assert_success
+  actual="$(cat "${GITHUB_OUTPUT}")"
+  expected="annotation<<EOF
+EOF"
+
   assert_success
   assert_output ''
+  assert_equal "${actual}" "${expected}"
 }
 
 @test "shell injection, provided tag" {
@@ -58,6 +62,11 @@ EOF"
     PROVIDED_TAG="${PROVIDED_TAG}" \
     run ./src/main.sh
 
+  actual="$(cat "${GITHUB_OUTPUT}")"
+  expected="annotation<<EOF
+EOF"
+
   assert_success
   assert_output ''
+  assert_equal "${actual}" "${expected}"
 }
