@@ -21,6 +21,7 @@ Describe 'the tag from the GitHub context'
       When run script ./src/main.sh
       The status should be success
       The output should be blank
+      The error should be blank
       The file "${GITHUB_OUTPUT}" should satisfy contents "${V1_0_0_ANNOTATION}"
     End
   End
@@ -32,6 +33,7 @@ Describe 'the tag from the GitHub context'
       When run script ./src/main.sh
       The status should be success
       The output should be blank
+      The error should be blank
       The file "${GITHUB_OUTPUT}" should satisfy contents "${NO_ANNOTATION}"
     End
   End
@@ -43,6 +45,7 @@ Describe 'the tag from the GitHub context'
       When run script ./src/main.sh
       The status should be success
       The output should be blank
+      The error should be blank
       The file "${GITHUB_OUTPUT}" should satisfy contents "${NO_ANNOTATION}"
     End
   End
@@ -58,6 +61,7 @@ Describe 'the tag provided by the user'
       When run script ./src/main.sh
       The status should be success
       The output should be blank
+      The error should be blank
       The file "${GITHUB_OUTPUT}" should satisfy contents "${V1_0_0_ANNOTATION}"
     End
   End
@@ -69,6 +73,7 @@ Describe 'the tag provided by the user'
       When run script ./src/main.sh
       The status should be success
       The output should be blank
+      The error should be blank
       The file "${GITHUB_OUTPUT}" should satisfy contents "${NO_ANNOTATION}"
     End
   End
@@ -80,6 +85,7 @@ Describe 'the tag provided by the user'
       When run script ./src/main.sh
       The status should be success
       The output should be blank
+      The error should be blank
       The file "${GITHUB_OUTPUT}" should satisfy contents "${NO_ANNOTATION}"
     End
   End
@@ -96,6 +102,7 @@ Describe 'both the context tag and the tag provided by the user'
       When run script ./src/main.sh
       The status should be success
       The output should be blank
+      The error should be blank
       The file "${GITHUB_OUTPUT}" should satisfy contents "${V1_0_0_ANNOTATION}"
     End
   End
