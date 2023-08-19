@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./test/osht.sh
 
-PLAN 3
+PLAN 5
 
 # --- SETUP ------------------------------------------------------------------ #
 CONTEXT_TAG='v1.0.1'
@@ -16,6 +16,8 @@ rm -f "${GITHUB_OUTPUT}"
 ISNT "${CONTEXT_TAG}" == "${PROVIDED_TAG}"
 
 RUNS ./src/main.sh
+NOGREP .
+NEGREP .
 IS "$(cat "${GITHUB_OUTPUT}")" == "annotation<<EOF
 - Run the Action to get the git tag annotation of the current tag.
 - Run the Action to get the git tag annotation of a specified tag.

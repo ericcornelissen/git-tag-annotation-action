@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./test/osht.sh
 
-PLAN 2
+PLAN 4
 
 # --- SETUP ------------------------------------------------------------------ #
 CONTEXT_TAG='" && ls . ;'
@@ -13,5 +13,7 @@ rm -f "${GITHUB_OUTPUT}"
 
 # --- RUN -------------------------------------------------------------------- #
 RUNS ./src/main.sh
+NOGREP .
+NEGREP .
 IS "$(cat "${GITHUB_OUTPUT}")" == "annotation<<EOF
 EOF"
