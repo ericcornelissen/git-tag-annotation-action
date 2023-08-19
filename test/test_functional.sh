@@ -20,6 +20,7 @@ test_only_context_tag() {
 
 EOF"
 
+  assertExitCodeEquals 0
   assertEquals "${actual}" "${expected}"
 }
 
@@ -37,6 +38,7 @@ test_only_provided_tag() {
 
 EOF"
 
+  assertExitCodeEquals 0
   assertEquals "${actual}" "${expected}"
 }
 
@@ -57,5 +59,6 @@ test_both_context_and_provided_tag() {
 
 EOF"
 
+  assertExitCodeEquals 0
   assertEquals "${actual}" "${expected}"
 }

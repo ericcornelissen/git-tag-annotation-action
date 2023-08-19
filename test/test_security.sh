@@ -17,6 +17,7 @@ test_argument_splitting_context_tag() {
   expected="annotation<<EOF
 EOF"
 
+  assertExitCodeEquals 0
   assertEquals "${actual}" "${expected}"
 }
 
@@ -31,6 +32,7 @@ test_argument_splitting_provided_tag() {
   expected="annotation<<EOF
 EOF"
 
+  assertExitCodeEquals 0
   assertEquals "${actual}" "${expected}"
 }
 
@@ -40,7 +42,13 @@ test_shell_injection_context_tag() {
   GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
     GITHUB_REF="refs/tags/${CONTEXT_TAG}" \
     ./src/main.sh
+
+  actual="$(cat "${GITHUB_OUTPUT}")"
+  expected="annotation<<EOF
+EOF"
+
   assertExitCodeEquals 0
+  assertEquals "${actual}" "${expected}"
 }
 
 test_shell_injection_provided_tag() {
@@ -49,5 +57,11 @@ test_shell_injection_provided_tag() {
   GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
     PROVIDED_TAG="${PROVIDED_TAG}" \
     ./src/main.sh
+
+  actual="$(cat "${GITHUB_OUTPUT}")"
+  expected="annotation<<EOF
+EOF"
+
   assertExitCodeEquals 0
+  assertEquals "${actual}" "${expected}"
 }
