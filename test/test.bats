@@ -21,6 +21,8 @@ setup() {
 
 EOF"
 
+  assert_success
+  assert_output ''
   assert_equal "${actual}" "${expected}"
 }
 
@@ -38,6 +40,8 @@ EOF"
 
 EOF"
 
+  assert_success
+  assert_output ''
   assert_equal "${actual}" "${expected}"
 }
 
@@ -58,5 +62,7 @@ EOF"
 
 EOF"
 
+  assert_success
+  assert_output ''
   assert_equal "${actual}" "${expected}"
 }

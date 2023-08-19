@@ -18,6 +18,8 @@ setup() {
   expected="annotation<<EOF
 EOF"
 
+  assert_success
+  assert_output ''
   assert_equal "${actual}" "${expected}"
 }
 
@@ -32,6 +34,8 @@ EOF"
   expected="annotation<<EOF
 EOF"
 
+  assert_success
+  assert_output ''
   assert_equal "${actual}" "${expected}"
 }
 
@@ -41,7 +45,10 @@ EOF"
   GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
     GITHUB_REF="refs/tags/${CONTEXT_TAG}" \
     run ./src/main.sh
+
   assert_success
+  assert_success
+  assert_output ''
 }
 
 @test "shell injection, provided tag" {
@@ -50,5 +57,7 @@ EOF"
   GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
     PROVIDED_TAG="${PROVIDED_TAG}" \
     run ./src/main.sh
+
   assert_success
+  assert_output ''
 }
