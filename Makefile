@@ -1,6 +1,3 @@
-TEST_FILES:=
-SHELL_SCRIPTS:=src/main.sh $(TEST_FILES)
-
 GITHUB_OUTPUT:=github_output
 
 .PHONY: default
@@ -12,10 +9,10 @@ clean: ## Clean the repository
 
 .PHONY: format format-check
 format: ## Format the source code
-	@shfmt --simplify --write $(SHELL_SCRIPTS)
+	@shfmt --simplify --write src/main.sh
 
 format-check: ## Check the source code formatting
-	@shfmt --diff $(SHELL_SCRIPTS)
+	@shfmt --diff src/main.sh
 
 .PHONY: help
 help: ## Show this help message
@@ -25,21 +22,24 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
-.PHONY: lint lint-ci lint-sh lint-yaml
+.PHONY: lint lint-ci lint-sh lint-tests lint-yaml
 lint: lint-ci lint-sh lint-yaml ## Lint the project
 
 lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
 lint-sh: ## Lint shell scripts
-	@shellcheck $(SHELL_SCRIPTS)
+	@shellcheck src/main.sh spec/*.sh
+
+lint-tests: ## Lint test files
+	@shellspec --syntax-check
 
 lint-yaml: ## Lint YAML files
 	@yamllint --config-file .yamllint.yml .
 
 .PHONY: test test-e2e test-run
 test: ## Run the automated tests
-	@echo TODO: add automated tests
+	@shellspec
 
 test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e

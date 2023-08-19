@@ -95,6 +95,7 @@ To be able to contribute you need the following tooling:
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [actionlint] (see `.tool-versions` for preferred version);
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
+- (Suggested) [ShellSpec] (see `.tool-versions` for preferred version);
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
 - (Optional) [act] v0.2.22 or higher;
@@ -151,7 +152,9 @@ This Action output will be written to the `github_output` file.
 
 ##### Automated Testing
 
-You can run automated tests using the `make test` command.
+You can run automated tests using the `make test` command. The test runner used
+by this project is [ShellSpec]. Automated tests are located in the `spec/`
+directory and must use the `_spec.sh` suffix.
 
 ##### End-to-end Testing
 
@@ -186,5 +189,6 @@ There are some limitations to using [act]:
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
+[shellspec]: https://shellspec.info/
 [shfmt]: https://github.com/mvdan/sh
 [yamllint]: https://github.com/adrienverge/yamllint

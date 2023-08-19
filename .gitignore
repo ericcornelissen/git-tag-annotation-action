@@ -1,8 +1,15 @@
+_reports/
 github_output
 
 # IDEs
 .idea/
 .vscode/
+
+# ShellSpec
+.shellspec-local
+.shellspec-quick.log
+coverage/
+report/
 
 # Signatures
 *.cert
