@@ -151,7 +151,9 @@ This Action output will be written to the `github_output` file.
 
 ##### Automated Testing
 
-You can run automated tests using the `make test` command.
+You can run automated tests using the `make test` command. This uses [roundup]
+to run tests. Automated tests are located in the `test/` directory and must use
+the `-test.sh` suffix.
 
 ##### End-to-end Testing
 
@@ -184,6 +186,7 @@ There are some limitations to using [act]:
 [node.js]: https://nodejs.org/en/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
+[roundup]: https://github.com/bmizerany/roundup
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
 [shfmt]: https://github.com/mvdan/sh
