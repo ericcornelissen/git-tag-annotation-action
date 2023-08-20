@@ -51,5 +51,5 @@ EOF'
   assert "cat ${GITHUB_OUTPUT}" 'annotation<<EOF
 EOF'
 
-  assert_end shell_injection_context_tag
+  assert_end shell_injection_provided_tag
 }
