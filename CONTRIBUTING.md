@@ -151,7 +151,9 @@ This Action output will be written to the `github_output` file.
 
 ##### Automated Testing
 
-You can run automated tests using the `make test` command.
+You can run automated tests using the `make test` command. This uses [Bash Test
+Tools] to run tests. Automated tests are located in the `test/` directory and
+must use the `test_` prefix and `.sh` extension.
 
 ##### End-to-end Testing
 
@@ -174,6 +176,7 @@ There are some limitations to using [act]:
 
 [act]: https://github.com/nektos/act
 [actionlint]: https://github.com/rhysd/actionlint
+[bash test tools]: https://thorsteinssonh.github.io/bash_test_tools/
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
 [docker]: https://www.docker.com/
