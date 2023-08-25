@@ -99,6 +99,8 @@ steps:
     run: git fetch --tags --force
 ```
 
+> **Note**: For more info regarding this problem see [actions/checkout#290].
+
 For other workflows, using the `fetch-depth` option should be sufficient:
 
 ```yaml
@@ -109,7 +111,17 @@ steps:
       fetch-depth: 0
 ```
 
-For more information regarding this problem see [actions/checkout#290].
+Since `actions/checkout@3.6.0` you can also force fetch tags if you don't want
+to use fetch depth `0`:
+
+```yaml
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v3 # or a version >=3.6.0
+    with:
+      fetch-depth: 10 # or anything >0
+      fetch-tags: true
+```
 
 ## License
 
