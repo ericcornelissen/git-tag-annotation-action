@@ -1,5 +1,7 @@
 # Check out ShellCheck at: https://www.shellcheck.net/
 
+disable=SC1091
+
 enable=avoid-nullary-conditions
 enable=deprecate-which
 enable=quote-safe-variables
