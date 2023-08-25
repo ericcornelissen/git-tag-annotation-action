@@ -4,14 +4,14 @@ import * as path from "node:path";
 const STR_UNRELEASED = "## [Unreleased]";
 const STR_NO_CHANGES = "- _No changes yet_";
 
-const manifestFile = path.resolve("./.version");
+const versionFile = path.resolve("./.version");
 const changelogFile = path.resolve("./CHANGELOG.md");
 
-const manifestRaw = fs.readFileSync(manifestFile).toString();
-const version = manifestRaw.trim();
+const version = fs.readFileSync(versionFile).toString().trim();
+const versionHeader = `## [${version}]`;
 
 const changelog = fs.readFileSync(changelogFile).toString();
-if (changelog.includes(`## [${version}]`)) {
+if (changelog.includes(versionHeader)) {
   throw new Error(`${version} already in CHANGELOG`);
 }
 
