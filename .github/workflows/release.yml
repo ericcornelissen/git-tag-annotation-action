@@ -22,7 +22,7 @@ jobs:
       pull-requests: write # To open a Pull Request
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@128a63446a954579617e875aaab7d2978154e969 # v2.4.0
+        uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
         with:
           disable-sudo: true
           egress-policy: block
@@ -33,27 +33,27 @@ jobs:
             objects.githubusercontent.com:443
             registry.npmjs.org:443
       - name: Checkout repository
-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
       - name: Install Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
         with:
           node-version-file: .nvmrc
       - name: Create token to create Pull Request
         uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92 # v1.8.0
-        id: release-token
+        id: automation-token
         with:
-          app_id: ${{ secrets.RELEASE_APP_ID }}
-          private_key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          app_id: ${{ secrets.AUTOMATION_ID }}
+          private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
       - name: Bump version
         env:
           UPDATE_TYPE: ${{ github.event.inputs.update_type }}
-        run: npm version "$UPDATE_TYPE" --no-git-tag-version
+        run: npm version "${UPDATE_TYPE}" --no-git-tag-version
       - name: Update CHANGELOG
         run: node script/bump-changelog.mjs
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38 # v5.0.2
         with:
-          token: ${{ steps.release-token.outputs.token }}
+          token: ${{ steps.automation-token.outputs.token }}
           title: New ${{ github.event.inputs.update_type }} release for v2
           body: |
             _This Pull Request was created automatically_

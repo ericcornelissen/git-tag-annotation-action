@@ -1,3 +1,6 @@
+TEST_FILES:=test/test_*.sh
+SHELL_SCRIPTS:=src/main.sh $(TEST_FILES)
+
 GITHUB_OUTPUT:=github_output
 
 .PHONY: default
@@ -5,19 +8,14 @@ default: help
 
 .PHONY: clean
 clean: ## Clean the repository
-	@git clean -fx \
-		$(GITHUB_OUTPUT)
+	@git clean -fx $(GITHUB_OUTPUT)
 
 .PHONY: format format-check
 format: ## Format the source code
-	@shfmt \
-		--simplify --write \
-		src/main.sh
+	@shfmt --simplify --write $(SHELL_SCRIPTS)
 
 format-check: ## Check the source code formatting
-	@shfmt \
-		--diff \
-		src/main.sh
+	@shfmt --diff $(SHELL_SCRIPTS)
 
 .PHONY: help
 help: ## Show this help message
@@ -34,16 +32,17 @@ lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
 
 lint-sh: ## Lint shell scripts
-	@shellcheck \
-		src/main.sh
+	@shellcheck $(SHELL_SCRIPTS)
 
 lint-yaml: ## Lint YAML files
-	@yamllint \
-		-c .yamllint.yml \
-		.
+	@yamllint --config-file .yamllint.yml .
 
-.PHONY: test test-run
-test: ## Run the tests
+.PHONY: test test-e2e test-run
+test: ## Run the automated tests
+	@./test/test_functional.sh
+	@./test/test_security.sh
+
+test-e2e: ## Run the end-to-end tests
 	@act --job test-e2e
 
 test-run: ## Run the action locally
@@ -57,4 +56,4 @@ test-run: ## Run the action locally
 	)
 
 .PHONY: verify
-verify: format-check lint test-run ## Verify project is in a good state
+verify: format-check lint test ## Verify project is in a good state

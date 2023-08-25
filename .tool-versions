@@ -2,9 +2,9 @@
 # - asdf: https://asdf-vm.com/
 # - rtx: https://github.com/jdxcode/rtx
 
-act 0.2.46
+act 0.2.49
 actionlint 1.6.25
-cosign 2.0.2
+cosign 2.1.1
 shellcheck 0.9.0
-shfmt 3.6.0
+shfmt 3.7.0
 yamllint 1.32.0

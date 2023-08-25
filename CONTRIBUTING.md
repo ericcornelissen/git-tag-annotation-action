@@ -137,6 +137,8 @@ to run all linters or use the following commands to check specific file types:
 
 #### Testing
 
+##### Manual Testing
+
 You can do a test run locally using the `make test-run` command. This will
 emulate a run using `refs/tags/v1.0.0` as the environment git ref and the
 (optional) `tag` argument as the Action's `tag` input, for example
@@ -147,15 +149,21 @@ make test-run tag=v1.1.0
 
 This Action output will be written to the `github_output` file.
 
-The automated tests for this project are end-to-end tests that are ran in the
-Continuous Integration as part of the "Check" workflow. These tests aim to
-verify that the Action can run in the GitHub Actions environment and outputs
-the expected values.
+##### Automated Testing
 
-##### Running End-to-end Tests Locally
+You can run automated tests using the `make test` command. This uses [Bash Test
+Tools] to run tests. Automated tests are located in the `test/` directory and
+must use the `test_` prefix and `.sh` extension.
+
+##### End-to-end Testing
+
+Additional automated tests for this project are in the form of end-to-end tests
+that are ran in the Continuous Integration as part of the "Check" workflow.
+These tests aim to verify that the Action can run in the GitHub Actions
+environment and outputs the expected values.
 
 You can use [act] to run the end-to-end tests locally. If you have the `act`
-program available on your PATH you can use `make test` to run the end-to-end
+program available on your PATH you can use `make test-e2e` to run the end-to-end
 tests locally.
 
 There are some limitations to using [act]:
@@ -168,6 +176,7 @@ There are some limitations to using [act]:
 
 [act]: https://github.com/nektos/act
 [actionlint]: https://github.com/rhysd/actionlint
+[bash test tools]: https://thorsteinssonh.github.io/bash_test_tools/
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
 [docker]: https://www.docker.com/
