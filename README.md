@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Fetch tags
         run: git fetch --tags --force
       - name: Get current tag annotation
@@ -94,7 +94,7 @@ the repository has been checked out like:
 ```yaml
 steps:
   - name: Checkout repository
-    uses: actions/checkout@v3
+    uses: actions/checkout@v4
   - name: Fetch tags
     run: git fetch --tags --force
 ```
@@ -106,7 +106,7 @@ For other workflows, using the `fetch-depth` option should be sufficient:
 ```yaml
 steps:
   - name: Checkout repository
-    uses: actions/checkout@v3
+    uses: actions/checkout@v4
     with:
       fetch-depth: 0
 ```
@@ -117,7 +117,7 @@ to use fetch depth `0`:
 ```yaml
 steps:
   - name: Checkout repository
-    uses: actions/checkout@v3 # or a version >=3.6.0
+    uses: actions/checkout@v4 # or a version >=3.6.0
     with:
       fetch-depth: 10 # or anything >0
       fetch-tags: true
