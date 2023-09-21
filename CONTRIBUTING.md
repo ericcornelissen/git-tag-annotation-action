@@ -97,7 +97,6 @@ To be able to contribute you need the following tooling:
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
-- (Optional) [act] v0.2.22 or higher;
 - (Optional) [Docker];
 - (Optional) [Node.js] v20 or higher;
 
@@ -162,19 +161,6 @@ that are ran in the Continuous Integration as part of the "Check" workflow.
 These tests aim to verify that the Action can run in the GitHub Actions
 environment and outputs the expected values.
 
-You can use [act] to run the end-to-end tests locally. If you have the `act`
-program available on your PATH you can use `make test-e2e` to run the end-to-end
-tests locally.
-
-There are some limitations to using [act]:
-
-- It depends on [Docker] to run workflows.
-- Your system may not support all operating systems the tests should run on.
-  Hence, the end-to-end tests may succeed locally but fail on GitHub because you
-  couldn't run them for all operating systems.
-- All jobs that the end-to-end test job `needs` have to be executed as well.
-
-[act]: https://github.com/nektos/act
 [actionlint]: https://github.com/rhysd/actionlint
 [bash test tools]: https://thorsteinssonh.github.io/bash_test_tools/
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug

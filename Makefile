@@ -42,9 +42,6 @@ test: ## Run the automated tests
 	@./test/test_functional.sh
 	@./test/test_security.sh
 
-test-e2e: ## Run the end-to-end tests
-	@act --job test-e2e
-
 test-run: ## Run the action locally
 	@rm -f ${GITHUB_OUTPUT}
 	@touch ${GITHUB_OUTPUT}
