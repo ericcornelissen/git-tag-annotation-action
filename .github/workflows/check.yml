@@ -30,7 +30,7 @@ jobs:
             sigstore-tuf-root.storage.googleapis.com:443
             tuf-repo-cdn.sigstore.dev:443
       - name: Checkout repository
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Install tooling
         uses: asdf-vm/actions/install@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Check formatting
@@ -56,7 +56,7 @@ jobs:
             sigstore-tuf-root.storage.googleapis.com:443
             tuf-repo-cdn.sigstore.dev:443
       - name: Checkout repository
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Install tooling
         uses: asdf-vm/actions/install@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Lint CI workflows
@@ -85,7 +85,7 @@ jobs:
             objects.githubusercontent.com:443
             pkg-containers.githubusercontent.com:443
       - name: Checkout repository
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 0
       - name: Scan for secrets
@@ -109,7 +109,7 @@ jobs:
             github.com:443
             objects.githubusercontent.com:443
       - name: Checkout repository
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 0
       - name: Run tests
@@ -140,7 +140,7 @@ jobs:
             github.com:443
             objects.githubusercontent.com:443
       - name: Checkout repository
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           fetch-depth: 0
       - name: Run git-tag-annotation-action
@@ -171,6 +171,6 @@ jobs:
           allowed-endpoints: >
             github.com:443
       - name: Checkout repository
-        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Validate action types
         uses: krzema12/github-actions-typing@be99fa6195eeeec5aee1e87acca69087de0353ce # v1.0.1
