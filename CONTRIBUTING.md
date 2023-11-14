@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+
 # Contributing Guidelines
 
 The maintainers of the _Git Tag Annotation Action_ welcome contributions and
