@@ -1,4 +1,6 @@
 #!/bin/bash
+# SPDX-License-Identifier: MIT
+
 source ./test/bash_test_tools
 
 GITHUB_OUTPUT='github_output'
