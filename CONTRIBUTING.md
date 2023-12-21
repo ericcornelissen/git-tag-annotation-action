@@ -99,7 +99,6 @@ To be able to contribute you need the following tooling:
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
-- (Optional) [Docker];
 - (Optional) [Node.js] v20 or higher;
 
 ### Workflow
@@ -167,7 +166,6 @@ environment and outputs the expected values.
 [bash test tools]: https://thorsteinssonh.github.io/bash_test_tools/
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
-[docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
