@@ -100,7 +100,6 @@ To be able to contribute you need the following tooling:
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
 - (Optional) [Docker];
-- (Optional) [Node.js] v20 or higher;
 
 ### Workflow
 
@@ -172,7 +171,6 @@ environment and outputs the expected values.
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
 [make]: https://www.gnu.org/software/make/
-[node.js]: https://nodejs.org/en/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
 [security policy]: ./SECURITY.md
