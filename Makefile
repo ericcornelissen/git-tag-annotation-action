@@ -3,12 +3,32 @@ SHELL_SCRIPTS:=src/main.sh $(TEST_FILES)
 
 GITHUB_OUTPUT:=github_output
 
+CONTAINER_ENGINE?=docker
+DEV_ENV_NAME:=git-tag-annotation-action-dev
+DEV_IMG_NAME:=$(DEV_ENV_NAME)-img
+
 .PHONY: default
 default: help
 
 .PHONY: clean
 clean: ## Clean the repository
 	@git clean -fx $(GITHUB_OUTPUT)
+
+.PHONY: dev-env dev-img
+dev-env: dev-img ## Run an ephemeral development environment container
+	@$(CONTAINER_ENGINE) run \
+		-it \
+		--rm \
+		--workdir "/git-tag-annotation-action" \
+		--mount "type=bind,source=$(shell pwd),target=/git-tag-annotation-action" \
+		--name "$(DEV_ENV_NAME)" \
+		"$(DEV_IMG_NAME)"
+
+dev-img: ## Build a development environment container image
+	@$(CONTAINER_ENGINE) build \
+		--file Containerfile \
+		--tag "$(DEV_IMG_NAME)" \
+		.
 
 .PHONY: format format-check
 format: ## Format the source code

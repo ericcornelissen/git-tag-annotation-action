@@ -100,6 +100,7 @@ To be able to contribute you need the following tooling:
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
+- (Optional) [Docker] or [Podman] (development environment available);
 
 ### Workflow
 
@@ -166,12 +167,14 @@ environment and outputs the expected values.
 [bash test tools]: https://thorsteinssonh.github.io/bash_test_tools/
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
+[docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
 [make]: https://www.gnu.org/software/make/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
+[podman]: https://podman.io/
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
 [shfmt]: https://github.com/mvdan/sh
