@@ -84,9 +84,10 @@ version (using `v2.7.1` as an example):
 1. Merge the Pull Request if the changes look OK and all continuous integration
    checks are passing.
 
-   > **Note** At this point, the continuous delivery automation may pick up and
-   > complete the release process. If no, or only partially, continue following
-   > the remaining steps.
+   > [!NOTE]
+   > At this point, the continuous delivery automation may pick up and complete
+   > the release process. If no, or only partially, continue following the
+   > remaining steps.
 
 1. Immediately after the Pull Request is merged, sync the `main` branch:
 

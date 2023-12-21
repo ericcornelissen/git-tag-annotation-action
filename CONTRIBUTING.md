@@ -83,10 +83,11 @@ When you open a Pull Request that implements an issue make sure to link to that
 issue in the Pull Request description and explain how you implemented the issue
 as clearly as possible.
 
-> **Note** If you, for whatever reason, can no longer continue your contribution
-> please share this in the issue or your Pull Request. This gives others the
-> opportunity to work on it. If we don't hear from you for an extended period of
-> time we may decide to allow others to work on the issue you were assigned to.
+> [!NOTE]
+> If you, for whatever reason, can no longer continue your contribution please
+> share it in the issue or your Pull Request. This gives others the opportunity
+> to work on it. If we don't hear from you for an extended period of time we may
+> decide to allow others to work on the issue you were assigned to.
 
 ### Prerequisites
 
@@ -99,7 +100,6 @@ To be able to contribute you need the following tooling:
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
-- (Optional) [Docker];
 
 ### Workflow
 
@@ -166,7 +166,6 @@ environment and outputs the expected values.
 [bash test tools]: https://thorsteinssonh.github.io/bash_test_tools/
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
 [debug logging]: https://docs.github.com/en/actions/managing-workflow-runs/enabling-debug-logging
-[docker]: https://www.docker.com/
 [editorconfig]: https://editorconfig.org/
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/

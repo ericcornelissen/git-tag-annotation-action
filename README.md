@@ -101,7 +101,8 @@ steps:
     run: git fetch --tags --force
 ```
 
-> **Note**: For more info regarding this problem see [actions/checkout#290].
+> [!NOTE]
+> For more info regarding this problem see [actions/checkout#290].
 
 For other workflows, using the `fetch-depth` option should be sufficient:
 
