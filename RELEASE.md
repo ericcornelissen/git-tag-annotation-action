@@ -42,17 +42,24 @@ version (using `v2.7.1` as an example):
 1. Update the version number in the `.version` file:
 
    ```shell
-   node script/bump-version.mjs [patch|minor|major]
+   ./script/version-bump.sh [major|minor|patch]
+   ```
+
+   Or edit the `.version` file manually:
+
+   ```diff
+   - 0.1.1
+   + 0.1.2
    ```
 
 1. Update the changelog:
 
    ```shell
-   node script/bump-changelog.mjs
+   ./script/update-changelog.sh
    ```
 
-   If that fails, manually add the following text after the `## [Unreleased]`
-   line:
+   Or edit the `CHANGELOG.md` file manually. Add the following after the
+   `## [Unreleased]` line, adjusting the version number for the release:
 
    ```markdown
    - _No changes yet_
