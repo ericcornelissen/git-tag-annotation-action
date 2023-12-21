@@ -129,11 +129,11 @@ make lint
 
 to run all linters or use the following commands to check specific file types:
 
-| File type        | Command          | Linter       |
-| :--------------- | :--------------- | :----------- |
-| CI workflows     | `make lint-ci`   | [actionlint] |
-| Shell (`.{,sh}`) | `make lint-sh`   | [ShellCheck] |
-| YAML (`.yaml`)   | `make lint-yaml` | [yamllint]   |
+| File type     | Command          | Linter       |
+| :------------ | :--------------- | :----------- |
+| CI workflows  | `make lint-ci`   | [actionlint] |
+| Shell (`.sh`) | `make lint-sh`   | [ShellCheck] |
+| YAML (`.yml`) | `make lint-yaml` | [yamllint]   |
 
 #### Testing
 
