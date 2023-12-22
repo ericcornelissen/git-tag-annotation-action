@@ -9,6 +9,20 @@ on:
 permissions: read-all
 
 jobs:
+  dev-img:
+    name: Development image
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+      - name: Install tooling
+        uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3.0.2
+      - name: Lint
+        run: make lint-container
+      - name: Build
+        run: make dev-img
   format:
     name: Format
     runs-on: ubuntu-22.04
