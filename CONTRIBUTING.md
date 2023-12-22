@@ -97,6 +97,7 @@ To be able to contribute you need the following tooling:
 - [Make];
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [actionlint] (see `.tool-versions` for preferred version);
+- (Suggested) [hadolint] (see `.tool-versions` for preferred version);
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
@@ -130,11 +131,12 @@ make lint
 
 to run all linters or use the following commands to check specific file types:
 
-| File type        | Command          | Linter       |
-| :--------------- | :--------------- | :----------- |
-| CI workflows     | `make lint-ci`   | [actionlint] |
-| Shell (`.{,sh}`) | `make lint-sh`   | [ShellCheck] |
-| YAML (`.yaml`)   | `make lint-yaml` | [yamllint]   |
+| File type        | Command               | Linter       |
+| :--------------- | :-------------------- | :----------- |
+| CI workflows     | `make lint-ci`        | [actionlint] |
+| `Containerfile`  | `make lint-container` | [hadolint] |
+| Shell (`.{,sh}`) | `make lint-sh`        | [ShellCheck] |
+| YAML (`.yaml`)   | `make lint-yaml`      | [yamllint]   |
 
 #### Testing
 
@@ -171,6 +173,7 @@ environment and outputs the expected values.
 [editorconfig]: https://editorconfig.org/
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
+[hadolint]: https://github.com/hadolint/hadolint
 [make]: https://www.gnu.org/software/make/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee

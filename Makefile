@@ -45,11 +45,14 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
-.PHONY: lint lint-ci lint-sh lint-yaml
-lint: lint-ci lint-sh lint-yaml ## Lint the project
+.PHONY: lint lint-ci lint-container lint-sh lint-yaml
+lint: lint-ci lint-container lint-sh lint-yaml ## Lint the project
 
 lint-ci: ## Lint Continuous Integration configuration files
 	@actionlint
+
+lint-container: ## Lint the Containerfile
+	@hadolint Containerfile
 
 lint-sh: ## Lint shell scripts
 	@shellcheck $(SHELL_SCRIPTS)
