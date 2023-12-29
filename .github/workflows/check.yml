@@ -147,7 +147,7 @@ jobs:
       - name: Run tests
         run: make test
   test-e2e:
-    name: End-to-end tests (${{ matrix.name }})
+    name: End-to-end tests (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     needs:
       - test-unit
@@ -155,12 +155,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: MacOS
-            os: macos-12
-          - name: Ubuntu
-            os: ubuntu-22.04
-          - name: Windows
-            os: windows-2022
+          - os: macos-11
+          - os: macos-12
+          - os: ubuntu-20.04
+          - os: ubuntu-22.04
+          - os: windows-2019
+          - os: windows-2022
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
