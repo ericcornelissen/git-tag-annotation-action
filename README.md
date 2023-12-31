@@ -1,4 +1,4 @@
-<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
 # Git Tag Annotation Action
 
@@ -142,7 +142,7 @@ steps:
 ## License
 
 The project source code is licensed under the MIT license, see [LICENSE] for the
-full license text. The documentation text is licensed under [CC BY-SA 4.0]; code
+full license text. The documentation text is licensed under [CC BY 4.0]; code
 snippets under the MIT license.
 
 ---
@@ -151,7 +151,7 @@ Please [open an issue] if you found a mistake or if you have a suggestion for
 how to improve the documentation.
 
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
-[cc by-sa 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
+[cc by 4.0]: https://creativecommons.org/licenses/by/4.0/
 [checkout action]: https://github.com/actions/checkout
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
 [license]: ./LICENSE
