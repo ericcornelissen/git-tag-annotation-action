@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT-0
+
 TEST_FILES:=test/test_*.sh
 SHELL_SCRIPTS:=src/main.sh $(TEST_FILES)
 
