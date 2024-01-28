@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+
 # Git Tag Annotation Action
 
 [![Continuous Integration][ci-image]][ci-url]
@@ -63,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Fetch tags
         run: git fetch --tags --force
       - name: Get current tag annotation
@@ -74,6 +76,20 @@ jobs:
           ANNOTATION: ${{ steps.tag-data.outputs.git-tag-annotation }}
         run: echo "$ANNOTATION"
 ```
+
+## Runners
+
+This Action is tested on the official [ubuntu-20.04], [ubuntu-22.04],
+[macos-11], [macos-12], [macos-13], [windows-2019], [windows-2022] runner
+images. It is recommended to use one of these images when using this Action.
+
+[macos-11]: https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md
+[macos-12]: https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
+[macos-13]: https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md
+[ubuntu-20.04]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md
+[ubuntu-22.04]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+[windows-2019]: https://github.com/actions/runner-images/blob/main/images/windows/Windows2019-Readme.md
+[windows-2022]: https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
 
 ## Security
 
@@ -94,19 +110,20 @@ the repository has been checked out like:
 ```yaml
 steps:
   - name: Checkout repository
-    uses: actions/checkout@v3
+    uses: actions/checkout@v4
   - name: Fetch tags
     run: git fetch --tags --force
 ```
 
-> **Note**: For more info regarding this problem see [actions/checkout#290].
+> [!NOTE]
+> For more info regarding this problem see [actions/checkout#290].
 
 For other workflows, using the `fetch-depth` option should be sufficient:
 
 ```yaml
 steps:
   - name: Checkout repository
-    uses: actions/checkout@v3
+    uses: actions/checkout@v4
     with:
       fetch-depth: 0
 ```
@@ -117,7 +134,7 @@ to use fetch depth `0`:
 ```yaml
 steps:
   - name: Checkout repository
-    uses: actions/checkout@v3 # or a version >=3.6.0
+    uses: actions/checkout@v4 # or a version >=3.6.0
     with:
       fetch-depth: 10 # or anything >0
       fetch-tags: true
@@ -126,7 +143,7 @@ steps:
 ## License
 
 The project source code is licensed under the MIT license, see [LICENSE] for the
-full license text. The documentation text is licensed under [CC BY-SA 4.0]; code
+full license text. The documentation text is licensed under [CC BY 4.0]; code
 snippets under the MIT license.
 
 ---
@@ -135,7 +152,7 @@ Please [open an issue] if you found a mistake or if you have a suggestion for
 how to improve the documentation.
 
 [actions/checkout#290]: https://github.com/actions/checkout/issues/290
-[cc by-sa 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
+[cc by 4.0]: https://creativecommons.org/licenses/by/4.0/
 [checkout action]: https://github.com/actions/checkout
 [github actions output docs]: https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#steps-context
 [license]: ./LICENSE

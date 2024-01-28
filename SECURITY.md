@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+
 # Security Policy
 
 The maintainers of the _Git Tag Annotation Action_ project take security issues
@@ -53,8 +55,9 @@ Try to include as many of the following items as possible in a security report:
 
 ## Advisories
 
-> **Note**: Advisories will be created only for vulnerabilities present in
-> released versions of the project.
+> [!IMPORTANT]
+> Advisories will be created only for vulnerabilities present in released
+> versions of the project.
 
 | ID               | Date       | Affected versions | Patched versions |
 | :--------------- | :--------- | :---------------- | :--------------- |

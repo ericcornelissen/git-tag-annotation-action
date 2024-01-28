@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+
 # Contributing Guidelines
 
 The maintainers of the _Git Tag Annotation Action_ welcome contributions and
@@ -81,10 +83,11 @@ When you open a Pull Request that implements an issue make sure to link to that
 issue in the Pull Request description and explain how you implemented the issue
 as clearly as possible.
 
-> **Note** If you, for whatever reason, can no longer continue your contribution
-> please share this in the issue or your Pull Request. This gives others the
-> opportunity to work on it. If we don't hear from you for an extended period of
-> time we may decide to allow others to work on the issue you were assigned to.
+> [!NOTE]
+> If you, for whatever reason, can no longer continue your contribution please
+> share it in the issue or your Pull Request. This gives others the opportunity
+> to work on it. If we don't hear from you for an extended period of time we may
+> decide to allow others to work on the issue you were assigned to.
 
 ### Prerequisites
 
@@ -94,12 +97,11 @@ To be able to contribute you need the following tooling:
 - [Make];
 - (Recommended) a code editor with [EditorConfig] support;
 - (Suggested) [actionlint] (see `.tool-versions` for preferred version);
+- (Suggested) [hadolint] (see `.tool-versions` for preferred version);
 - (Suggested) [ShellCheck] (see `.tool-versions` for preferred version);
 - (Suggested) [shfmt] (see `.tool-versions` for preferred version);
 - (Suggested) [yamllint] (see `.tool-versions` for preferred version);
-- (Optional) [act] v0.2.22 or higher;
-- (Optional) [Docker];
-- (Optional) [Node.js] v20 or higher;
+- (Optional) [Docker] or [Podman] (development environment available);
 
 ### Workflow
 
@@ -129,11 +131,12 @@ make lint
 
 to run all linters or use the following commands to check specific file types:
 
-| File type        | Command          | Linter       |
-| :--------------- | :--------------- | :----------- |
-| CI workflows     | `make lint-ci`   | [actionlint] |
-| Shell (`.{,sh}`) | `make lint-sh`   | [ShellCheck] |
-| YAML (`.yaml`)   | `make lint-yaml` | [yamllint]   |
+| File type       | Command               | Linter       |
+| :-------------- | :-------------------- | :----------- |
+| CI workflows    | `make lint-ci`        | [actionlint] |
+| `Containerfile` | `make lint-container` | [hadolint]   |
+| Shell (`.sh`)   | `make lint-sh`        | [ShellCheck] |
+| YAML (`.yml`)   | `make lint-yaml`      | [yamllint]   |
 
 #### Testing
 
@@ -162,19 +165,6 @@ that are ran in the Continuous Integration as part of the "Check" workflow.
 These tests aim to verify that the Action can run in the GitHub Actions
 environment and outputs the expected values.
 
-You can use [act] to run the end-to-end tests locally. If you have the `act`
-program available on your PATH you can use `make test-e2e` to run the end-to-end
-tests locally.
-
-There are some limitations to using [act]:
-
-- It depends on [Docker] to run workflows.
-- Your system may not support all operating systems the tests should run on.
-  Hence, the end-to-end tests may succeed locally but fail on GitHub because you
-  couldn't run them for all operating systems.
-- All jobs that the end-to-end test job `needs` have to be executed as well.
-
-[act]: https://github.com/nektos/act
 [actionlint]: https://github.com/rhysd/actionlint
 [bash test tools]: https://thorsteinssonh.github.io/bash_test_tools/
 [bug report]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=bug
@@ -183,10 +173,11 @@ There are some limitations to using [act]:
 [editorconfig]: https://editorconfig.org/
 [feature request]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new?labels=enhancement
 [git]: https://git-scm.com/
+[hadolint]: https://github.com/hadolint/hadolint
 [make]: https://www.gnu.org/software/make/
-[node.js]: https://nodejs.org/en/
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [open issues]: https://github.com/ericcornelissen/git-tag-annotation-action/issues?q=is%3Aissue+is%3Aopen+no%3Aassignee
+[podman]: https://podman.io/
 [security policy]: ./SECURITY.md
 [shellcheck]: https://github.com/koalaman/shellcheck
 [shfmt]: https://github.com/mvdan/sh
