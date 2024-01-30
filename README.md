@@ -80,12 +80,14 @@ jobs:
 ## Runners
 
 This Action is tested on the official [ubuntu-20.04], [ubuntu-22.04],
-[macos-11], [macos-12], [macos-13], [windows-2019], [windows-2022] runner
-images. It is recommended to use one of these images when using this Action.
+[macos-11], [macos-12], [macos-13], [macos-14], [windows-2019], [windows-2022]
+runner images. It is recommended to use one of these images when using this
+Action.
 
 [macos-11]: https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md
 [macos-12]: https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
 [macos-13]: https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md
+[macos-14]: https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
 [ubuntu-20.04]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md
 [ubuntu-22.04]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
 [windows-2019]: https://github.com/actions/runner-images/blob/main/images/windows/Windows2019-Readme.md
