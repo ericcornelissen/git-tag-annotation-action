@@ -5,5 +5,5 @@ actionlint 1.6.26
 hadolint 2.12.0
 cosign 2.2.3
 shellcheck 0.9.0
-shfmt 3.7.0
+shfmt 3.8.0
 yamllint 1.34.0
