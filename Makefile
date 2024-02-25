@@ -51,7 +51,8 @@ help: ## Show this help message
 lint: lint-ci lint-container lint-sh lint-yaml ## Lint the project
 
 lint-ci: ## Lint Continuous Integration configuration files
-	@actionlint
+	@SHELLCHECK_OPTS='--enable=avoid-nullary-conditions --enable=deprecate-which --enable=quote-safe-variables --enable=require-variable-braces' \
+		actionlint
 
 lint-container: ## Lint the Containerfile
 	@hadolint Containerfile

@@ -33,7 +33,7 @@ jobs:
         run: |
           VERSION="v$(cat .version)"
           echo "version=${VERSION}" >>"${GITHUB_OUTPUT}"
-          if [ "$(git tag --list "${VERSION}")" ]; then
+          if [ -n "$(git tag --list "${VERSION}")" ]; then
             echo 'released=true' >>"${GITHUB_OUTPUT}"
           else
             echo 'released=false' >>"${GITHUB_OUTPUT}"
