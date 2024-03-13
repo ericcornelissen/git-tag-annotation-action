@@ -100,6 +100,7 @@ jobs:
             api.github.com:443
             fulcio.sigstore.dev:443
             github.com:443
+            objects.githubusercontent.com:443
             rekor.sigstore.dev:443
             sigstore-tuf-root.storage.googleapis.com:443
             storage.googleapis.com:443
