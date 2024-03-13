@@ -6,6 +6,110 @@
 
 A GitHub Action to get the annotation associated with the current git tag.
 
+## Deprecation Notice
+
+This Action should be considered deprecated. Security support will be provided
+until 2024-06-12. Until then it is recommended to not start using this Action
+and if you are to migrate away from it (there is a migration guide below).
+
+For anyone looking to get the annotation associated with the current a tag in a
+GitHub Actions Workflow, here's how you can do that:
+
+```yaml
+steps:
+  # Necessary setup. See the "Known Issues" section for more details on this.
+  - name: Checkout repository
+    uses: actions/checkout@v4
+  - name: Fetch tags
+    run: git fetch --tags --force
+
+  # The part you're interested in
+  - name: Get the annotation
+    id: tag-data
+    with:
+      # This selects the tag to get the annotation for.
+      #
+      # `${{ github.ref }}` specifically refers to the current tag given the
+      # workflow trigger was pushing a tag.
+      TAG: ${{ github.ref }}
+    run: |
+      # Outputting in this way makes sure multiple lines are handled correctly
+      {
+        # This marks the start of the output
+        echo 'annotation<<EOF'
+
+        # This logs the tag annotation
+        git for-each-ref "${TAG}" --format '%(contents)'
+
+        # This marks the end of the output
+        echo 'EOF'
+
+      # Actually writing the output here
+      } >>"${GITHUB_OUTPUT}"
+
+  # Example to show that it works
+  - name: Output the annotation
+    env:
+      ANNOTATION: ${{ steps.tag-data.outputs.annotation }}
+    run: echo "${ANNOTATION}"
+```
+
+The original Action documentation can be found at the end of the `README.md`.
+
+## Migration Guide
+
+### No input
+
+If you're currently using:
+
+```yaml
+- uses: ericcornelissen/git-tag-annotation-action@v2
+  id: tag-data
+```
+
+You can replace that by:
+
+```yaml
+- id: tag-data
+  run: |
+    {
+      echo 'annotation<<EOF'
+      git for-each-ref "${GITHUB_REF}" --format '%(contents)'
+      echo 'EOF'
+    } >>"${GITHUB_OUTPUT}"
+```
+
+### `with:` input
+
+If you're currently using something that looks like:
+
+```yaml
+- uses: ericcornelissen/git-tag-annotation-action@v2
+  id: tag-data
+  with:
+    tag: <INPUT>
+```
+
+You can replace that by (making sure to preserve `<INPUT>` correctly):
+
+```yaml
+- env:
+    PROVIDED_TAG: <INPUT>
+  id: tag-data
+  run: |
+    {
+      echo 'annotation<<EOF'
+      git for-each-ref "refs/tags/${PROVIDED_TAG}" --format '%(contents)'
+      echo 'EOF'
+    } >>"${GITHUB_OUTPUT}"
+```
+
+(Avoid using an expression inside the workflow for `${PROVIDED_TAG}` as that
+could lead to arbitrary code execution in your workflows.)
+
+---
+---
+
 ## Usage
 
 Make sure to only use this Action in the context of a tag, this can be achieved

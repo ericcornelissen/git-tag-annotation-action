@@ -17,7 +17,6 @@ function test_only_context_tag() {
     run ./src/main.sh
 
   assert_success
-  assert_no_output
   assert_no_error
   assert_equal "$(cat "${GITHUB_OUTPUT}")" "annotation<<EOF
 - Run the Action to get the git tag annotation of the current tag.
@@ -34,7 +33,6 @@ function test_only_provided_tag() {
     run ./src/main.sh
 
   assert_success
-  assert_no_output
   assert_no_error
   assert_equal "$(cat "${GITHUB_OUTPUT}")" "annotation<<EOF
 - Run the Action to get the git tag annotation of the current tag.
@@ -54,7 +52,6 @@ function test_both_context_and_provided_tag() {
     run ./src/main.sh
 
   assert_success
-  assert_no_output
   assert_no_error
   assert_equal "$(cat "${GITHUB_OUTPUT}")" "annotation<<EOF
 - Run the Action to get the git tag annotation of the current tag.
