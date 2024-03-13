@@ -14,7 +14,7 @@ Versioning].
 
 ## [2.0.7] - 2024-03-13
 
-- Update deprecation warning for general end-of-life (EOL). ([#673])
+- Add deprecation warning for general end-of-life (EOL). ([#673])
 
 ## [2.0.6] - 2023-01-03
 
