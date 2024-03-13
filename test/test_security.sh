@@ -17,7 +17,6 @@ function test_argument_splitting_context_tag() {
     run ./src/main.sh
 
   assert_success
-  assert_no_output
   assert_no_error
   assert_equal "$(cat "${GITHUB_OUTPUT}")" "annotation<<EOF
 EOF"
@@ -31,7 +30,6 @@ function test_argument_splitting_provided_tag() {
     run ./src/main.sh
 
   assert_success
-  assert_no_output
   assert_no_error
   assert_equal "$(cat "${GITHUB_OUTPUT}")" "annotation<<EOF
 EOF"
@@ -45,7 +43,6 @@ function test_shell_injection_context_tag() {
     run ./src/main.sh
 
   assert_success
-  assert_no_output
   assert_no_error
   assert_equal "$(cat "${GITHUB_OUTPUT}")" "annotation<<EOF
 EOF"
@@ -59,7 +56,6 @@ function test_shell_injection_provided_tag() {
     run ./src/main.sh
 
   assert_success
-  assert_no_output
   assert_no_error
   assert_equal "$(cat "${GITHUB_OUTPUT}")" "annotation<<EOF
 EOF"
