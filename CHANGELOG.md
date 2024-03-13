@@ -10,7 +10,11 @@ Versioning].
 
 ## [Unreleased]
 
-- _No changes yet_
+- _No changes yet._
+
+## [2.0.7] - 2024-03-13
+
+- Add deprecation warning for general end-of-life (EOL). ([#673])
 
 ## [2.0.6] - 2023-01-03
 
@@ -148,3 +152,4 @@ Versioning].
 [#353]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/353
 [#368]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/368
 [#436]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/436
+[#673]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/673
