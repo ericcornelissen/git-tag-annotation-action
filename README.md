@@ -50,7 +50,7 @@ steps:
   # Example to show that it works
   - name: Output the annotation
     env:
-      ANNOTATION: ${{ steps.tag-data.outputs.git-tag-annotation }}
+      ANNOTATION: ${{ steps.tag-data.outputs.annotation }}
     run: echo "${ANNOTATION}"
 ```
 
