@@ -25,7 +25,7 @@ max_line_length=unset
 indent_size=unset
 indent_style=space
 
-[Containerfile]
+[Containerfile*]
 indent_style=tab
 
 [Makefile]
