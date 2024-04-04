@@ -3,7 +3,7 @@
 # Check out Docker at: https://www.docker.com/
 # Check out Podman at: https://podman.io/
 
-FROM docker.io/alpine:3.18.4
+FROM docker.io/alpine:3.19.1
 
 RUN apk add --no-cache \
 	bash \
@@ -19,7 +19,7 @@ ENV ASDF_DIR="/.asdf"
 WORKDIR /setup
 COPY .tool-versions .
 
-RUN git clone https://github.com/asdf-vm/asdf.git /.asdf --branch v0.13.1 \
+RUN git clone https://github.com/asdf-vm/asdf.git /.asdf --branch v0.14.0 \
 	&& echo '. "/.asdf/asdf.sh"' > ~/.bashrc \
 	&& . "/.asdf/asdf.sh" \
 	&& asdf plugin add actionlint \

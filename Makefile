@@ -28,7 +28,7 @@ dev-env: dev-img ## Run an ephemeral development environment container
 
 dev-img: ## Build a development environment container image
 	@$(CONTAINER_ENGINE) build \
-		--file Containerfile \
+		--file Containerfile.dev \
 		--tag "$(DEV_IMG_NAME)" \
 		.
 
@@ -55,7 +55,7 @@ lint-ci: ## Lint Continuous Integration configuration files
 		actionlint
 
 lint-container: ## Lint the Containerfile
-	@hadolint Containerfile
+	@hadolint Containerfile.dev
 
 lint-sh: ## Lint shell scripts
 	@shellcheck $(SHELL_SCRIPTS)
