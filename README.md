@@ -11,8 +11,8 @@ A GitHub Action to get the annotation associated with the current git tag.
 > this Action and if you are to migrate away from it (there is a migration guide
 > below).
 
-For anyone looking to get the annotation associated with the current a tag in a
-GitHub Actions Workflow, here's how you can do that:
+For anyone looking to get the annotation associated with the current git tag in
+a GitHub Actions Workflow, here's how you can do that:
 
 ```yaml
 steps:
