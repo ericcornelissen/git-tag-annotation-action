@@ -2,18 +2,17 @@
 
 # Git Tag Annotation Action
 
-[![Continuous Integration][ci-image]][ci-url]
-
 A GitHub Action to get the annotation associated with the current git tag.
 
 ## Deprecation Notice
 
-This Action should be considered deprecated. Security support will be provided
-until 2024-06-12. Until then it is recommended to not start using this Action
-and if you are to migrate away from it (there is a migration guide below).
+> [!WARNING]
+> Support for this Action ended 2024-06-12. It is recommended to not start using
+> this Action and if you are to migrate away from it (there is a migration guide
+> below).
 
-For anyone looking to get the annotation associated with the current a tag in a
-GitHub Actions Workflow, here's how you can do that:
+For anyone looking to get the annotation associated with the current git tag in
+a GitHub Actions Workflow, here's how you can do that:
 
 ```yaml
 steps:
@@ -264,5 +263,3 @@ how to improve the documentation.
 [license]: ./LICENSE
 [open an issue]: https://github.com/ericcornelissen/git-tag-annotation-action/issues/new
 [permissions]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
-[ci-url]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml
-[ci-image]: https://github.com/ericcornelissen/git-tag-annotation-action/actions/workflows/check.yml/badge.svg

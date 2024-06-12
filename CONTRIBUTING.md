@@ -2,6 +2,10 @@
 
 # Contributing Guidelines
 
+> [!WARNING]
+> Support for this project ended 2024-06-12. No further contributions will be
+> accepted.
+
 The maintainers of the _Git Tag Annotation Action_ welcome contributions and
 corrections of all forms. This includes improvements to the documentation or
 code base, new tests, bug fixes, and implementations of new features. We
@@ -47,7 +51,7 @@ that reproduces the problem. Once you have this, collect additional information
 such as:
 
 - The exact version of the Action you're using.
-- A description of the expected behaviour and the actual behaviour.
+- A description of the expected behavior and the actual behavior.
 - All error and warning messages.
 - A link to a workflow run where the bug occurs with [debug logging] enabled.
 

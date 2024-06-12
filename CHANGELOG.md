@@ -8,9 +8,9 @@ this file.
 The format is based on [Keep a Changelog], and this project adheres to [Semantic
 Versioning].
 
-## [Unreleased]
+## [2.0.8] - 2024-06-12
 
-- _No changes yet._
+- Change the deprecation warning to a deprecation error. ([#678])
 
 ## [2.0.7] - 2024-03-13
 
@@ -153,3 +153,4 @@ Versioning].
 [#368]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/368
 [#436]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/436
 [#673]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/673
+[#678]: https://github.com/ericcornelissen/git-tag-annotation-action/pull/678

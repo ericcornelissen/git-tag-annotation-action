@@ -1,7 +1,7 @@
 #!/bin/bash
 # SPDX-License-Identifier: MIT
 
-echo "::warning::This action is deprecated and support ends 2024-06-12. Refer to the README.md of the Action for a migration guide."
+echo "::error::This action is deprecated since 2024-06-12. Refer to the README.md of the Action for a migration guide."
 
 {
   echo 'annotation<<EOF'
